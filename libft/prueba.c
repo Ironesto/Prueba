@@ -1,25 +1,25 @@
-#include <aio.h>
-
 #include <stdio.h>
-#include <string.h>
+#include <stdlib.h>
 
-void ft_memset(void *str, int x, size_t n)
+int ft_putnbr(char *str)
 {
     int i;
+    int num;
 
     i = 0;
-
-    while (((char *)str)[i] && i < n)
+    num = 0;
+    while (str[i + 1] >= '0' && str[i + 1] <= '9')
     {
-        ((char *)str)[i] = (char)x;
+        num += (str[i] - '0');
+        num *= 10;
         i++;
     }
+    num += (str[i] - '0');
+    return (num);
 }
 
-int main ()
+int main()
 {
-    char str[] = "hola mundo que tal";
-    ft_memset(str, 't', 4);
-    printf("%s", str);
-    return (0);
+    printf("%d", ft_putnbr("423"));
+    return(0);
 }
