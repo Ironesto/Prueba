@@ -5,7 +5,7 @@
 
 void ft_memset(void *str, int x, size_t n)
 {
-    int i;
+    size_t i;
 
     i = 0;
 

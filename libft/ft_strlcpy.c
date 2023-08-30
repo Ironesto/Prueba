@@ -4,7 +4,7 @@
 int ft_strlcpy(char *dest, const char *src, size_t n)
 {
     int i;
-    int j;
+    size_t j;
 
     i = 0;
     j = 0;
@@ -16,11 +16,11 @@ int ft_strlcpy(char *dest, const char *src, size_t n)
     return (j);
 }
 
-int main()
+/*int main()
 {
     char dest[100] = "hola";
     char src[] = "mundo";
     printf("%d  ",strlcpy(dest, src, 3));
     printf("%d",ft_strlcpy(dest, src, 3));
     return (0);
-}
+}*/

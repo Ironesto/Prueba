@@ -3,7 +3,7 @@
 
 char *ft_strnstr(char *big, char *little, size_t len)
 {
-    int i;
+    size_t i;
     int j;
 
     i = 0;

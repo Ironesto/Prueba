@@ -4,7 +4,7 @@
 void ft_bzero(void *str, size_t n)
 {
     char *dest;
-    int i;
+    size_t i;
 
     dest = (char *)str;
     i = 0;
