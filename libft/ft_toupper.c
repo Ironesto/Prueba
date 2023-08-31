@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-char ft_toupper(char src)
+char ft_toupper(int src)
 {
     if (src >= 'a' && src <= 'z')
         src -= 32;

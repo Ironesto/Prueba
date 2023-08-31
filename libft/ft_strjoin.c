@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include "ft_strlen.c"
 
-char *ft_strjoin(char *s1, char *s2)
+char *ft_strjoin(const char *s1, const char *s2)
 {
     int i;
     int j;
