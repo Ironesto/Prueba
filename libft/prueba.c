@@ -1,83 +1,36 @@
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include "libft.h"
 
-int		digit_counter(int n)
+char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 {
-	int i;
-	int	copy;
+	size_t	i;
+	size_t	j;
 
+	if (!*to_find)
+		return ((char *)str);
 	i = 0;
-	if (n == 0)
-		return (1);
-	if (n == -2147483648)
-		return (11);
-	if (n < 0)
+	while (str[i] && (size_t)i < len)
 	{
-		n = -n;
+		if (str[i] == to_find[0])
+		{
+			j = 0;
+			while (str[i + j] == to_find[j] && i + j < len)
+			{
+				if (to_find[j + 1] == '\0')
+					return ((char *)&str[i]);
+				j++;
+			}
+		}
 		i++;
 	}
-	copy = n;
-	while (copy > 0)
-	{
-		copy = copy / 10;
-		i++;
-	}
-	return (i);
+	return (0);
 }
 
-int		exp_counter(int n)
+
+int main()
 {
-	int exp;
-	int	digits;
-
-	if (n == 0)
-		return (1);
-	if (n == -2147483648)
-		return (1000000000);
-	digits = digit_counter(n);
-	if (n < 0)
-		digits--;
-	exp = 1;
-	while (--digits)
-		exp = exp * 10;
-	return (exp);
-}
-
-char	*ft_itoa(int n)
-{
-	char		*str;
-	int			exp;
-	int			i;
-	long int	copy;
-
-	copy = (long int)n;
-	exp = exp_counter(n);
-	i = 0;
-	if (!(str = malloc(digit_counter(n) + 1)))
-		return (NULL);
-	if (n < 0)
-	{
-		str[i++] = '-';
-		copy = -copy;
-	}
-	while (exp > 0)
-	{
-		str[i++] = (copy / exp) + 48;
-		copy = copy % exp;
-		exp = exp / 10;
-	}
-	str[i] = '\0';
-	return (str);
-}
-
-int main ()
-{
-    char s1[] = "fdred";
-    int c = 'd';
-    int n = 4;
-    printf("%s\n", ft_itoa(n));
+    char str[] = "hola mundo que tal";
+    char find[] = "la";
+    int len = 15;
+    printf("%s\n", ft_strnstr(str, find, len));
     return (0);
 }

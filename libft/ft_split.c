@@ -1,7 +1,4 @@
-//#include "libft.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
+#include "libft.h"
 
 int ft_count(char const *s, char c)
 {
@@ -61,6 +58,6 @@ char **ft_split(char const *s, char c)
 /*int main (void)
 {
     char **res = ft_split(" s \n d,  Hola mundo,que tal.estass  .", ' ');
-    printf("%s\n", res[8]);
+    printf("-%s-\n", res[4]);
     return (0);
 }*/

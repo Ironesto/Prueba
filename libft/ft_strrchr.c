@@ -15,7 +15,7 @@ char *ft_strrchr(const char *str, char ch)
         i--;
     if (i == 0)
         return(NULL);
-    return (&str[i]);
+    return ((char *)&str[i]);
 }
 
 /*int main()

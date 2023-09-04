@@ -27,8 +27,8 @@ char *ft_strjoin(const char *s1, const char *s2)
     return (s3);
 }
 
-int main(void)
+/*int main(void)
 {
     printf("%s", ft_strjoin("hola", " mundi"));
     return (0);
-}
+}*/

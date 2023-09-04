@@ -17,8 +17,8 @@ char *ft_substr(char const *s, unsigned int start, size_t len)
     return (res);
 }
 
-int main(void)
+/*int main(void)
 {
     printf("%s",ft_substr("HOLA MUNDO",0, 3));
     return (0);
-}
+}*/
