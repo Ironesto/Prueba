@@ -1,8 +1,20 @@
-#include <stdio.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/11 17:44:26 by gpaez-ga          #+#    #+#             */
+/*   Updated: 2023/09/11 17:49:52 by gpaez-ga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-char ft_tolower(int src)
+#include "libft.h"
+
+char	ft_tolower(int src)
 {
-    if (src >= 'A' && src <= 'Z')
-        src += 32;
-    return (src);
+	if (src >= 'A' && src <= 'Z')
+		src += 32;
+	return (src);
 }

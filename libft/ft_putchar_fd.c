@@ -1,14 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/11 17:40:01 by gpaez-ga          #+#    #+#             */
+/*   Updated: 2023/09/11 17:46:54 by gpaez-ga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-void ft_putchar_fd(char c, int fd)
+void	ft_putchar_fd(char c, int fd)
 {
-    write (fd, &c, 1);
+	write(fd, &c, 1);
 }
-
-/*int main (int argc, char **argv)  
-{
-    int fd;
-    fd = open("/home/ironesto/Escritorio/Cursus/libft/file.txt", O_WRONLY);
-    ft_putchar_fd('G',fd);
-    return (0);
-}*/

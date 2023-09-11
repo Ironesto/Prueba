@@ -1,26 +1,30 @@
-#include <stdio.h>
-#include <string.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/11 17:41:39 by gpaez-ga          #+#    #+#             */
+/*   Updated: 2023/09/11 17:46:01 by gpaez-ga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 #include <stdlib.h>
-#include "ft_strlen.c"
 
-char *ft_strdup(const char *s)
+char	*ft_strdup(const char *s)
 {
-    char    *res;
-    size_t  i; 
+	char	*res;
+	size_t	i;
 
-    i = 0;
-    res = malloc(sizeof(char) * ft_strlen(s) + 1);
-    while (s[i])
-    {
-        res[i] = s[i];
-        i++;
-    }
-    res[i] = '\0';
-    return (res);
+	i = 0;
+	res = malloc(sizeof(char) * ft_strlen(s) + 1);
+	while (s[i])
+	{
+		res[i] = s[i];
+		i++;
+	}
+	res[i] = '\0';
+	return (res);
 }
-
-/*int main (void)
-{
-    printf("%s", ft_strdup("hola mundo"));
-    return (0);
-}*/

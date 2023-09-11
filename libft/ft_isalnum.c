@@ -1,10 +1,24 @@
-int ft_isalnum (char let)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/11 17:33:28 by gpaez-ga          #+#    #+#             */
+/*   Updated: 2023/09/11 17:37:44 by gpaez-ga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+int	ft_isalnum(char let)
 {
-    if (let >= 'a' && let <= 'z')
-        return (1);
-    if (let >= 'A' && let <= 'Z')
-        return (1);
-    if (let >= '0' && let <= '9')
-        return (1);
-    return(0);
+	if (let >= 'a' && let <= 'z')
+		return (1);
+	if (let >= 'A' && let <= 'Z')
+		return (1);
+	if (let >= '0' && let <= '9')
+		return (1);
+	return (0);
 }

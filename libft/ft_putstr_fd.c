@@ -1,18 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/11 17:40:21 by gpaez-ga          #+#    #+#             */
+/*   Updated: 2023/09/11 17:46:20 by gpaez-ga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-void ft_putstr_fd(char *s, int fd)
+void	ft_putstr_fd(char *s, int fd)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (s[i])
-        write (fd, &s[i++], 1);;
+	i = 0;
+	while (s[i])
+		write(fd, &s[i++], 1);
 }
-
-/*int main (void)
-{
-    int fd;
-    char str[] = "hola mundo \n que tal.";
-    fd = open("/home/ironesto/Escritorio/Cursus/libft/file.txt", O_WRONLY);
-    ft_putstr_fd(str, fd);
-}*/

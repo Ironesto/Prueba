@@ -1,21 +1,23 @@
-#include <stdio.h>
-#include <string.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/11 17:40:55 by gpaez-ga          #+#    #+#             */
+/*   Updated: 2023/09/11 17:46:06 by gpaez-ga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-char *ft_strchr(const char *str, char ch)
+#include "libft.h"
+
+char	*ft_strchr(const char *str, char ch)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (str[i] && str[i] != ch)
-        i++;
-    return((char *)&str[i]);
+	i = 0;
+	while (str[i] && str[i] != ch)
+		i++;
+	return ((char *)&str[i]);
 }
-
-/*int main()
-{
-    char str[] = "hpola mundo que tal hpola do";
-    char ch = 'l';
-    printf("%s\n",strchr(str, ch));
-    printf("%s",ft_strchr(str, ch));
-    return (0);
-}*/

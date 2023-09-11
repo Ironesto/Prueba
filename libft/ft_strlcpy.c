@@ -1,26 +1,28 @@
-#include <stdio.h>
-#include <string.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/11 17:43:00 by gpaez-ga          #+#    #+#             */
+/*   Updated: 2023/09/11 17:52:54 by gpaez-ga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int ft_strlcpy(char *dest, const char *src, size_t n)
+#include "libft.h"
+
+size_t	ft_strlcpy(char *dest, const char *src, size_t n)
 {
-    int i;
-    size_t j;
+	int		i;
+	size_t	j;
 
-    i = 0;
-    j = 0;
-    while (dest[i])
-        i++;
-    while (src[j] && j < n)
-        dest[i++] = src[j++];
-    dest[i] = '\0';
-    return (j);
+	i = 0;
+	j = 0;
+	while (dest[i])
+		i++;
+	while (src[j] && j < n)
+		dest[i++] = src[j++];
+	dest[i] = '\0';
+	return (j);
 }
-
-/*int main()
-{
-    char dest[100] = "hola";
-    char src[] = "mundo";
-    printf("%d  ",strlcpy(dest, src, 3));
-    printf("%d",ft_strlcpy(dest, src, 3));
-    return (0);
-}*/

@@ -1,22 +1,23 @@
-#include <stdio.h>
-#include <string.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/11 17:43:29 by gpaez-ga          #+#    #+#             */
+/*   Updated: 2023/09/11 17:45:22 by gpaez-ga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-int ft_strncmp(const char *s1, const char *s2, size_t n)
+#include "libft.h"
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-    size_t i;
+	size_t	i;
 
-    i = 0;
-    while (s1[i] == s2[i] && i < n)
-        i++;
-    return (s1[i] - s2[i]);
+	i = 0;
+	while (s1[i] == s2[i] && i < n)
+		i++;
+	return (s1[i] - s2[i]);
 }
-
-/*int main()
-{
-    char s1[] = "";
-    char s2[] = "sd";
-    int n = 3;
-    printf("%d \n", ft_strncmp(s1, s2, n));
-    printf("%d", ft_strncmp(s1, s2, n));
-    return (0);
-}*/

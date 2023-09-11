@@ -1,8 +1,22 @@
-int ft_isalpha (char let)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/11 17:34:20 by gpaez-ga          #+#    #+#             */
+/*   Updated: 2023/09/11 17:37:40 by gpaez-ga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
+
+int	ft_isalpha(char let)
 {
-    if (let >= 'a' && let <= 'z')
-        return (1);
-    if (let >= 'A' && let <= 'Z')
-        return (1);
-    return(0);
+	if (let >= 'a' && let <= 'z')
+		return (1);
+	if (let >= 'A' && let <= 'Z')
+		return (1);
+	return (0);
 }
