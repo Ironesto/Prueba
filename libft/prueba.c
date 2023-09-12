@@ -1,36 +1,31 @@
 #include "libft.h"
 
-char	*ft_strnstr(const char *str, const char *to_find, size_t len)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-	size_t	i;
-	size_t	j;
+	char	*trimmed;
+	size_t	start;
+	size_t	end;
 
-	if (!*to_find)
-		return ((char *)str);
-	i = 0;
-	while (str[i] && (size_t)i < len)
-	{
-		if (str[i] == to_find[0])
-		{
-			j = 0;
-			while (str[i + j] == to_find[j] && i + j < len)
-			{
-				if (to_find[j + 1] == '\0')
-					return ((char *)&str[i]);
-				j++;
-			}
-		}
-		i++;
-	}
-	return (0);
+	if (!s1)
+		return (NULL);
+	if (!set)
+		return (ft_strdup(s1));
+	end = ft_strlen(s1) - 1;
+	start = 0;
+	while (s1[start] && ft_strchr(set, s1[start]))
+		++start;
+	while (s1[end] && ft_strchr(set, s1[end]))
+		--end;
+	trimmed = ft_substr(s1, start, end - start + 1);
+	return (trimmed);
 }
 
 
 int main()
 {
-    char str[] = "hola mundo que tal";
-    char find[] = "la";
+    char str[] = "hola mundo que taloh";
+    char find[] = "ho";
     int len = 15;
-    printf("%s\n", ft_strnstr(str, find, len));
+    printf("%s\n", ft_strtrim(str, find));
     return (0);
 }
