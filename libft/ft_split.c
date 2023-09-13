@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:40:29 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/11 17:48:49 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/09/13 19:47:53 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ char	**ft_split(char const *s, char c)
 	i = 0;
 	j = 0;
 	str = malloc(sizeof(char *) * ft_count(s, c) + 1);
+	if (str == NULL)
+		return (NULL);
 	while (s[j])
 	{
 		if (s[j] && s[j] != c)

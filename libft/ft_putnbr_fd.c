@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:40:12 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/11 17:46:33 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/09/13 19:03:26 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,16 @@
 void	ft_putnbr_fd(int n, int fd)
 {
 	char	c;
+	long	nb;
 
-	if (n < 0)
+	nb = n;
+	if (nb < 0)
 	{
-		n = -n;
+		nb = -nb;
 		write(fd, "-", 1);
 	}
-	if (n > 10)
-		ft_putnbr_fd(n / 10, fd);
-	c = (n % 10) + '0';
+	if (nb > 10)
+		ft_putnbr_fd(nb / 10, fd);
+	c = (nb % 10) + '0';
 	write(fd, &c, 1);
 }
