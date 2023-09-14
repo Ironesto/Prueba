@@ -6,13 +6,13 @@
 /*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:36:18 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/13 19:41:53 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/09/14 19:28:27 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_ext(int num)
+static int	ft_ext(int num)
 {
 	int		i;
 	long	nb;
@@ -34,7 +34,7 @@ int	ft_ext(int num)
 	return (i);
 }
 
-char	*ft_putnbr(char *str, int i, int num)
+static char	*ft_putnbr(char *str, int i, int num)
 {
 	long	nb;
 

@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/12 16:35:52 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/12 16:35:55 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/09/14 19:25:54 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	unsigned int	i;
+	size_t	i;
 
 	i = 0;
 	if (!s)
 		return (NULL);
 	while (s[i])
 	{
-		(*f)(i, (s + i));
+		f(i, &s[i]);
 		i++;
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ironesto <ironesto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:39:28 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/14 03:55:58 by ironesto         ###   ########.fr       */
+/*   Updated: 2023/09/14 17:43:54 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,5 @@ void	*ft_memset(void *str, int x, size_t n)
 		((char *)str)[i] = (unsigned char)x;
 		i++;
 	}
+	return (str);
 }
