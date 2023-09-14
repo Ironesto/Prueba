@@ -6,7 +6,7 @@
 /*   By: ironesto <ironesto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:39:04 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/13 02:48:39 by ironesto         ###   ########.fr       */
+/*   Updated: 2023/09/14 04:11:47 by ironesto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,5 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 		temp[i] = ((const char *)src)[i];
 		i++;
 	}
-	temp[i] = '\0';
 	return (dest);
 }
