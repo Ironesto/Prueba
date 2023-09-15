@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ironesto <ironesto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:39:04 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/15 05:11:39 by ironesto         ###   ########.fr       */
+/*   Updated: 2023/09/15 20:36:29 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,30 +14,26 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	char	*temp;
-	size_t	i;
+	const unsigned char	*s;
+	unsigned char		*d;
+	size_t				i;
 
 	i = 0;
-	if ((const char *)dest > (const char *)src)
-		temp = (char *)dest;
-	else
-		temp = (char *)src;
-	while (i < n)
-	{
-		temp[i] = ((const char *)src)[i];
-		i++;
-	}
-	dest = temp;
+	s = (const unsigned char *)src;
+	d = (unsigned char *)dest;
+	if (d > s)
+		while (n--)
+			d[n] = s[n];
+	else if (d < s)
+		ft_memcpy(dest, src, n);
 	return (dest);
 }
 
 /*int main()
 {
-	char dest[50] = "aaa";
-	const char src[] = "lorem ipsum dolor sit amet";
+	char dest[50] = "aaafdf";
+	const char src[] = "lor";
 	//printf("%s",ft_memmove(dest, src, 10));
-	printf("%s",memmove((void*)dest, (const void*)src, 10));
+	printf("%s",ft_memmove((void*)dest, (const void*)src, 10));
 	return (0);
 }*/
-
-	//printf("src: %s\ndest : %s\ntemp : %s",src, dest, temp);

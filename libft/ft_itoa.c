@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:36:18 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/14 19:28:27 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/09/15 21:22:25 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,14 +51,16 @@ char	*ft_itoa(int n)
 {
 	char	*res;
 	int		j;
+	long	i;
 
-	j = ft_ext(n);
+	i = n;
+	j = ft_ext(i);
 	res = malloc(sizeof(char) * (j + 1));
 	if (res == NULL)
 		return (NULL);
 	ft_putnbr(res, j - 1, n);
-	res[j + 1] = '\0';
-	if (n < 0)
+	res[j] = '\0';
+	if (i < 0)
 		res[0] = '-';
 	return (res);
 }

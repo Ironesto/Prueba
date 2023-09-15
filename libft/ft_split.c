@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:40:29 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/13 19:47:53 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/09/15 21:59:52 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,13 @@ char	*ft_save(char const *s, char c, size_t i)
 	j = i;
 	while (s[j] != c && s[j])
 		j++;
+	printf("%d i %d %s\n", j, i, res);
 	res = malloc(sizeof(char) * (j - i) + 1);
 	j = 0;
 	while (s[i] && s[i] != c)
 		res[j++] = s[i++];
 	res[i] = '\0';
+	
 	return (res);
 }
 
@@ -52,20 +54,32 @@ char	**ft_split(char const *s, char c)
 
 	i = 0;
 	j = 0;
-	str = malloc(sizeof(char *) * ft_count(s, c) + 1);
-	if (str == NULL)
+	if (s == NULL)
 		return (NULL);
+	str = malloc(sizeof(char *) * ft_count(s, c) + 1);
 	while (s[j])
 	{
 		if (s[j] && s[j] != c)
 		{
 			str[i] = ft_save(s, c, j);
 			i++;
-			while (s[j] && s[j] != c)
+			while (s[j + 1] && s[j + 1] != c)
 				j++;
 		}
 		j++;
 	}
-	str[i] = 0;
+	str[i] = NULL;
 	return (str);
+}
+
+int main()
+{
+	int i = 0;
+	const char str[] = "lorem ipsum dolor it";
+	while (ft_split(str, ' ')[i])
+	{
+		printf("%s\n",ft_split(str, ' ')[i]);
+		i++;
+	}
+	return (0);
 }

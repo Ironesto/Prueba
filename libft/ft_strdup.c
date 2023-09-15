@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:41:39 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/11 17:46:01 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/09/15 19:48:16 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ char	*ft_strdup(const char *s)
 
 	i = 0;
 	res = malloc(sizeof(char) * ft_strlen(s) + 1);
+	if (!s)
+		return (NULL);
 	while (s[i])
 	{
 		res[i] = s[i];
