@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ironesto <ironesto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:44:10 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/13 19:58:32 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/09/15 04:59:26 by ironesto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,20 @@ char	*ft_strtrim(char const *s1, char const *set)
 	j = ft_strlen(s1);
 	while (s1[i] == set[i])
 		i++;
+	res = ft_substr(s1, i, j);
 	i = 0;
-	while (s1[j] && set[i])
+	while (s1[j - 1] && set[i] && s1[j - 1] == set[i])
 	{
 		j--;
 		i++;
 	}
-	res = ft_substr(s1, i, j - i + 1);
+	res = ft_substr(res, 0, ft_strlen(res) - i);
 	return (res);
 }
 
 /*int main ()
 {
-	char s1[] = "telorem ipsum dolor sit amet";
+	char s1[] = "lorem ipsum dolor sit amet";
 	printf("%s", ft_strtrim(s1, "te"));
 	return (0);
 }*/
