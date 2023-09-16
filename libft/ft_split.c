@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ironesto <ironesto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:40:29 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/15 21:59:52 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/09/16 03:30:51 by ironesto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,16 @@ int	ft_count(char const *s, char c)
 char	*ft_save(char const *s, char c, size_t i)
 {
 	char	*res;
-	int		j;
+	size_t	j;
 
 	j = i;
 	while (s[j] != c && s[j])
 		j++;
-	printf("%d i %d %s\n", j, i, res);
-	res = malloc(sizeof(char) * (j - i) + 1);
+	res = malloc(sizeof(char) * (j - i + 1));
 	j = 0;
 	while (s[i] && s[i] != c)
 		res[j++] = s[i++];
-	res[i] = '\0';
-	
+	res[j] = '\0';
 	return (res);
 }
 
@@ -72,14 +70,14 @@ char	**ft_split(char const *s, char c)
 	return (str);
 }
 
-int main()
+/*int main()
 {
 	int i = 0;
-	const char str[] = "lorem ipsum dolor it";
+	const char str[] = "lorem ipsum dolor -\n- it";
 	while (ft_split(str, ' ')[i])
 	{
 		printf("%s\n",ft_split(str, ' ')[i]);
 		i++;
 	}
 	return (0);
-}
+}*/
