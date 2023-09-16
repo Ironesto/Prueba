@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:44:10 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/16 20:00:40 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/09/16 21:09:17 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	while (j > 0 && ft_strchr(set, s1[j]))
 		j--;
 	if (i >= ft_strlen(s1))
-		res = "";
+		return (ft_strdup(""));
 	else if (j == 0)
 		res = ft_strdup(s1);
 	else

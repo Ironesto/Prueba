@@ -6,37 +6,38 @@
 /*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:49:36 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/15 20:15:56 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/09/16 21:28:06 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 {
 	size_t	i;
 	size_t	j;
 
+	if (!to_find)
+		return ((char *)str);
 	i = 0;
-	if (little[0] == '\0')
-		return ((char *)big);
-	while (big[i] && i < len)
+	while (str[i] && i < len)
 	{
-		j = 0;
-		while (big[i] == little[j] && i < len)
+		if (str[i] == to_find[0])
 		{
-			i++;
-			j++;
-			if (little[j] == '\0')
-				return ((char *)&big[i - j]);
+			j = 0;
+			while (str[i + j] == to_find[j] && i + j < len)
+			{
+				if (to_find[j + 1] == '\0')
+					return ((char *)&str[i]);
+				j++;
+			}
 		}
 		i++;
 	}
-	return (NULL);
+	return (0);
 }
-
 /*int main()
 {
-	printf("%s", ft_strnstr("lorem ipsum dolor sit amet", "dolor", 15));
+	printf("%s", strnstr("lorem ipsum dolor sit amet", "dolor", -30));
 	return (0);
 }*/

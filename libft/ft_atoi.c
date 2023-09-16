@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:04:12 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/13 19:25:21 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/09/16 21:27:36 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_atoi(const char *nptr)
 	int	i;
 
 	i = 0;
-	while (nptr[i] <= 32)
+	while (nptr[i] <= 32 || nptr[i] >127)
 	{
 		if (nptr[i] == '\e')
 			return (0);
