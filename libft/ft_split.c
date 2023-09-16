@@ -6,7 +6,7 @@
 /*   By: ironesto <ironesto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:40:29 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/16 03:30:51 by ironesto         ###   ########.fr       */
+/*   Updated: 2023/09/16 03:34:52 by ironesto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ char	**ft_split(char const *s, char c)
 	j = 0;
 	if (s == NULL)
 		return (NULL);
-	str = malloc(sizeof(char *) * ft_count(s, c) + 1);
+	str = malloc(sizeof(char *) * (ft_count(s, c) + 1));
 	while (s[j])
 	{
 		if (s[j] && s[j] != c)
