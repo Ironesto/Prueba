@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:39:28 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/14 17:43:54 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/09/16 19:38:41 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 void	*ft_memset(void *str, int x, size_t n)
 {
-	size_t	i;
+	size_t			i;
+	unsigned char	*ptr;
 
 	i = 0;
-	while (((char *)str)[i] && i < n)
+	ptr = (unsigned char *)str;
+	while (i < n)
 	{
-		((char *)str)[i] = (unsigned char)x;
+		ptr[i] = (unsigned char)x;
 		i++;
 	}
-	return (str);
+	return (ptr);
 }

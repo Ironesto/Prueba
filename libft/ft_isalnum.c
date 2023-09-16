@@ -6,13 +6,13 @@
 /*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:33:28 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/11 17:37:44 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/09/16 19:06:37 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalnum(char let)
+int	ft_isalnum(int let)
 {
 	if (let >= 'a' && let <= 'z')
 		return (1);

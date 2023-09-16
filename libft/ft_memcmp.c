@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:38:40 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/11 17:48:34 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/09/16 19:52:45 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,16 @@
 
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	char	*cs1;
-	char	*cs2;
+	unsigned char	*cs1;
+	unsigned char	*cs2;
+	size_t			i;
 
-	cs1 = (char *)s1;
-	cs2 = (char *)s2;
-	ft_strncmp(cs1, cs2, n);
-	if (ft_strncmp(cs1, cs2, n) > 0)
-		return (1);
-	if (ft_strncmp(cs1, cs2, n) < 0)
-		return (-1);
-	return (0);
+	i = 0;
+	cs1 = (unsigned char *)s1;
+	cs2 = (unsigned char *)s2;
+	while (i < n && cs1[i] == cs2[i])
+		i++;
+	if (i == n)
+		return (0);
+	return (cs1[i] - cs2[i]);
 }

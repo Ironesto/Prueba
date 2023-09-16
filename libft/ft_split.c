@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ironesto <ironesto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:40:29 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/16 03:34:52 by ironesto         ###   ########.fr       */
+/*   Updated: 2023/09/16 20:29:12 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ char	**ft_split(char const *s, char c)
 	if (s == NULL)
 		return (NULL);
 	str = malloc(sizeof(char *) * (ft_count(s, c) + 1));
+	if (!str)
+		return (NULL);
 	while (s[j])
 	{
 		if (s[j] && s[j] != c)

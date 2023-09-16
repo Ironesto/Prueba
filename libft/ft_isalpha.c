@@ -6,13 +6,13 @@
 /*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:34:20 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/11 17:37:40 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/09/16 19:04:26 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isalpha(char let)
+int	ft_isalpha(int let)
 {
 	if (let >= 'a' && let <= 'z')
 		return (1);
