@@ -1,25 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 17:11:41 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/19 19:05:19 by gpaez-ga         ###   ########.fr       */
+/*   Created: 2023/09/19 19:46:45 by gpaez-ga          #+#    #+#             */
+/*   Updated: 2023/09/19 19:46:58 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
-
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	void	*res;
-
-	res = malloc(nmemb * size);
-	if (res == NULL)
-		return (NULL);
-	ft_bzero(res, nmemb * size);
-	return ((void *)res);
-}

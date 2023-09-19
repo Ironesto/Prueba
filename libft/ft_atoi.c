@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:04:12 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/16 21:27:36 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/09/19 19:01:56 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,9 @@ int	ft_atoi(const char *nptr)
 	int	i;
 
 	i = 0;
-	while (nptr[i] <= 32 || nptr[i] >127)
-	{
-		if (nptr[i] == '\e')
-			return (0);
-			i++;
-	}
+	while (nptr[i] == ' ' || nptr[i] == '\n' || nptr[i] == '\t'
+		|| nptr[i] == '\v' || nptr[i] == '\f' || nptr[i] == '\r')
+		i++;
 	if (nptr[i] == '+' && nptr[i + 1] >= '0' && nptr[i + 1] <= '9')
 		return (ft_putnbr(nptr, i + 1));
 	if (nptr[i] == '-' && nptr[i + 1] >= '0' && nptr[i + 1] <= '9')
@@ -46,3 +43,9 @@ int	ft_atoi(const char *nptr)
 		return (ft_putnbr(nptr, i));
 	return (0);
 }
+
+/*int main ()
+{
+	printf("%d",ft_atoi("\200 123"));
+	return (0);
+}*/

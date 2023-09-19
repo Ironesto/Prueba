@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:49:36 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/16 21:28:06 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/09/19 19:51:25 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 	size_t	i;
 	size_t	j;
 
-	if (!to_find)
+	if (to_find[0] == '\0')
 		return ((char *)str);
 	i = 0;
 	while (str[i] && i < len)
@@ -38,6 +38,6 @@ char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 }
 /*int main()
 {
-	printf("%s", strnstr("lorem ipsum dolor sit amet", "dolor", -30));
+	printf("%s", strnstr("lorem ipsum dolor sit amet", "", 10));
 	return (0);
 }*/
