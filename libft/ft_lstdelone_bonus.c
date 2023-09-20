@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front_bonus.c                            :+:      :+:    :+:   */
+/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/19 19:46:45 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/20 20:43:52 by gpaez-ga         ###   ########.fr       */
+/*   Created: 2023/09/20 18:52:15 by gpaez-ga          #+#    #+#             */
+/*   Updated: 2023/09/20 20:40:13 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	if (new != NULL)
-	{
-		new->next = *lst;
-		*lst = new;
-	}
+	if (!lst)
+		return ;
+	(del)(lst->content);
+	free(lst);
 }
