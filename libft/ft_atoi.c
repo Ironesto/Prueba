@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:04:12 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/19 19:01:56 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/09/25 18:44:15 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,3 @@ int	ft_atoi(const char *nptr)
 		return (ft_putnbr(nptr, i));
 	return (0);
 }
-
-/*int main ()
-{
-	printf("%d",ft_atoi("\200 123"));
-	return (0);
-}*/

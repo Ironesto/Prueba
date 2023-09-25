@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:49:36 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/19 19:51:25 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/09/25 18:46:58 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,3 @@ char	*ft_strnstr(const char *str, const char *to_find, size_t len)
 	}
 	return (0);
 }
-/*int main()
-{
-	printf("%s", strnstr("lorem ipsum dolor sit amet", "", 10));
-	return (0);
-}*/

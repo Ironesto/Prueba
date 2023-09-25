@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:39:04 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/15 20:36:29 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/09/25 18:44:59 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,3 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 		ft_memcpy(dest, src, n);
 	return (dest);
 }
-
-/*int main()
-{
-	char dest[50] = "aaafdf";
-	const char src[] = "lor";
-	//printf("%s",ft_memmove(dest, src, 10));
-	printf("%s",ft_memmove((void*)dest, (const void*)src, 10));
-	return (0);
-}*/

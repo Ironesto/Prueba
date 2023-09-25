@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:43:29 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/16 20:40:56 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/09/25 18:46:50 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,3 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	}
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
-
-/*int main()
-{
-	printf("%d", ft_strncmp("abcdefgh","abcdwxyz", 0));
-	printf(" y %d\n", strncmp("abcdefgh","abcdwxyz", 0));
-	return(0);
-}*/
