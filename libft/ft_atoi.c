@@ -6,13 +6,13 @@
 /*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:04:12 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/25 18:44:15 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/09/25 19:06:01 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_putnbr(const char *str, int i)
+static int	ft_putnbr(const char *str, int i)
 {
 	long	num;
 

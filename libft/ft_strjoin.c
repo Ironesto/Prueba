@@ -6,12 +6,11 @@
 /*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:42:22 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/16 20:30:34 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/09/25 19:09:34 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 char	*ft_strjoin(const char *s1, const char *s2)
 {

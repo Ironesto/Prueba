@@ -6,12 +6,11 @@
 /*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:11:41 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/19 19:05:19 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/09/25 19:09:05 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
