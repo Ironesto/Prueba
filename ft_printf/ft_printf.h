@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:55:56 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/26 20:24:45 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/09/27 19:00:55 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdio.h>
 
 int		ft_putnbr(int i, char *base);
+int		ft_putnbr_hexa(unsigned int i, char *base);
 void	ft_putchar(char c);
 
 #endif
