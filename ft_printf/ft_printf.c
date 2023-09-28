@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ironesto <ironesto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:16:27 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/27 19:04:09 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/09/28 04:09:20 by ironesto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,60 +25,80 @@ int	ft_printf(char const *str, ...)
 	{
 		if (str[i] == '%' && str[i + 1] == 'c')
 		{
-			//ft_putchar(va_arg(args, char));
+			ft_putchar(va_arg(args, int));
 			t--;
-			i += 2;
 		}
-		// if (str[i] == '%' && str[i + 1] == 's')
-		// ft_putstr (va_arg (args, char *));
-		// if (str[i] == '%' && str[i + 1] == 'p')
-		if (str[i] == '%' && str[i + 1] == 'd')
-		{
+		if (str[i] == '%' && str[i + 1] == 's')
+			t += ft_putstr(va_arg(args, char *)) - 2;
+		if (str[i] == '%' && str[i + 1] == 'p')
+			t += ft_putpointer(va_arg(args, unsigned long), "0123456789abcdef") - 2;
+		if (str[i] == '%' && (str[i + 1] == 'd' || str[i + 1] == 'i'))
 			t += ft_putnbr(va_arg(args, int), "0123456789") - 2;
-			i += 2;
-		}
-		//if (str[i] == '%' && str[i + 1] == 'i')
-		//if (str[i] == '%' && str[i + 1] == 'u')
+		if (str[i] == '%' && str[i + 1] == 'u')
+			t+= ft_putnbr_u(va_arg(args, unsigned int), "0123456789") - 2;
 		if (str[i] == '%' && str[i + 1] == 'x')
-		{
 			t += ft_putnbr_hexa(va_arg(args, unsigned int), "0123456789abcdef") - 2;
-			i += 2;
-		}
 		if (str[i] == '%' && str[i + 1] == 'X')
-		{
 			t += ft_putnbr_hexa(va_arg(args, unsigned int), "0123456789ABCDEF") - 2;
-			i += 2;
+		if (str[i] == '%' && str[i + 1] == '%')
+		{
+			write(1, "%", 1);
+			t--;
 		}
-		//if (str[i] == '%' && str[i + 1] == '%')
+		if (str[i] == '%' && str[i + 1] != '\0')
+			i += 2;
 		write(1, &str[i], 1);
 		i++;
 	}
-	printf("\n%d", i + t);
+	printf("%d\n", i + t);
 	va_end(args);
 	return (t + i);
 }
 
 int	main(void)
 {
-	unsigned int  j = 522;
-	ft_printf("el numero %x es unsigned", -522);
-	// printf("int: %d, float: %f char: %c str: %s\n", 15, 1.5, 'G', "string");
+	char str[] = "hola";
+	int num1 = 522;
+	int num2 = -522;
+	ft_printf("c: %c\n", 'S');
+	printf("c: %c\n", 'S');
+	ft_printf("s: %s\n", str);
+	printf("s: %s\n", str);
+	ft_printf("p: %p\n", str);
+	printf("p: %p\n", str);
+	ft_printf("d & i: %d & %i\n", num2, num2);
+	printf("d & i: %d & %i\n", num2, num2);
+	ft_printf("u: %u\n", num2);
+	printf("u: %u\n", num2);
+	ft_printf("x & X: %x %X\n", num2, num2);
+	printf("x & X: %x %X\n", num2, num2);
+	ft_printf("percent: %%\n");
+	printf("percent: %%\n");
 	return (0);
 }
 
-/*void	example (char *placeholders, ...)
+/*void	example (char *str, va_list args, int i)
 {
-	va_list args;
-	va_start (args, placeholders);
-	int	num_args = strlen(placeholders);
-
-	int max = 0;
-	int i = 0;
-	while (i < num_args)
-	{
-		int x = va_arg (args, int);
-		if (i == 0) max = x;
-		else if (x == max) max = x;
-	}
-	return (max);
+		if (str[i] == '%' && str[i + 1] == 'c')
+		{
+			ft_putchar(va_arg(args, int));
+			return(-1);
+		}
+		if (str[i] == '%' && str[i + 1] == 's')
+			return(ft_putstr(va_arg(args, char *)) - 2);
+		if (str[i] == '%' && str[i + 1] == 'p')
+			t += ft_putpointer(va_arg(args, void *), "0123456789abcdef") - 2;
+		if (str[i] == '%' && (str[i + 1] == 'd' || str[i + 1] == 'i'))
+			t += ft_putnbr(va_arg(args, int), "0123456789") - 2;
+		if (str[i] == '%' && str[i + 1] == 'u')
+			t+= ft_putnbr_u(va_arg(args, unsigned int), "0123456789") - 2;
+		if (str[i] == '%' && str[i + 1] == 'x')
+			t += ft_putnbr_hexa(va_arg(args, unsigned int), "0123456789abcdef") - 2;
+		if (str[i] == '%' && str[i + 1] == 'X')
+			t += ft_putnbr_hexa(va_arg(args, unsigned int), "0123456789ABCDEF") - 2;
+		if (str[i] == '%' && str[i + 1] == '%')
+		{
+			write(1, "%", 1);
+			t--;
+		}
 }*/
