@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ironesto <ironesto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 17:54:25 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/28 03:15:04 by ironesto         ###   ########.fr       */
+/*   Updated: 2023/09/28 18:50:28 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_putnbr(int i, char *base)
 int	ft_putnbr_hexa(unsigned int i, char *base)
 {
 	unsigned long	n;
-	int		res;
+	int				res;
 
 	n = i;
 	res = 0;

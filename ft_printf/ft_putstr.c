@@ -1,35 +1,37 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/28 18:49:56 by gpaez-ga          #+#    #+#             */
+/*   Updated: 2023/09/28 18:59:58 by gpaez-ga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-void	ft_putchar(char c)
+int	ft_putchar(char c)
 {
 	write(1, &c, 1);
+	return (-1);
 }
 
-size_t	ft_strlen(const char *str)
+int	ft_putstr(char *str)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (str[i])
-		i++;
+		write(1, &str[i++], 1);
 	return (i);
-}
-
-
-int    ft_putstr(char *str)
-{
-    int i;
-
-    i = 0;
-    while (str[i])
-        write(1, &str[i++], 1);
-    return (ft_strlen(str));
 }
 
 int	ft_putpointer(unsigned long i, char *base)
 {
 	unsigned long	n;
-	int		res;
+	int				res;
 
 	n = i;
 	res = 0;
@@ -37,7 +39,7 @@ int	ft_putpointer(unsigned long i, char *base)
 		res += ft_putpointer(n / 16, base);
 	if (res == 0)
 	{
-		write(1, "0x",2);
+		write(1, "0x", 2);
 		res += 2;
 	}
 	write(1, &base[n % 16], 1);
