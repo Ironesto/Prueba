@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ironesto <ironesto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/28 18:49:56 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/28 18:59:58 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/09/29 02:41:12 by ironesto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	ft_putstr(char *str)
 	int	i;
 
 	i = 0;
+	if (str == NULL)
+		return (write(1, "(null)", 6));
 	while (str[i])
 		write(1, &str[i++], 1);
 	return (i);

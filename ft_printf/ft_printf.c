@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ironesto <ironesto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:16:27 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/28 20:06:31 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/09/29 03:35:44 by ironesto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ int	ft_percent(char const *str, va_list args, int i)
 		write(1, "%", 1);
 		return (-1);
 	}
-	return (0);
+	else
+		return (0);
 }
 
 int	ft_printf(char const *str, ...)
@@ -50,11 +51,16 @@ int	ft_printf(char const *str, ...)
 	t = 0;
 	while (str[i])
 	{
-		if (str[i] == '%')
+		if (str[i] == '%' && ft_percent(str, args, i) != 0)
 		{
-			t += ft_percent(str, args, i);
-			i += 2;
+			t += ft_percent(str, args, i + 1);
+			if (str[i + 2] == '\0')
+				return (t + i);
+			else
+				i += 2;
 		}
+		else if (str[i] == '%' && str[i + 1] != '\0' && ft_percent(str, args, i) == 0)
+			i++;
 		write(1, &str[i], 1);
 		i++;
 	}
@@ -67,22 +73,42 @@ int	main(void)
 	char	str[] = "hola";
 	int		num1;
 	int		num2;
+	int		num3;
 
-	num1 = 522;
-	num2 = -522;
-	ft_printf("c: %c\n", 'S');
-	printf("c: %c\n", 'S');
-	//ft_printf("s: %s\n", str);
-	printf("s: %s\n", str);
-	ft_printf("p: %p\n", str);
-	printf("p: %p\n", str);
-	ft_printf("d & i: %d & %i\n", num2, num2);
-	printf("d & i: %d & %i\n", num2, num2);
-	ft_printf("u: %u\n", num2);
-	printf("u: %u\n", num2);
-	ft_printf("x & X: %x %X\n", num2, num2);
-	printf("x & X: %x %X\n", num2, num2);
-	ft_printf("percent: %w zzz");
-	printf("\nnormpercent: %w zzz");
+	num1 = 2147483648;
+	num2 = -2147483648;
+	num3 = num1;
+	ft_printf("c: -%c", '\0');
+	printf("\n");
+	printf("c: -%c", '\0');
+	printf("\n");
+	ft_printf("s: -%s-", str);
+	printf("\n");
+	printf("s: -%s", str);
+	printf("\n");
+	ft_printf("p: %p", str);
+	printf("\n");
+	printf("p: %p", str);
+	printf("\n");
+	ft_printf("d & i: %d & %i", num3, num3);
+	printf("\n");
+	printf("d & i: %d & %i", num3, num3);
+	printf("\n");
+	ft_printf("u: %u", num3);
+	printf("\n");
+	printf("u: %u", num3);
+	printf("\n");
+	ft_printf("x & X: %x %X", num3, num3);
+	printf("\n");
+	printf("x & X: %x %X", num3, num3);
+	printf("\n");
+	ft_printf("percent: %%");
+	printf("\n");
+	printf("normpercent: %%");
+	printf("\n");
+	ft_printf("novar: %");
+	printf("\n");
+	printf("novar: %");
+	printf("\n");
 	return (0);
 }
