@@ -10,7 +10,7 @@ int	main(void)
 	num1 = 214748364;
 	num2 = -214748364;
 	num3 = num1;
-	ft_printf("%%%%%%");
+	ft_printf("%s%s%s", "And ", "some", "joined");
 	printf("\n");
 	printf("%%");
 	printf("\n");

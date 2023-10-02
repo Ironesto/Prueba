@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:16:27 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/30 19:50:20 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/10/02 18:28:48 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,11 @@ int	ft_printf(char const *str, ...)
 			t += ft_percent(str, args, i);
 			i += 2;
 		}
-		write(1, &str[i], 1);
 		if (str[i])
+		{
+			write(1, &str[i], 1);
 			i++;
+		}
 	}
 	va_end(args);
 	return (t + i);
