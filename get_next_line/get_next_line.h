@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 19:17:23 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/10/03 20:24:05 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/10/04 19:03:46 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@
 # include <unistd.h>
 
 char	*get_next_line(int fd);
-char	*first_part(char *str, int len);
-char	*last_part(char *str, int len);
+char	*first_part(char *str);
+char	*last_part(char *str);
 char	*ft_strjoin(const char *s1, const char *s2);
 char	*ft_strdup(const char *s);
 

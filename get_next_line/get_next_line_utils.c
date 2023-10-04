@@ -6,13 +6,13 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 19:17:10 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/10/03 20:12:35 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/10/04 19:04:03 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(const char *str)
+static size_t	ft_strlen(const char *str)
 {
 	size_t	i;
 
@@ -66,7 +66,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	return (s3);
 }
 
-char	*first_part(char *str, int len)
+char	*first_part(char *str)
 {
 	int		i;
 	char	*res;
@@ -74,7 +74,7 @@ char	*first_part(char *str, int len)
 	i = 0;
 	if (str == NULL)
 		return (NULL);
-	while (str[i] && str[i] != '\n' && i < len)
+	while (str[i] && str[i] != '\n')
 		i++;
 	res = malloc(sizeof(char) * (i + 1));
 	if (!res)
@@ -82,7 +82,7 @@ char	*first_part(char *str, int len)
 	if (str[i] == '\n')
 	{
 		i = 0;
-		while (str[i] && str[i] != '\n' && i < len)
+		while (str[i] && str[i] != '\n')
 		{
 			res[i] = str[i];
 			i++;
@@ -94,7 +94,7 @@ char	*first_part(char *str, int len)
 	return (res);
 }
 
-char	*last_part(char *str, int len)
+char	*last_part(char *str)
 {
 	int		i;
 	int		j;
@@ -103,7 +103,7 @@ char	*last_part(char *str, int len)
 	i = 0;
 	if (str == NULL)
 		return (NULL);
-	while (str[i] && str[i] != '\n' && i < len)
+	while (str[i] && str[i] != '\n')
 		i++;
 	i++;
 	j = i;
