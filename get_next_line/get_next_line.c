@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 19:17:21 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/10/04 19:58:48 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/10/05 20:10:25 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,25 @@ char	*get_next_line(int fd)
 	j = 0;
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	 i = read(fd, buffer, BUFFER_SIZE);
-	res = ft_strdup(buffer);
+	if (!buffer)
+		buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	i = read(fd, buffer, BUFFER_SIZE);
+	res = first_part(buffer);
 	while (i > 0)
 	{
 		while (buffer[j] && buffer[j] != '\n')
 			j++;
 		if (buffer[j] == '\n')
 			{
-				last = last_part(buffer);
-				//res  = ft_strjoin(res, first_part(buffer));
-				i = 0;
+				if (last != NULL)
+					res  = ft_strjoin(last, res);
+				res  = ft_strjoin(res, first_part(buffer));
 				return (res);
 			}
-		j = 0;
+		
 		i = read(fd, buffer, BUFFER_SIZE);
-		res  = ft_strjoin(res, first_part(buffer));
+		res  = ft_strjoin(res, buffer);
+		j = 0;
 	}
 	return (res);
 }
@@ -50,10 +52,10 @@ int main()
 
 	fd = open("./prueba.txt", O_RDONLY);
 	printf("@%s@\n", get_next_line(fd));
-	printf("%s\n", get_next_line(fd));
-	printf("%s\n", get_next_line(fd));
-	//printf("%s\n", get_next_line(fd));
-	//printf("%s\n", get_next_line(fd));
+	printf("$%s$\n", get_next_line(fd));
+	printf("$%s$\n", get_next_line(fd));
+	printf("$%s$\n", get_next_line(fd));
+	//printf("$%s$\n", get_next_line(fd)); 
 	return(0);
 }
 
@@ -90,7 +92,7 @@ int main()
 			j++;
 		if (buffer[j] == '\n')
 			{
-				buffer = last_part(buffer, BUFFER_SIZE);
+				buffer = last_part(buffer);
 				printf("!%s!\n", buffer);
 				return (res);
 			}
@@ -98,7 +100,7 @@ int main()
 		{
 			read(fd, buffer, BUFFER_SIZE);
 			//printf("!%s!\n", buffer);
-			res  = ft_strjoin(res, first_part(buffer, BUFFER_SIZE));
+			res  = ft_strjoin(res, first_part(buffer);
 		}
 		j = 0;
 	}
