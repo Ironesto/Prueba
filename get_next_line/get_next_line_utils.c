@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ironesto <ironesto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 19:17:10 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/10/07 20:05:22 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/10/08 04:59:32 by ironesto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 		s3[i] = s1[i];
 		i++;
 	}
-	while (s2[j] && s2[i] != '\n')
+	while (s2[j])
 	{
 		s3[i] = s2[j];
 		i++;

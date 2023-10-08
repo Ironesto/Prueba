@@ -81,7 +81,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 		s3[i] = s1[i];
 		i++;
 	}
-	while (s2[j] && s2[i] != '\n')
+	while (s2[j])
 	{
 		s3[i] = s2[j];
 		i++;
@@ -129,14 +129,16 @@ char	*get_next_line(int fd)
 		buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 		i = read(fd, buffer, BUFFER_SIZE);
 	}
-	res = ft_strdup(buffer);
+	res = ft_strdup(first_part(buffer));
 	while (i > 0)
 	{
 		if (ft_strchr(res, '\n'))
+		{
+			buffer = last_part(buffer);
 			return (res);
+		}
 		i = read(fd, buffer, BUFFER_SIZE);
 		res = ft_strjoin(res, first_part(buffer));
-		buffer = last_part(buffer);
 	}
 	return (res);
 }
@@ -146,11 +148,11 @@ int	main()
 	int	fd;
 
 	fd = open("./prueba.txt", O_RDONLY);
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
+	printf("$$%s$$", get_next_line(fd));
+	printf("//%s//", get_next_line(fd));
+	printf("&&%s&&", get_next_line(fd));
+	printf("··%s··", get_next_line(fd));
+	printf("\n:FINAL:%s", get_next_line(fd));
 	//printf("%s", last_part("hola \n mundoi"));
 	return (0);
 }
