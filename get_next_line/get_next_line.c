@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ironesto <ironesto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 19:17:21 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/10/08 05:00:35 by ironesto         ###   ########.fr       */
+/*   Updated: 2023/10/08 17:59:24 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ int	main()
 
 	fd = open("./prueba.txt", O_RDONLY);
 	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
+	printf("/%s/", get_next_line(fd));
+	printf("$%s$", get_next_line(fd));
+	printf("!%s!", get_next_line(fd));
 	printf("\nFINAL :%s||", get_next_line(fd));
 	//printf("%s", last_part("hola \n mundoi"));
 	return (0);

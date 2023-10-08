@@ -94,13 +94,15 @@ char	*ft_strjoin(const char *s1, const char *s2)
 char	*first_part(char *str)
 {
 	int	i;
+	char *buffer;
 
 	i = 0;
 	while (str[i] && str[i] != '\n')
 		i++;
-	i++;
-	str = ft_substr(str, 0, i);
-	return (str);
+	if (str[i + 1] == '\n')
+		i++;
+	buffer = ft_substr(str, 0, i + 1);
+	return (buffer);
 }
 
 char	*last_part(char *buffer)
@@ -108,17 +110,21 @@ char	*last_part(char *buffer)
 	int	i;
 	char	*str;
 
+	if (buffer == NULL)
+		return (NULL);
 	str = ft_strdup(buffer);
 	i = 0;
 	while (str[i] && str[i] != '\n')
 		i++;
 	i++;
-	return (&str[i]);
+	str = ft_strdup(&str[i]);
+	return (str);
 }
 
 char	*get_next_line(int fd)
 {
 	static char	*buffer;
+	static char	*last;
 	char		*res;
 	int			i;
 
@@ -130,15 +136,14 @@ char	*get_next_line(int fd)
 		i = read(fd, buffer, BUFFER_SIZE);
 	}
 	res = ft_strdup(first_part(buffer));
+	last = last_part(buffer);
 	while (i > 0)
 	{
 		if (ft_strchr(res, '\n'))
-		{
-			buffer = last_part(buffer);
 			return (res);
-		}
 		i = read(fd, buffer, BUFFER_SIZE);
-		res = ft_strjoin(res, first_part(buffer));
+		res = ft_strjoin(res, first_part(last));
+		last = last_part(buffer);
 	}
 	return (res);
 }
@@ -148,10 +153,10 @@ int	main()
 	int	fd;
 
 	fd = open("./prueba.txt", O_RDONLY);
-	printf("$$%s$$", get_next_line(fd));
-	printf("//%s//", get_next_line(fd));
-	printf("&&%s&&", get_next_line(fd));
-	printf("··%s··", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
 	printf("\n:FINAL:%s", get_next_line(fd));
 	//printf("%s", last_part("hola \n mundoi"));
 	return (0);
