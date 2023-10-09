@@ -91,20 +91,6 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	return (s3);
 }
 
-char	*first_part(char *str)
-{
-	int	i;
-	char *buffer;
-
-	i = 0;
-	while (str[i] && str[i] != '\n')
-		i++;
-	if (str[i + 1] == '\n')
-		i++;
-	buffer = ft_substr(str, 0, i + 1);
-	return (buffer);
-}
-
 char	*last_part(char *buffer)
 {
 	int	i;
@@ -117,39 +103,56 @@ char	*last_part(char *buffer)
 	if (str[i] == '\n')
 		i++;
 	str = ft_strdup(&buffer[i]);
-	free(buffer);
+	//free(buffer);
 	return (str);
+}
+
+char *ft_read(char *last, char *buffer, int fd)
+{
+	char	*line;
+	int		i;
+	int		j;
+	int		k;
+
+	i = 0;
+	k = 1;
+	line = ft_strjoin(last, buffer);
+	//printf("//%s//\n", line);
+	while(!ft_strchr(buffer, '\n') && k > 0)
+	{
+		line = ft_strjoin(line, buffer);
+		k = read(fd, buffer, BUFFER_SIZE);
+	}
+	j = ft_strlen(line);
+	while (buffer[i] && buffer[i - 1] != '\n')
+	{
+		line[j] = buffer[i];
+		j++;
+		i++;
+	}
+	return (line);
 }
 
 char	*get_next_line(int fd)
 {
 	static char	*buffer;
 	char		*res;
+	static char	*last;
 	int			i;
 
+	
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (!buffer)
-	{
-		buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-		i = read(fd, buffer, BUFFER_SIZE);
-	}
-	res = ft_strdup(first_part(buffer));
-	//printf("·$%s$·\n", first_part(buffer));
-	while (i > 0)
-	{
-		if (ft_strchr(res, '\n'))
-		{
-			buffer = last_part(buffer);
-			return (res);
+		{buffer = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+		last = ft_strdup("");
 		}
-		buffer = malloc(sizeof(char) * (i + 1));
-		i = read(fd, buffer, BUFFER_SIZE);
-		//printf("··%s··\n", first_part(buffer));
-		if(i > 0)
-			res = ft_strjoin(res, first_part(buffer));
-	}
-	return (NULL);
+	res = ft_read(last, buffer, fd);
+	buffer = ft_strchr(buffer, '\n') + 1;
+	//free (buffer);
+	//buffer = ft_strdup(last);
+	//printf("$$%s$$", last);
+	return (res);
 }
 
 int	main()
@@ -157,12 +160,13 @@ int	main()
 	int	fd;
 
 	fd = open("./prueba.txt", O_RDONLY);
+	printf("!!%s!!", get_next_line(fd));
+	printf("%s!!", get_next_line(fd));
+	//printf("%s!!", get_next_line(fd));
+	/*printf("%s", get_next_line(fd));
 	printf("%s", get_next_line(fd));
 	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("%s", get_next_line(fd));
-	printf("\n:FINAL:%s", get_next_line(fd));
+	printf("\n:FINAL:%s", get_next_line(fd)); */
 	//printf("%s", last_part("hola \n mundoi"));
 	return (0);
 }
