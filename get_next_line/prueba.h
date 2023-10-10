@@ -1,7 +1,7 @@
 #ifndef PRUEBA_H
 # define PRUEBA_H
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 26 // borrar esto antes de subir
+#  define BUFFER_SIZE 25 // borrar esto antes de subir
 # endif
 # include <fcntl.h>
 # include <stdio.h> // borrar
