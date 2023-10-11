@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   prueba2.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/11 19:09:17 by gpaez-ga          #+#    #+#             */
+/*   Updated: 2023/10/11 19:09:19 by gpaez-ga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "prueba.h"
 
 static size_t	ft_strlen(const char *str)
@@ -43,8 +55,8 @@ char	*ft_strdup(const char *s)
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	unsigned int		i;
-	char				*res;
+	unsigned int	i;
+	char			*res;
 
 	if (s == NULL)
 		return (NULL);
@@ -91,41 +103,41 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	return (s3);
 }
 
-char *ft_read(char *buffer, int fd)
+char	*ft_read(char *buffer, int fd)
 {
 	int		i;
 	char	*str;
 
 	i = 1;
-	while(!ft_strchr(buffer, '\n') && i > 0)
+	while (!ft_strchr(buffer, '\n') && i > 0)
 	{
-	str = malloc(sizeof(char) * BUFFER_SIZE + 1);
+		str = malloc(sizeof(char) * BUFFER_SIZE + 1);
 		i = read(fd, str, BUFFER_SIZE);
 		buffer = ft_strjoin(buffer, str);
 	}
 	str = ft_strdup(buffer);
 	buffer = NULL;
 	free(buffer);
-	return(str);
+	return (str);
 }
 
-char *ft_line(char *buffer)
+char	*ft_line(char *buffer)
 {
-	int	i;
-	char *str;
+	int		i;
+	char	*str;
 
 	i = 0;
-	while(buffer[i] && buffer[i - 1] != '\n')
+	while (buffer[i] && buffer[i - 1] != '\n')
 		i++;
 	str = malloc(sizeof(char) * (i + 1));
 	i = 0;
-	while(buffer[i] && buffer[i - 1] != '\n')
+	while (buffer[i] && buffer[i - 1] != '\n')
 	{
 		str[i] = buffer[i];
 		i++;
 	}
 	str[i] = '\0';
-	return(str);
+	return (str);
 }
 
 static char	*get_line(char *buffer)
@@ -140,18 +152,16 @@ static char	*get_line(char *buffer)
 	return (line);
 }
 
-char *ft_last(char *buffer)
+char	*ft_last(char *buffer)
 {
 	char	*last;
 
-	//printf("&%s&\n", buffer);
 	if (ft_strchr(buffer, '\n') != NULL)
 		last = ft_strdup(ft_strchr(buffer, '\n') + 1);
 	else
 		last = ft_strdup(ft_strchr(buffer, '\0'));
 	buffer = NULL;
-	free (buffer);
-	//printf("&%s&\n", last);
+	free(buffer);
 	return (last);
 }
 
@@ -167,14 +177,14 @@ static char	*get_end(char *buffer)
 		index++;
 	if (!buffer[index])
 	{
-		free (buffer);
+		free(buffer);
 		return (NULL);
 	}
 	index++;
 	while (buffer[index + len] && buffer[index + len] != '\0')
 		len++;
 	new_line = ft_substr(buffer, index, len);
-	free (buffer);
+	free(buffer);
 	return (new_line);
 }
 
@@ -182,7 +192,7 @@ char	*get_next_line(int fd)
 {
 	static char	*buffer;
 	char		*res;
-	
+
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0))
 		return (NULL);
 	if (!buffer)
@@ -190,15 +200,12 @@ char	*get_next_line(int fd)
 	buffer = ft_read(buffer, fd);
 	res = ft_line(buffer);
 	buffer = ft_last(buffer);
-	//printf("$%s$\n", res);
 	return (res);
 }
 
-
-
-int	main()
+int	main(void)
 {
-	int	fd;
+	int fd;
 
 	fd = open("./prueba.txt", O_RDONLY);
 	printf("!!%s!!", get_next_line(fd));
@@ -206,8 +213,8 @@ int	main()
 	printf("%s!!", get_next_line(fd));
 	printf("%s", get_next_line(fd));
 	printf("&&%s&&", get_next_line(fd));
-	//printf("%s", get_next_line(fd));
-	//printf("\n:FINAL:%s", get_next_line(fd));
-	//printf("%s", last_part("hola \n mundoi"));
+	// printf("%s", get_next_line(fd));
+	// printf("\n:FINAL:%s", get_next_line(fd));
+	// printf("%s", last_part("hola \n mundoi"));
 	return (0);
 }
