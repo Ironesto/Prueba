@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   prueba2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ironesto <ironesto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 19:09:17 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/10/11 19:09:19 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/10/12 02:58:51 by ironesto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,41 +103,42 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	return (s3);
 }
 
-char	*ft_read(char *buffer, int fd)
+static char	*join(char *buf, char *buffer)
 {
-	int		i;
-	char	*str;
+	char	*temp;
 
-	i = 1;
-	while (!ft_strchr(buffer, '\n') && i > 0)
-	{
-		str = malloc(sizeof(char) * BUFFER_SIZE + 1);
-		i = read(fd, str, BUFFER_SIZE);
-		buffer = ft_strjoin(buffer, str);
-	}
-	str = ft_strdup(buffer);
-	buffer = NULL;
+	temp = ft_strjoin(buffer, buf);
 	free(buffer);
-	return (str);
+	buffer = temp;
+	return (buffer);
 }
 
-char	*ft_line(char *buffer)
+static char	*read_file(int fd, char *buffer)
 {
-	int		i;
-	char	*str;
+	char		*buf;
+	int			reader;
 
-	i = 0;
-	while (buffer[i] && buffer[i - 1] != '\n')
-		i++;
-	str = malloc(sizeof(char) * (i + 1));
-	i = 0;
-	while (buffer[i] && buffer[i - 1] != '\n')
+	buf = malloc((BUFFER_SIZE + 1) * sizeof(char));
+	reader = 1;
+	while (reader > 0 && !ft_strchr(buffer, '\n'))
 	{
-		str[i] = buffer[i];
-		i++;
+		reader = read(fd, buf, BUFFER_SIZE);
+		if (reader == -1)
+		{
+			free (buf);
+			return (NULL);
+		}
+		buf[reader] = '\0';
+		buffer = join(buf, buffer);
+		if (buffer[0] == 0)
+		{
+			free (buf);
+			free (buffer);
+			return (NULL);
+		}
 	}
-	str[i] = '\0';
-	return (str);
+	free (buf);
+	return (buffer);
 }
 
 static char	*get_line(char *buffer)
@@ -152,19 +153,6 @@ static char	*get_line(char *buffer)
 	return (line);
 }
 
-char	*ft_last(char *buffer)
-{
-	char	*last;
-
-	if (ft_strchr(buffer, '\n') != NULL)
-		last = ft_strdup(ft_strchr(buffer, '\n') + 1);
-	else
-		last = ft_strdup(ft_strchr(buffer, '\0'));
-	buffer = NULL;
-	free(buffer);
-	return (last);
-}
-
 static char	*get_end(char *buffer)
 {
 	char	*new_line;
@@ -177,44 +165,45 @@ static char	*get_end(char *buffer)
 		index++;
 	if (!buffer[index])
 	{
-		free(buffer);
+		free (buffer);
 		return (NULL);
 	}
 	index++;
 	while (buffer[index + len] && buffer[index + len] != '\0')
 		len++;
 	new_line = ft_substr(buffer, index, len);
-	free(buffer);
+	free (buffer);
 	return (new_line);
 }
 
 char	*get_next_line(int fd)
 {
 	static char	*buffer;
-	char		*res;
+	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0))
+	if (fd < 0 || read(fd, 0, 0) || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (!buffer)
 		buffer = ft_strdup("");
-	buffer = ft_read(buffer, fd);
-	res = ft_line(buffer);
-	buffer = ft_last(buffer);
-	return (res);
+	buffer = read_file(fd, buffer);
+	if (!buffer)
+		return (NULL);
+	line = get_line(buffer);
+	buffer = get_end(buffer);
+	return (line);
 }
 
 int	main(void)
 {
-	int fd;
+	int			fd;
+	char		buffer[50] = "hola \n mundoi";
 
 	fd = open("./prueba.txt", O_RDONLY);
-	printf("!!%s!!", get_next_line(fd));
-	printf("%s!!", get_next_line(fd));
-	printf("%s!!", get_next_line(fd));
 	printf("%s", get_next_line(fd));
-	printf("&&%s&&", get_next_line(fd));
-	// printf("%s", get_next_line(fd));
-	// printf("\n:FINAL:%s", get_next_line(fd));
-	// printf("%s", last_part("hola \n mundoi"));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("%s", get_next_line(fd));
+	printf("\nFINAL :%s||", get_next_line(fd));
+	//printf("%s", get_end(buffer));
 	return (0);
 }

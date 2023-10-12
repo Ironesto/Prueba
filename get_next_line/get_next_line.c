@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*   By: ironesto <ironesto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 19:17:21 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/10/11 20:06:08 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/10/12 03:14:38 by ironesto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_read(char *buffer, int fd)
 
 	i = 1;
 	str = malloc(sizeof(char) * BUFFER_SIZE + 1);
+	if (!str)
+		return (NULL);
 	while (!ft_strchr(buffer, '\n') && i > 0)
 	{
 		i = read(fd, str, BUFFER_SIZE);
@@ -74,8 +76,8 @@ char	*get_next_line(int fd)
 	if (!buffer)
 		buffer = ft_strdup("");
 	buffer = ft_read(buffer, fd);
-	if (!buffer)
-		return (NULL);
+	if (buffer[0] == '\0')
+		return (NULL);	//meter un free?
 	res = ft_line(buffer);
 	buffer = ft_last(buffer);
 	return (res);
@@ -84,18 +86,12 @@ char	*get_next_line(int fd)
 int	main(void)
 {
 	int			fd;
-	static char	*buffer;
-	static char	*last;
-	char		*res;
-	int			j;
-	int			i;
 
 	fd = open("./prueba.txt", O_RDONLY);
 	printf("%s", get_next_line(fd));
 	printf("%s", get_next_line(fd));
 	printf("%s", get_next_line(fd));
 	printf("%s", get_next_line(fd));
-	printf("\nFINAL :%s||", get_next_line(fd));
-	//printf("%s", last_part("hola \n mundoi"));
+	//printf("\nFINAL :%s||", get_next_line(fd));
 	return (0);
 }
