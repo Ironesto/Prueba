@@ -6,14 +6,14 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 19:17:23 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/10/11 19:12:51 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/10/12 19:13:51 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 25 // borrar esto antes de subir
+#  define BUFFER_SIZE 5 // borrar esto antes de subir
 # endif
 # include <fcntl.h>
 # include <stdio.h> // borrar
