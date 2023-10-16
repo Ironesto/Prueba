@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/02 19:17:21 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/10/16 17:44:56 by gpaez-ga         ###   ########.fr       */
+/*   Created: 2023/10/16 17:45:14 by gpaez-ga          #+#    #+#             */
+/*   Updated: 2023/10/16 17:53:34 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,34 +81,17 @@ char	*ft_last(char *buffer)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*buffer[4096];
 	char		*res;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd > 4096 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (!buffer)
-		buffer = ft_strdup("");
-	buffer = ft_read(buffer, fd);
-	if (!buffer)
+	if (!buffer[fd])
+		buffer[fd] = ft_strdup("");
+	buffer[fd] = ft_read(buffer[fd], fd);
+	if (!buffer[fd])
 		return (NULL);
-	res = ft_line(buffer);
-	buffer = ft_last(buffer);
+	res = ft_line(buffer[fd]);
+	buffer[fd] = ft_last(buffer[fd]);
 	return (res);
 }
-
-/* int	main(void)
-{
-	atexit(ft_leaks);
-	int			fd;
-	char		*str;
-
-	fd = open("./prueba.txt", O_RDONLY);
-	str = get_next_line(fd);
-	printf("%s", str);
-	free(str);
-	//printf("%s", get_next_line(fd));
-	//printf("%s", get_next_line(fd));
-	//printf("%s", get_next_line(fd));
-	//printf("\nFINAL :%s||", get_next_line(fd));
-	return (0);
-} */
