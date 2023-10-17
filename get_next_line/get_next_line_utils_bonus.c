@@ -6,11 +6,11 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 17:47:32 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/10/16 17:47:38 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/10/17 19:41:51 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 size_t	ft_strlen(const char *str)
 {
