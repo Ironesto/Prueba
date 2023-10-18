@@ -6,11 +6,11 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 17:45:14 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/10/16 17:53:34 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/10/18 19:41:11 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 static char	*ft_join(char *buffer, char *str)
 {
