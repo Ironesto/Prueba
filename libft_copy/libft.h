@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:08:39 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/10/20 19:40:26 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/10/20 20:01:44 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,12 @@ char	*get_next_line(int fd);
 
 # include <stdarg.h>
 
-int	ft_printf(char const *str, ...);
+int		ft_putnbr(int i, char *base);
+int		ft_putnbr_hexa(unsigned int i, char *base);
+int		ft_putnbr_u(unsigned int nbr, char *base);
+int		ft_putchar(char c);
+int		ft_putstr(char *str);
+int		ft_putpointer(unsigned long i, char *base);
+int		ft_printf(char const *str, ...);
 
 #endif

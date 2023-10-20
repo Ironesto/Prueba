@@ -6,30 +6,11 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 18:16:27 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/10/20 19:43:07 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/10/20 20:01:48 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static int	ft_putpointer(unsigned long i, char *base)
-{
-	unsigned long	n;
-	int				res;
-
-	n = i;
-	res = 0;
-	if (n >= 16)
-		res += ft_putpointer(n / 16, base);
-	if (res == 0)
-	{
-		write(1, "0x", 2);
-		res += 2;
-	}
-	write(1, &base[n % 16], 1);
-	res++;
-	return (res);
-}
 
 static int	ft_percent(char const *str, va_list args, int i)
 {
