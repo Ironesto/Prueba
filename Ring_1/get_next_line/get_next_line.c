@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 19:17:21 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/10/16 17:44:56 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/10/20 19:38:54 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static char	*ft_join(char *buffer, char *str)
 	return (buffer);
 }
 
-char	*ft_read(char *buffer, int fd)
+static char	*ft_read(char *buffer, int fd)
 {
 	int		i;
 	char	*str;
@@ -63,7 +63,7 @@ static char	*ft_line(char *buffer)
 	return (line);
 }
 
-char	*ft_last(char *buffer)
+static char	*ft_last(char *buffer)
 {
 	char	*last;
 
@@ -95,20 +95,3 @@ char	*get_next_line(int fd)
 	buffer = ft_last(buffer);
 	return (res);
 }
-
-/* int	main(void)
-{
-	atexit(ft_leaks);
-	int			fd;
-	char		*str;
-
-	fd = open("./prueba.txt", O_RDONLY);
-	str = get_next_line(fd);
-	printf("%s", str);
-	free(str);
-	//printf("%s", get_next_line(fd));
-	//printf("%s", get_next_line(fd));
-	//printf("%s", get_next_line(fd));
-	//printf("\nFINAL :%s||", get_next_line(fd));
-	return (0);
-} */
