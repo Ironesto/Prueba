@@ -6,13 +6,13 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/20 20:01:05 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/10/20 20:01:55 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/10/20 20:03:57 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_putpointer(unsigned long i, char *base)
+int	ft_putpointer(unsigned long i, char *base)
 {
 	unsigned long	n;
 	int				res;
