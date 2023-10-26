@@ -1,28 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 17:39:04 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/10/16 17:46:00 by gpaez-ga         ###   ########.fr       */
+/*   Created: 2023/10/20 19:46:57 by gpaez-ga          #+#    #+#             */
+/*   Updated: 2023/10/20 19:47:13 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+int	ft_putnbr(int i, char *base)
 {
-	const unsigned char	*s;
-	unsigned char		*d;
+	long	n;
+	int		res;
 
-	s = (const unsigned char *)src;
-	d = (unsigned char *)dest;
-	if (d > s)
-		while (n--)
-			d[n] = s[n];
-	else if (d < s)
-		ft_memcpy(dest, src, n);
-	return (dest);
+	n = i;
+	res = 0;
+	if (n < 0)
+	{
+		write(1, "-", 1);
+		n = -n;
+		res++;
+	}
+	if (n >= 10)
+		res += ft_putnbr(n / 10, base);
+	write(1, &base[n % 10], 1);
+	res++;
+	return (res);
 }

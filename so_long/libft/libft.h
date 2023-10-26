@@ -6,7 +6,7 @@
 /*   By: ironesto <ironesto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:08:39 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/10/16 05:21:58 by ironesto         ###   ########.fr       */
+/*   Updated: 2023/10/26 03:00:34 by ironesto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
-# include <fcntl.h>
 
 typedef struct s_list
 {
@@ -57,7 +56,7 @@ void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
-			/*LISTAS DEL BONUS*/
+			/*BONUS LIBFT*/
 
 t_list	*ft_lstnew(void *content);
 void	ft_lstadd_front(t_list **lst, t_list *new);
@@ -69,12 +68,30 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
-			/*GET_NEXT_LINE*/
+			/*GET NEXT LINE*/
+
+# include <fcntl.h>
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 100
+#  define BUFFER_SIZE 10
 # endif
 
 char	*get_next_line(int fd);
+
+			/*FT_PRINTF*/
+
+# include <stdarg.h>
+
+int		ft_putnbr(int i, char *base);
+int		ft_putnbr_hexa(unsigned int i, char *base);
+int		ft_putnbr_u(unsigned int nbr, char *base);
+int		ft_putchar(char c);
+int		ft_putstr(char *str);
+int		ft_putpointer(unsigned long i, char *base);
+int		ft_printf(char const *str, ...);
+
+			/*SO_LONG*/
+
+
 
 #endif

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:04:12 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/25 19:06:01 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/10/20 19:58:05 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_putnbr(const char *str, int i)
+static int	ft_putnbr_atoi(const char *str, int i)
 {
 	long	num;
 
@@ -36,10 +36,10 @@ int	ft_atoi(const char *nptr)
 		|| nptr[i] == '\v' || nptr[i] == '\f' || nptr[i] == '\r')
 		i++;
 	if (nptr[i] == '+' && nptr[i + 1] >= '0' && nptr[i + 1] <= '9')
-		return (ft_putnbr(nptr, i + 1));
+		return (ft_putnbr_atoi(nptr, i + 1));
 	if (nptr[i] == '-' && nptr[i + 1] >= '0' && nptr[i + 1] <= '9')
-		return (ft_putnbr(nptr, i + 1) * -1);
+		return (ft_putnbr_atoi(nptr, i + 1) * -1);
 	if (nptr[i] >= '0' && nptr[i] <= '9')
-		return (ft_putnbr(nptr, i));
+		return (ft_putnbr_atoi(nptr, i));
 	return (0);
 }

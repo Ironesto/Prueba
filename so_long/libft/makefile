@@ -6,7 +6,7 @@
 #    By: ironesto <ironesto@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/11 17:05:44 by gpaez-ga          #+#    #+#              #
-#    Updated: 2023/10/16 05:07:56 by ironesto         ###   ########.fr        #
+#    Updated: 2023/10/26 03:04:23 by ironesto         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ ft_memcmp.c ft_memmove.c ft_strchr.c ft_strdup.c ft_strlcat.c ft_strlcpy.c\
 ft_strncmp.c ft_toupper.c ft_tolower.c ft_strnstr.c ft_strrchr.c ft_calloc.c\
 ft_putchar_fd.c ft_putstr_fd.c ft_putnbr_fd.c ft_putendl_fd.c ft_substr.c\
 ft_strjoin.c ft_strtrim.c ft_strmapi.c ft_itoa.c ft_split.c ft_striteri.c\
-get_next_line.c
+get_next_line.c ft_putnbr.c ft_putnbr_hexa.c ft_putnbr_u.c ft_putchar.c\
+ft_putstr.c ft_putpointer.c ft_printf.c so_long.c
 
 OBJ = $(SRC:.c=.o)
 INCLUDE = libft.h

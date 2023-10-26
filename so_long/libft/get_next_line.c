@@ -1,44 +1,57 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/02 19:17:21 by gpaez-ga          #+#    #+#             */
+/*   Updated: 2023/10/20 19:37:58 by gpaez-ga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-static char	*join(char *buf, char *buffer)
+static char	*ft_join(char *buffer, char *str)
 {
 	char	*temp;
 
-	temp = ft_strjoin(buffer, buf);
-	free(buffer);
+	temp = ft_strjoin(buffer, str);
+	free (buffer);
 	buffer = temp;
 	return (buffer);
 }
 
-static char	*read_file(int fd, char *buffer)
+static char	*ft_read(char *buffer, int fd)
 {
-	char		*buf;
-	int			reader;
+	int		i;
+	char	*str;
 
-	buf = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	reader = 1;
-	while (reader > 0 && !ft_strchr(buffer, '\n'))
+	i = 1;
+	str = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	while (i > 0 && !ft_strchr(buffer, '\n'))
 	{
-		reader = read(fd, buf, BUFFER_SIZE);
-		if (reader == -1)
+		i = read(fd, str, BUFFER_SIZE);
+		if (i == -1)
 		{
-			free (buf);
+			free(str);
+			free (buffer);
 			return (NULL);
 		}
-		buf[reader] = '\0';
-		buffer = join(buf, buffer);
+		str[i] = '\0';
+		buffer = ft_join(buffer, str);
 		if (buffer[0] == 0)
 		{
-			free (buf);
+			free (str);
 			free (buffer);
 			return (NULL);
 		}
 	}
-	free (buf);
+	free(str);
 	return (buffer);
 }
 
-static char	*get_line(char *buffer)
+static char	*ft_line(char *buffer)
 {
 	char	*line;
 	size_t	size;
@@ -50,42 +63,35 @@ static char	*get_line(char *buffer)
 	return (line);
 }
 
-static char	*get_end(char *buffer)
+static char	*ft_last(char *buffer)
 {
-	char	*new_line;
-	size_t	index;
-	size_t	len;
+	char	*last;
 
-	index = 0;
-	len = 0;
-	while (buffer[index] && buffer[index] != '\n')
-		index++;
-	if (!buffer[index])
+	if (ft_strchr(buffer, '\n') != NULL)
+		last = ft_strdup(ft_strchr(buffer, '\n') + 1);
+	else
 	{
-		free (buffer);
+		free(buffer);
 		return (NULL);
 	}
-	index++;
-	while (buffer[index + len] && buffer[index + len] != '\0')
-		len++;
-	new_line = ft_substr(buffer, index, len);
-	free (buffer);
-	return (new_line);
+	free(buffer);
+	buffer = NULL;
+	return (last);
 }
 
 char	*get_next_line(int fd)
 {
 	static char	*buffer;
-	char		*line;
+	char		*res;
 
-	if (fd < 0 || read(fd, 0, 0) || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (!buffer)
 		buffer = ft_strdup("");
-	buffer = read_file(fd, buffer);
+	buffer = ft_read(buffer, fd);
 	if (!buffer)
 		return (NULL);
-	line = get_line(buffer);
-	buffer = get_end(buffer);
-	return (line);
+	res = ft_line(buffer);
+	buffer = ft_last(buffer);
+	return (res);
 }

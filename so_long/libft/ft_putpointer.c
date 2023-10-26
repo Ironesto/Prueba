@@ -1,28 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_putpointer.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 17:39:04 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/10/16 17:46:00 by gpaez-ga         ###   ########.fr       */
+/*   Created: 2023/10/20 20:01:05 by gpaez-ga          #+#    #+#             */
+/*   Updated: 2023/10/20 20:03:57 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+int	ft_putpointer(unsigned long i, char *base)
 {
-	const unsigned char	*s;
-	unsigned char		*d;
+	unsigned long	n;
+	int				res;
 
-	s = (const unsigned char *)src;
-	d = (unsigned char *)dest;
-	if (d > s)
-		while (n--)
-			d[n] = s[n];
-	else if (d < s)
-		ft_memcpy(dest, src, n);
-	return (dest);
+	n = i;
+	res = 0;
+	if (n >= 16)
+		res += ft_putpointer(n / 16, base);
+	if (res == 0)
+	{
+		write(1, "0x", 2);
+		res += 2;
+	}
+	write(1, &base[n % 16], 1);
+	res++;
+	return (res);
 }
