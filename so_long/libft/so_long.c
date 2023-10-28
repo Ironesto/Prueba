@@ -1,6 +1,6 @@
 #include "libft.h"
 
-char **mapper(char *argv)
+static char **mapper(char *argv)
 {
 	char	**map;
 	int		fd;
@@ -25,7 +25,7 @@ char **mapper(char *argv)
 	return(map);
 }
 
-int	comp_rect(char **map)
+static int	comp_rect(char **map)
 {
 	int len;
 	int aux;
@@ -45,7 +45,7 @@ int	comp_rect(char **map)
 	return(0);
 }
 
-int comp_close(char **map, int len, int high)
+static int comp_close(char **map, int len, int high)
 {
 	int	i;
 	int	k;
@@ -74,7 +74,7 @@ int comp_close(char **map, int len, int high)
 	return(0);
 }
 
-int comp_line(char **map, int len)
+static int comp_line(char **map, int len)
 {
 	int i;
 	int	k;
@@ -95,7 +95,7 @@ int comp_line(char **map, int len)
 	return(0);
 }
 
-int	comp_item(char **map, int len, int high)
+static int	comp_item(char **map, int len, int high)
 {
 	int	k;
 	int	p;
@@ -143,11 +143,3 @@ int checker(char *argv)
 }
 
 // comprobar makefile y libft.h para que haga bien el make
-
-int	main(int argc, char **argv)
-{
-	if (argc > 2)
-		return(1);
-	ft_printf("%d",checker(argv[1]));
-	return(0);
-}

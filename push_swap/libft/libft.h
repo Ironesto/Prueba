@@ -6,7 +6,7 @@
 /*   By: ironesto <ironesto@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:08:39 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/10/28 00:38:18 by ironesto         ###   ########.fr       */
+/*   Updated: 2023/10/26 02:51:43 by ironesto         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,5 @@ int		ft_putchar(char c);
 int		ft_putstr(char *str);
 int		ft_putpointer(unsigned long i, char *base);
 int		ft_printf(char const *str, ...);
-
-			/*SO_LONG*/
-
-int 	checker(char *argv);
 
 #endif
