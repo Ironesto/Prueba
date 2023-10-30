@@ -1,4 +1,5 @@
 #include "libft.h"
+#include "../MLX42/include/MLX42/MLX42.h"
 
 static char **mapper(char *argv)
 {
