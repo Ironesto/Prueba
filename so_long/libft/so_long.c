@@ -1,5 +1,5 @@
 #include "libft.h"
-#include "../MLX42/include/MLX42/MLX42.h"
+//#include "../MLX42/include/MLX42/MLX42.h"
 
 static char **mapper(char *argv)
 {
@@ -122,12 +122,33 @@ static int	comp_item(char **map, int len, int high)
 	return (0);
 }
 
+static int	comp_path(char **map, int high, int len, int x, int y, int *e)
+{
+	if (map[x][y] == 'E')
+		*e = 1;
+	if (ft_strchr("0C", map[x][y])) 
+		map[x][y] = '2';
+	if (ft_strchr("0CE", map[x - 1][y]) && x - 1 >= 0)
+		comp_path(map, high, len, x - 1, y, e);
+	if (ft_strchr("0CE", map[x + 1][y]) && x + 1 < len)
+		comp_path(map, high, len, x + 1, y, e);
+	if (ft_strchr("0CE", map[x][y - 1]) && y - 1 >= 0)
+		comp_path(map, high, len, x, y - 1, e);
+	if (ft_strchr("0CE", map[x][y + 1]) && y + 1 < high)
+		comp_path(map, high, len, x, y + 1, e);
+	if (*e == 1)
+		return(0);
+	return (1);
+}
+
 int checker(char *argv)
 {
 	char	**map;
 	int		len;
 	int		high;
+	int		e;
 
+	e = 0;
 	map = mapper(argv);
 	if (comp_rect(map) == 1)
 		return (1);
@@ -140,6 +161,15 @@ int checker(char *argv)
 		return (1);
 	if (comp_item(map, len, high - 1) == 1)
 		return (1);
+	if (comp_path(map, len, high, 1, 0, &e) == 1)
+		return (1);
+
+	int x = 0;
+	while(x < high)
+	{
+		ft_printf("%s", map[x]);
+		x++;
+	}
 	return(0);
 }
 
