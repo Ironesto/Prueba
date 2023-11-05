@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 19:17:21 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/10/20 19:37:58 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/11/05 20:48:37 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static char	*ft_join(char *buffer, char *str)
 	char	*temp;
 
 	temp = ft_strjoin(buffer, str);
-	free (buffer);
+	free(buffer);
 	buffer = temp;
 	return (buffer);
 }
@@ -35,15 +35,15 @@ static char	*ft_read(char *buffer, int fd)
 		if (i == -1)
 		{
 			free(str);
-			free (buffer);
+			free(buffer);
 			return (NULL);
 		}
 		str[i] = '\0';
 		buffer = ft_join(buffer, str);
 		if (buffer[0] == 0)
 		{
-			free (str);
-			free (buffer);
+			free(str);
+			free(buffer);
 			return (NULL);
 		}
 	}

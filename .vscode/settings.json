@@ -3,6 +3,7 @@
 		"iterator": "c",
 		"libft.h": "c",
 		"unistd.h": "c",
-		"stdarg.h": "c"
+		"stdarg.h": "c",
+		"stdlib.h": "c"
 	}
 }
