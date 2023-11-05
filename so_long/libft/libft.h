@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ironesto <ironesto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:08:39 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/10/28 00:38:18 by ironesto         ###   ########.fr       */
+/*   Updated: 2023/11/05 20:52:30 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
+# include <fcntl.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {
@@ -70,8 +72,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
 			/*GET NEXT LINE*/
 
-# include <fcntl.h>
-
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 10
 # endif
@@ -79,8 +79,6 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 char	*get_next_line(int fd);
 
 			/*FT_PRINTF*/
-
-# include <stdarg.h>
 
 int		ft_putnbr(int i, char *base);
 int		ft_putnbr_hexa(unsigned int i, char *base);
@@ -92,6 +90,6 @@ int		ft_printf(char const *str, ...);
 
 			/*SO_LONG*/
 
-int 	checker(char *argv);
+int		checker(char *argv);
 
 #endif
