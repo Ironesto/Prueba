@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ironesto <ironesto@student.42.fr>          +#+  +:+       +#+         #
+#    By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/11 17:05:44 by gpaez-ga          #+#    #+#              #
-#    Updated: 2023/10/28 01:01:45 by ironesto         ###   ########.fr        #
+#    Updated: 2023/11/06 19:38:04 by gpaez-ga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ ft_strncmp.c ft_toupper.c ft_tolower.c ft_strnstr.c ft_strrchr.c ft_calloc.c\
 ft_putchar_fd.c ft_putstr_fd.c ft_putnbr_fd.c ft_putendl_fd.c ft_substr.c\
 ft_strjoin.c ft_strtrim.c ft_strmapi.c ft_itoa.c ft_split.c ft_striteri.c\
 get_next_line.c ft_putnbr.c ft_putnbr_hexa.c ft_putnbr_u.c ft_putchar.c\
-ft_putstr.c ft_putpointer.c ft_printf.c so_long.c main.c
+ft_putstr.c ft_putpointer.c ft_printf.c
 
 OBJ = $(SRC:.c=.o)
 INCLUDE = libft.h

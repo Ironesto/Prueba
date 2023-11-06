@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:08:39 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/11/05 20:52:30 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/11/06 19:38:11 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,5 @@ int		ft_putchar(char c);
 int		ft_putstr(char *str);
 int		ft_putpointer(unsigned long i, char *base);
 int		ft_printf(char const *str, ...);
-
-			/*SO_LONG*/
-
-int		checker(char *argv);
 
 #endif

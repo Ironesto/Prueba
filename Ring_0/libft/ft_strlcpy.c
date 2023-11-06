@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 17:43:00 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/09/12 19:09:03 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/11/06 18:09:39 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t n)
 		return (i);
 	while (src[j] && j < n - 1)
 	{
-			dest[j] = src[j];
-			j++;
+		dest[j] = src[j];
+		j++;
 	}
 	dest[j] = '\0';
 	return (i);

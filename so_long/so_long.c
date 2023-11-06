@@ -6,11 +6,11 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 20:46:07 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/11/05 20:52:52 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/11/06 20:32:59 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./libft/libft.h"
 
 //#include "../MLX42/include/MLX42/MLX42.h"
 
