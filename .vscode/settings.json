@@ -4,6 +4,9 @@
 		"libft.h": "c",
 		"unistd.h": "c",
 		"stdarg.h": "c",
-		"stdlib.h": "c"
+		"stdlib.h": "c",
+		"*.tcc": "c",
+		"string": "c",
+		"string_view": "c"
 	}
 }
