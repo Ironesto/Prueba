@@ -1,35 +1,56 @@
-NAME = 	so_long
-SRC  =  main.c  so_long.c\
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/11/06 18:09:58 by gpaez-ga          #+#    #+#              #
+#    Updated: 2023/11/07 20:04:32 by gpaez-ga         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
+RM = rm -f
 
-OBJS        = $(SRC:.c=.o)
-CC	        = gcc
-CFLAGS      = -Wall -Werror -Wextra
-GLFW_FLAGS  = -ldl -lglfw -lm
-#GLFW_FLAGS = -lglfw -L /Users/pedrogon/.brew/opt/glfw/lib/ -lm
-MLX42_PATH  = ./MLX42
-LIBFT_PATH  = ./libft
-RM	        = rm -f
+CC = gcc
+CCFLAGS = -Wall -Wextra -Werror
 
-.c.o:
-	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+NAME = so_long
+SRC = so_long.c main.c
 
-all: $(NAME)
+OBJ = $(SRC:.c=.o)
 
-$(NAME): $(OBJS)
-	make -C $(LIBFT_PATH)
-	make -C $(MLX42_PATH)
-	$(CC) $(OBJS) $(LIBFT_PATH)/libft.a $(MLX42_PATH)/libmlx42.a \
-	$(GLFW_FLAGS) -o $(NAME)
+LIBFT = libft
+LIBMLX = MLX42
+
+INCLUDE = -I $(LIBMLX)/include -I $(LIBFT)
+LFLAGS =  -L $(LIBFT) -L $(LIBMLX) -lmlx42
+LIBS = -lglfw -L /Users/$(USER)/.brew/opt/glfw/lib/
+
+all: libmlx libft $(NAME)
+
+ft_libft:
+	@$(MAKE) -C $(LIBFT)
+	
+libmlx:
+	@$(MAKE) -C $(LIBMLX)
+
+%.o: %.c
+	$(CC) -o $@ -c $< $(INCLUDE) $(CCFLAGS)
+#pendiente de explicación
+
+$(NAME): $(OBJ) 
+	$(CC) $(OBJ) $(LFLAGS) $(LIBS) $(INCLUDE) -o $(NAME)
+
 
 clean:
-	make -C $(LIBFT_PATH) clean
-	make -C $(MLX42_PATH) clean
+	make -C $(LIBFT) clean
+	make -C $(LIBMLX) clean
 	$(RM) $(OBJS) 
 
 fclean:
-	make -C $(LIBFT_PATH) fclean
-	make -C $(MLX42_PATH) fclean
+	make -C $(LIBFT) fclean
+	make -C $(LIBMLX) fclean
 	$(RM) $(OBJS) $(NAME)
 
 re: fclean all
