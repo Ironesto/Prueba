@@ -110,6 +110,18 @@ char	**ft_split(char const *s, char c)
 	str[i] = NULL;
 	return (str);
 }
+/* int	savenums(int argc, char **argv, int *stack_a)
+{
+	int		i;
+	int		k;
+	int		t;
+	char	**spt;
+
+	i = 0;
+	t = 0;
+
+	return (0);
+} */
 
 int main(int argc, char **argv)
 {
@@ -141,7 +153,7 @@ int main(int argc, char **argv)
 	k = 0;
 	
 	while (i < argc - 1)
-	{
+	{				//por aqui al meter 4 elementos imrpime dos pos que no existen
 		l = 0;
 		spt = ft_split(argv[i + 1], ' ');
 		while (spt[l])

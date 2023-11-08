@@ -5,6 +5,12 @@
 #include <stdlib.h>
 #include <unistd.h>
 
+/* typedef	struct t_stk
+{
+
+} s_stk; */
+
+
 void	swap(int *p);
 void	push(int *ent, int *out);
 void	rotate(int *p);
