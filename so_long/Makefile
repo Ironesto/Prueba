@@ -6,7 +6,7 @@
 #    By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/06 18:09:58 by gpaez-ga          #+#    #+#              #
-#    Updated: 2023/11/07 20:04:32 by gpaez-ga         ###   ########.fr        #
+#    Updated: 2023/11/08 01:44:06 by gpaez-ga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,18 +39,20 @@ libmlx:
 	$(CC) -o $@ -c $< $(INCLUDE) $(CCFLAGS)
 #pendiente de explicación
 
-$(NAME): $(OBJ) 
+$(NAME): $(OBJ)
+	make -C $(LIBFT)
+	make -C $(LIBMLX)
 	$(CC) $(OBJ) $(LFLAGS) $(LIBS) $(INCLUDE) -o $(NAME)
 
 
 clean:
 	make -C $(LIBFT) clean
 	make -C $(LIBMLX) clean
-	$(RM) $(OBJS) 
+	$(RM) $(OBJ) 
 
 fclean:
 	make -C $(LIBFT) fclean
 	make -C $(LIBMLX) fclean
-	$(RM) $(OBJS) $(NAME)
+	$(RM) $(OBJ) $(NAME)
 
 re: fclean all
