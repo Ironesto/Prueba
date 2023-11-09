@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   tools.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/09 17:40:47 by gpaez-ga          #+#    #+#             */
+/*   Updated: 2023/11/09 17:41:20 by gpaez-ga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 static int	ft_putnbr_atoi(const char *str, int i)
@@ -32,12 +44,12 @@ long	ft_atoli(const char *nptr)
 	return (0);
 }
 
-int	ft_isalldigit(char* wrd)
+int	ft_isalldigit(char *wrd)
 {
 	int	i;
 
 	i = 0;
-	while(wrd[i])
+	while (wrd[i])
 	{
 		if (!ft_strchr("+-0123456789", wrd[i]))
 			return (1);

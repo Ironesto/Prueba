@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   moves.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/09 17:42:16 by gpaez-ga          #+#    #+#             */
+/*   Updated: 2023/11/09 17:53:09 by gpaez-ga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 /*
@@ -11,7 +23,7 @@ void	swap(int *p)
 {
 	int	aux;
 
-	if(!p[1] || !p[0])
+	if (!p[1] || !p[0])
 		return ;
 	aux = p[0];
 	p[0] = p[1];
@@ -35,7 +47,7 @@ void	push(int *ent, int *out)
 		return ;
 	aux = 0;
 	i = ent[aux];
-	while(ent[aux])
+	while (ent[aux])
 	{
 		k = ent[aux + 1];
 		ent[aux + 1] = i;
@@ -46,7 +58,7 @@ void	push(int *ent, int *out)
 	aux = 0;
 	while (out[aux])
 		aux++;
-	while(out[aux - 1])
+	while (out[aux - 1])
 	{
 		k = out[aux - 1];
 		out[aux - 1] = i;
@@ -63,15 +75,16 @@ de forma que el primer elemento se convierte en el último.
 
 rr ra y rb al mismo tiempo.
 */
+
 void	rotate(int *p)
 {
-	int aux;
+	int	aux;
 	int	i;
 	int	k;
 
 	aux = 0;
 	i = p[0];
-	while(p[aux])
+	while (p[aux])
 	{
 		p[aux] = p[aux + 1];
 		aux++;
@@ -89,19 +102,24 @@ rrr rra y rrb al mismo tiempo.
 
 void	rotinv(int *p)
 {
-	int aux;
+	int	aux;
 	int	i;
 	int	k;
 
 	aux = 0;
-	while(p[aux])
+	while (p[aux])
 		aux++;
 	i = p[aux - 1];
 	aux--;
-	while(p[aux])
+	while (p[aux])
 	{
 		p[aux] = p[aux - 1];
 		aux--;
 	}
 	p[0] = i;
+}
+
+void	prueba(int *ent, int *out)
+{
+	//usar los rorates
 }

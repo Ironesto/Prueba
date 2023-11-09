@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   valid.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/11/09 17:41:58 by gpaez-ga          #+#    #+#             */
+/*   Updated: 2023/11/09 17:41:59 by gpaez-ga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 char	**ft_free(char **str)
@@ -70,7 +82,7 @@ int	*compnums(int argc, char **argv, s_stk stack)
 	return (stack.stk);
 }
 
-int comprep(s_stk stack)
+int	comprep(s_stk stack)
 {
 	int	i;
 	int	k;
@@ -79,13 +91,13 @@ int comprep(s_stk stack)
 	while (stack.stk[i])
 	{
 		k = i + 1;
-		while(stack.stk[k])
+		while (stack.stk[k])
 		{
 			if (stack.stk[i] == stack.stk[k])
-				return(1);
+				return (1);
 			k++;
 		}
 		i++;
 	}
-	return(0);
+	return (0);
 }
