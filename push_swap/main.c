@@ -22,12 +22,11 @@ int main(int argc, char **argv)
 		ft_printf("ERROR números repetidos\n");
 		return(1);
 	}
-	while (stack_a.stk[aux])
+	while (aux < argc - 1)
 	{
 		printf("%d\n", stack_a.stk[aux]);
 		aux++;
 	}
 	free(stack_a.stk);
-	//ft_free(stack_a.spt);
 	return (0);
 }

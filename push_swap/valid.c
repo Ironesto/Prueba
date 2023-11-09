@@ -22,12 +22,12 @@ int	savenums(int argc, char **argv, s_stk stack)
 	int	k;
 	int	t;
 
-	i = 0;
+	i = 1;
 	t = 0;
-	while (i < argc - 1)
+	while (i < argc)
 	{
 		k = 0;
-		stack.spt = ft_split(argv[i + 1], ' ');
+		stack.spt = ft_split(argv[i], ' ');
 		while (stack.spt[k])
 		{
 			stack.stk[t] = ft_atoli(stack.spt[k]);
@@ -36,6 +36,7 @@ int	savenums(int argc, char **argv, s_stk stack)
 			k++;
 			t++;
 		}
+		ft_free(stack.spt);
 		i++;
 	}
 	return (0);
@@ -52,7 +53,7 @@ int	*compnums(int argc, char **argv, s_stk stack)
 	while (i < argc)
 	{
 		k = 0;
-		stack.spt = ft_split(argv[i], ' '); //posible leak si al reescribirse constantemente spt
+		stack.spt = ft_split(argv[i], ' ');
 		while (stack.spt[k])
 		{
 			if (ft_isalldigit(stack.spt[k]) == 1)
@@ -63,6 +64,7 @@ int	*compnums(int argc, char **argv, s_stk stack)
 		ft_free(stack.spt);
 		i++;
 	}
+	ft_printf("t es %d\n", t);
 	stack.stk = malloc(sizeof(int) * t);
 	savenums(argc, argv, stack);
 	return (stack.stk);
