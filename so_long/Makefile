@@ -6,7 +6,7 @@
 #    By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/06 18:09:58 by gpaez-ga          #+#    #+#              #
-#    Updated: 2023/11/08 01:44:06 by gpaez-ga         ###   ########.fr        #
+#    Updated: 2023/11/09 02:37:12 by gpaez-ga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = gcc
 CCFLAGS = -Wall -Wextra -Werror
 
 NAME = so_long
-SRC = so_long.c main.c
+SRC = so_long.c main.c\
 
 OBJ = $(SRC:.c=.o)
 

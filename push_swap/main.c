@@ -1,28 +1,33 @@
 #include "push_swap.h"
 
-
-
-int	main(int argc, char **argv)
+int main(int argc, char **argv)
 {
-	int	*stack_a;
-	int	stack_b[10] = {16, 23, 55, 79, 101, 43, 88};
+	s_stk	stack_a;
 	int	i;
-	int	aux = 0;
-
+	int	k;
+	int aux = 0;
+	int l = 0;
 	i = 0;
-	stack_a = malloc(sizeof(int) * (argc));
-	//stack_b = malloc(sizeof(int) * argc);
-	while (i < argc - 1)
+	
+	i = 0;
+	k = 0;
+	stack_a.stk = compnums(argc, argv, stack_a);
+	if (stack_a.stk == 0)
 	{
-		stack_a[i] = ft_atoi(argv[i + 1]);
-		i++;
+		printf("ERROR guardando los elementos\n");
+		return(1);
 	}
-	while (stack_a[aux])
+	if (comprep(stack_a) == 1)
 	{
-		printf("%d\n", stack_a[aux]);
+		ft_printf("ERROR números repetidos\n");
+		return(1);
+	}
+	while (stack_a.stk[aux])
+	{
+		printf("%d\n", stack_a.stk[aux]);
 		aux++;
 	}
-	free(stack_a);
-	//free(stack_b);
-	return(0);
+	free(stack_a.stk);
+	//ft_free(stack_a.spt);
+	return (0);
 }
