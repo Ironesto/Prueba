@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:42:16 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/11/09 17:53:09 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/11/13 19:25:45 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,4 +122,19 @@ void	rotinv(int *p)
 void	prueba(int *ent, int *out)
 {
 	//usar los rorates
+	int	aux;
+	int	i;
+	int	k;
+
+	if (out[0] == 0 && out[1] == 0)
+		return ;
+	aux = 0;
+	rotinv(ent);
+	i = ent[0];
+	while (ent[aux])
+		aux++;
+	ent[aux] = i;
+	ent[0] = out[0];
+	out[0] = 0;
+	rotate(out);
 }
