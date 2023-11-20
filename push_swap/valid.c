@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:41:58 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/11/09 17:41:59 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/11/20 20:10:15 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	**ft_free(char **str)
 	return (NULL);
 }
 
-int	savenums(int argc, char **argv, s_stk stack)
+int	savenums(int argc, char **argv, s_stk *stack)
 {
 	int	i;
 	int	k;
@@ -39,22 +39,22 @@ int	savenums(int argc, char **argv, s_stk stack)
 	while (i < argc)
 	{
 		k = 0;
-		stack.spt = ft_split(argv[i], ' ');
-		while (stack.spt[k])
+		stack->spt = ft_split(argv[i], ' ');
+		while (stack->spt[k])
 		{
-			stack.stk[t] = ft_atoli(stack.spt[k]);
-			if (stack.stk[k] > 2147483647 || stack.stk[k] < -2147483648)
+			stack->stk[t] = ft_atoli(stack->spt[k]);
+			if (stack->stk[k] > 2147483647 || stack->stk[k] < -2147483648)
 				return (1);
 			k++;
 			t++;
 		}
-		ft_free(stack.spt);
+		ft_free(stack->spt);
 		i++;
 	}
 	return (0);
 }
 
-int	*compnums(int argc, char **argv, s_stk stack)
+int	*compnums(int argc, char **argv, s_stk *stack)
 {
 	int		i;
 	int		k;
@@ -65,33 +65,34 @@ int	*compnums(int argc, char **argv, s_stk stack)
 	while (i < argc)
 	{
 		k = 0;
-		stack.spt = ft_split(argv[i], ' ');
-		while (stack.spt[k])
+		stack->spt = ft_split(argv[i], ' ');
+		while (stack->spt[k])
 		{
-			if (ft_isalldigit(stack.spt[k]) == 1)
+			if (ft_isalldigit(stack->spt[k]) == 1)
 				return (0);
 			k++;
 			t++;
 		}
-		ft_free(stack.spt);
+		ft_free(stack->spt);
 		i++;
 	}
-	ft_printf("t es %d\n", t);
-	stack.stk = malloc(sizeof(int) * t);
+	stack->targ = t;
+	ft_printf("t es %d\n", stack->targ);
+	stack->stk = malloc(sizeof(int) * t);
 	savenums(argc, argv, stack);
-	return (stack.stk);
+	return (stack->stk);
 }
 
-int	comprep(s_stk stack)
+int	comprep(s_stk stack, int tot)
 {
 	int	i;
 	int	k;
 
 	i = 0;
-	while (stack.stk[i])
+	while (i < tot)
 	{
 		k = i + 1;
-		while (stack.stk[k])
+		while (k < tot)
 		{
 			if (stack.stk[i] == stack.stk[k])
 				return (1);

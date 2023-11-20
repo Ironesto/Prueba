@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:42:16 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/11/13 19:25:45 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/11/20 19:59:05 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ de forma que el primer elemento se convierte en el último.
 rr ra y rb al mismo tiempo.
 */
 
-void	rotate(int *p)
+void	rotate(int *p, int tot)
 {
 	int	aux;
 	int	i;
@@ -84,7 +84,7 @@ void	rotate(int *p)
 
 	aux = 0;
 	i = p[0];
-	while (p[aux])
+	while (aux < tot)
 	{
 		p[aux] = p[aux + 1];
 		aux++;
@@ -100,18 +100,16 @@ posición, de forma que el último elemento se convierte en el primero.
 rrr rra y rrb al mismo tiempo.
 */
 
-void	rotinv(int *p)
+void	rotinv(int *p, int tot)
 {
 	int	aux;
 	int	i;
 	int	k;
 
 	aux = 0;
-	while (p[aux])
-		aux++;
-	i = p[aux - 1];
-	aux--;
-	while (p[aux])
+	i = p[tot - 1];
+	aux = tot - 1;
+	while (aux > 0)
 	{
 		p[aux] = p[aux - 1];
 		aux--;
@@ -119,7 +117,7 @@ void	rotinv(int *p)
 	p[0] = i;
 }
 
-void	prueba(int *ent, int *out)
+/* void	prueba(int *ent, int *out)
 {
 	//usar los rorates
 	int	aux;
@@ -137,4 +135,4 @@ void	prueba(int *ent, int *out)
 	ent[0] = out[0];
 	out[0] = 0;
 	rotate(out);
-}
+} */
