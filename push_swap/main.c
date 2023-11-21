@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:39:58 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/11/21 19:28:59 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/11/21 19:55:14 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int argc, char **argv)
 {
 	s_stk	stack_a;
 	int		aux;
-	int		stk_b[3] = {11, 22, 33};
+	int		stk_b[4] = {};
 
 	aux = 0;
 	stack_a.stk = compnums(argc, argv, &stack_a);
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	ft_printf("t es %d\n", stack_a.targ);
-	push(stk_b,stack_a.stk, stack_a.targ);
+	push(stack_a.stk, stk_b, stack_a.targ);
 	while (aux < stack_a.targ)
 	{
 		printf("%d\n", stack_a.stk[aux]);
