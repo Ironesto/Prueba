@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:41:58 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/11/20 20:10:15 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/11/21 19:29:45 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,6 @@ int	*compnums(int argc, char **argv, s_stk *stack)
 		i++;
 	}
 	stack->targ = t;
-	ft_printf("t es %d\n", stack->targ);
 	stack->stk = malloc(sizeof(int) * t);
 	savenums(argc, argv, stack);
 	return (stack->stk);

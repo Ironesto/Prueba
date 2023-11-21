@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:42:16 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/11/20 19:59:05 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/11/21 19:28:49 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,43 +28,6 @@ void	swap(int *p)
 	aux = p[0];
 	p[0] = p[1];
 	p[1] = aux;
-}
-
-/*
-pa push a: Toma el primer elemento del stack b y lo pone el primero en el stack
-a. No hace nada si b está vacío.
-
-pb push b: Toma el primer elemento del stack a y lo pone el primero en el stack
-b. No hace nada si a está vacío.
-*/
-void	push(int *ent, int *out)
-{
-	int	aux;
-	int	i;
-	int	k;
-
-	if (out[0] == 0 && out[1] == 0)
-		return ;
-	aux = 0;
-	i = ent[aux];
-	while (ent[aux])
-	{
-		k = ent[aux + 1];
-		ent[aux + 1] = i;
-		i = k;
-		aux++;
-	}
-	ent[0] = out[0];
-	aux = 0;
-	while (out[aux])
-		aux++;
-	while (out[aux - 1])
-	{
-		k = out[aux - 1];
-		out[aux - 1] = i;
-		i = k;
-		aux--;
-	}
 }
 /*
 ra rotate a: Desplaza hacia arriba todos los elementos del stack a una posición,
@@ -117,9 +80,15 @@ void	rotinv(int *p, int tot)
 	p[0] = i;
 }
 
-/* void	prueba(int *ent, int *out)
+/*
+pa push a: Toma el primer elemento del stack b y lo pone el primero en el stack
+a. No hace nada si b está vacío.
+
+pb push b: Toma el primer elemento del stack a y lo pone el primero en el stack
+b. No hace nada si a está vacío.
+*/
+void	push(int *ent, int *out, int tot)
 {
-	//usar los rorates
 	int	aux;
 	int	i;
 	int	k;
@@ -127,12 +96,12 @@ void	rotinv(int *p, int tot)
 	if (out[0] == 0 && out[1] == 0)
 		return ;
 	aux = 0;
-	rotinv(ent);
+	rotinv(ent, tot);
 	i = ent[0];
 	while (ent[aux])
 		aux++;
 	ent[aux] = i;
 	ent[0] = out[0];
 	out[0] = 0;
-	rotate(out);
-} */
+	rotate(out, tot);
+}
