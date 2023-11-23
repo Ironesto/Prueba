@@ -15,9 +15,9 @@ typedef	struct t_stk
 
 
 void	swap(int *p);
-void	rotate(int *p, int tot);
-void	rotinv(int *p, int tot);
-void	push(int *ent, int *out, int tot);
+void	rotate(s_stk *stack);
+void	rotinv(s_stk *stack);
+void	push(s_stk *ent, s_stk *out);
 
 long	ft_atoli(const char *nptr);
 int		ft_isalldigit(char* wrd);

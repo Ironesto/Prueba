@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:42:16 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/11/21 19:28:49 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/11/23 19:54:15 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,20 @@ de forma que el primer elemento se convierte en el último.
 rr ra y rb al mismo tiempo.
 */
 
-void	rotate(int *p, int tot)
+void	rotate(s_stk *stack)
 {
 	int	aux;
 	int	i;
 	int	k;
 
 	aux = 0;
-	i = p[0];
-	while (aux < tot)
+	i = stack->stk[0];
+	while (aux < stack->targ)
 	{
-		p[aux] = p[aux + 1];
+		stack->stk[aux] = stack->stk[aux + 1];
 		aux++;
 	}
-	p[aux - 1] = i;
+	stack->stk[aux - 1] = i;
 }
 /*
 rra reverse rotate a: Desplaza hacia abajo todos los elementos del stack a una
@@ -63,21 +63,21 @@ posición, de forma que el último elemento se convierte en el primero.
 rrr rra y rrb al mismo tiempo.
 */
 
-void	rotinv(int *p, int tot)
+void	rotinv(s_stk *stack)
 {
 	int	aux;
 	int	i;
 	int	k;
 
 	aux = 0;
-	i = p[tot - 1];
-	aux = tot - 1;
+	i = stack->stk[stack->targ];
+	aux = stack->targ - 1;
 	while (aux > 0)
 	{
-		p[aux] = p[aux - 1];
+		stack->stk[aux] = stack->stk[aux - 1];
 		aux--;
 	}
-	p[0] = i;
+	stack->stk[0] = i;
 }
 
 /*
@@ -87,21 +87,24 @@ a. No hace nada si b está vacío.
 pb push b: Toma el primer elemento del stack a y lo pone el primero en el stack
 b. No hace nada si a está vacío.
 */
-void	push(int *ent, int *out, int tot)
+
+void	push(s_stk *ent, s_stk *out)
 {
 	int	aux;
 	int	i;
 	int	k;
 
-	if (out[0] == 0 && out[1] == 0)
+	if (out->stk[0] == 0 && out->stk[1] == 0)
 		return ;
 	aux = 0;
-	rotinv(ent, tot);
-	i = ent[0];
-	while (ent[aux])
+	rotinv(ent);
+	i = ent->stk[0];
+	while (ent->stk[aux])
 		aux++;
-	ent[aux] = i;
-	ent[0] = out[0];
-	out[0] = 0;
-	rotate(out, tot);
+	ent->stk[aux] = i;
+	ent->stk[0] = out->stk[0];
+	out->stk[0] = 0;
+	rotate(out);
+	out->targ -= 1;
+	ent->targ += 1;
 }
