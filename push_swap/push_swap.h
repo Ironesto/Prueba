@@ -6,6 +6,12 @@
 #include <unistd.h>
 #include "./libft/libft.h"
 
+typedef struct t_num
+{
+	int	num;
+	int	indx;
+}	s_num;
+
 typedef	struct t_stk
 {
 	int	targ;
