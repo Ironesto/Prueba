@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:40:47 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/11/09 17:41:20 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/11/24 19:54:56 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,4 +56,20 @@ int	ft_isalldigit(char *wrd)
 		i++;
 	}
 	return (0);
+}
+int	simp(s_stk stack)	//simplifica los numeros dados a 1, 2, 3...
+{
+	int	i;
+	int	k;
+	int	indx;
+//comprobar str a cada numeor, guardar el valor en la estructura sin modificar str para que no de fallos la volver
+// a pasar por la str
+	indx = 1;
+	i = 0;
+	k = stack.stk[0];
+	while (i < stack.targ)
+	{
+		if (stack.stk[i] < k)
+			k = stack.stk[i];
+	}
 }
