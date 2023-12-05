@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:39:58 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/05 19:14:11 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/05 19:58:06 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 	stack_b.targ = 0;
 	stack_b.stk = malloc(sizeof(int) * stack_b.targ);
 	ft_bzero(stack_b.stk, stack_a.targ * sizeof(int));
-	while (stack_a->num[aux])
+	while (stack_a.num[aux])
 		stack_a.num[aux].nbr;
 
 	stack_a.stk = simp(stack_a);
