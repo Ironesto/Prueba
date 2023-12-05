@@ -20,13 +20,17 @@ typedef	struct t_stk
 } 	s_stk;
 
 
-void	swap(int *p);
+void	swap(s_stk *stack);
 void	rotate(s_stk *stack);
 void	rotinv(s_stk *stack);
 void	push(s_stk *ent, s_stk *out);
 
 long	ft_atoli(const char *nptr);
 int		ft_isalldigit(char* wrd);
+int		*simp(s_stk stack);
+void	threenums(s_stk *stack);
+void	movemid(s_stk stack_b, s_stk stack_a);
+void	primorder(s_stk stack_b, s_stk stack);
 
 char	**ft_free(char **str);
 int		savenums(int argc, char **argv, s_stk *stack);

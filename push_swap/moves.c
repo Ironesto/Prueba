@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:42:16 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/11/23 19:54:15 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/05 04:44:51 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,13 @@ sb swap b: Intercambia los dos primeros elementos del stack b. No hace nada si
 hay uno o menos elementos.
 ss swap a y swap b a la vez.
 */
-void	swap(int *p)
+void	swap(s_stk *stack)
 {
 	int	aux;
 
-	if (!p[1] || !p[0])
-		return ;
-	aux = p[0];
-	p[0] = p[1];
-	p[1] = aux;
+	aux = stack->stk[0];
+	stack->stk[0] = stack->stk[1];
+	stack->stk[1] = aux;
 }
 /*
 ra rotate a: Desplaza hacia arriba todos los elementos del stack a una posición,
@@ -70,7 +68,7 @@ void	rotinv(s_stk *stack)
 	int	k;
 
 	aux = 0;
-	i = stack->stk[stack->targ];
+	i = stack->stk[stack->targ - 1];
 	aux = stack->targ - 1;
 	while (aux > 0)
 	{
