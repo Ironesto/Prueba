@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:41:58 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/11/21 19:29:45 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/05 19:08:39 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,33 @@ int	savenums(int argc, char **argv, s_stk *stack)
 		stack->spt = ft_split(argv[i], ' ');
 		while (stack->spt[k])
 		{
+			stack->num = malloc (sizeof(s_num));
+			stack->num[t].nbr = ft_atoli(stack->spt[k]);
+			if (stack->num[t].nbr > 2147483647 || stack->num[t].nbr < -2147483648)
+				return (1);
+			k++;
+			t++;
+		}
+		ft_free(stack->spt);
+		i++;
+	}
+	return (0);
+}
+
+/* int	savenums(int argc, char **argv, s_stk *stack)
+{
+	int	i;
+	int	k;
+	int	t;
+
+	i = 1;
+	t = 0;
+	while (i < argc)
+	{
+		k = 0;
+		stack->spt = ft_split(argv[i], ' ');
+		while (stack->spt[k])
+		{
 			stack->stk[t] = ft_atoli(stack->spt[k]);
 			if (stack->stk[k] > 2147483647 || stack->stk[k] < -2147483648)
 				return (1);
@@ -52,7 +79,7 @@ int	savenums(int argc, char **argv, s_stk *stack)
 		i++;
 	}
 	return (0);
-}
+} */
 
 int	*compnums(int argc, char **argv, s_stk *stack)
 {

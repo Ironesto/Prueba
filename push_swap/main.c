@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:39:58 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/05 04:58:44 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/05 19:14:11 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@ int	main(int argc, char **argv)
 	stack_b.targ = 0;
 	stack_b.stk = malloc(sizeof(int) * stack_b.targ);
 	ft_bzero(stack_b.stk, stack_a.targ * sizeof(int));
+	while (stack_a->num[aux])
+		stack_a.num[aux].nbr;
+
 	stack_a.stk = simp(stack_a);
-	primorder(stack_b, stack_a);
-	if (stack_a.stk == NULL)
+	/* if (stack_a.stk == NULL)
 	{
 		ft_printf("ERROR guardando los elementos\n");
 		return (1);
@@ -35,21 +37,27 @@ int	main(int argc, char **argv)
 	{
 		ft_printf("ERROR números repetidos\n");
 		return (1);
-	}
+	} */
+
+	
+	//primorder(&stack_b, &stack_a);
+
+
 	ft_printf("stack A\n");
 	while (aux < stack_a.targ)
 	{
-		printf("%d\n", stack_a.stk[aux]);
+		printf("%d\n", stack_a.num[aux].nbr);
 		aux++;
 	}
 	aux = 0;
-/* 	ft_printf("stack B\n");
-	while (aux < stack_a.targ)
+	ft_printf("t es %d en a\n", stack_a.targ);
+	ft_printf("stack B\n");
+	while (aux < stack_b.targ)
 	{
 		printf("%d\n", stack_b.stk[aux]);
 		aux++;
 	}
-	ft_printf("t es %d en b\n", stack_b.targ); */
+	ft_printf("t es %d en b\n", stack_b.targ);
 	//proteger mallocs
 	free(stack_a.stk);
 	free(stack_b.stk);

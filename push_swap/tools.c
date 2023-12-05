@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:40:47 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/05 05:00:32 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/05 19:12:37 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,29 @@ int	ft_isalldigit(char *wrd)
 	}
 	return (0);
 }
+
 int	*simp(s_stk stack)	//simplifica los numeros dados a 1, 2, 3...
+{
+	int	i;
+	int	k;
+	int	indx;
+
+	indx = 0;
+	i = 0;
+	while (i < stack.targ)
+	{
+		k = 0;
+		while (k < stack.targ)
+		{
+			if (stack.num[i].nbr > stack.num[i].nbr)
+				indx[i] = indx[i] + 1;
+			k++;
+		}
+		i++;
+	}
+	return(indx);
+}
+/* int	*simp(s_stk stack)	//simplifica los numeros dados a 1, 2, 3...
 {
 	int	i;
 	int	k;
@@ -77,7 +99,7 @@ int	*simp(s_stk stack)	//simplifica los numeros dados a 1, 2, 3...
 		i++;
 	}
 	return(indx);
-}
+} */
 
 void	threenums(s_stk *stack)
 {
@@ -90,34 +112,40 @@ void	threenums(s_stk *stack)
 	
 }
 
-void	movemid(s_stk stack_b, s_stk stack_a)
+void	movemid(s_stk *stack_b, s_stk *stack_a)
 {
 	int	i;
+	int	tot;
 
 	i = 0;
-	while (i < stack_a.targ)
+	while (i < stack_a->targ)
 	{
-		if (stack_a.stk[i] > stack_a.targ / 2)
-			push(&stack_b, &stack_a);
+		if (stack_a->stk[i] > stack_a->targ / 2)
+		{
+			push(stack_b, stack_a);
+			printf("%d  ", tot);
+			i = 0;
+		}
 		i++;
 	}
+	puts("\n");
 }
 
-void	primorder(s_stk stack_b, s_stk stack)
+void	primorder(s_stk *stack_b, s_stk *stack)
 {
 	int	i;
 
-	if(stack.targ <= 3)
+	if(stack->targ <= 3)
 	{	
 		i = 0;
-		while (i < stack.targ && stack.stk[i] == i)
+		while (i < stack->targ && stack->stk[i] == i)
 			i++;
-		if (stack.targ == 2 && i != stack.targ)
-			swap(&stack);
-		if(i == stack.targ)
+		if (stack->targ == 2 && i != stack->targ)
+			swap(stack);
+		if(i == stack->targ)
 			return ;
 		else
-			threenums(&stack);
+			threenums(stack);
 	}
 	else
 		movemid(stack_b, stack);

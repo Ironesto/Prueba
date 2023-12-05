@@ -8,14 +8,17 @@
 
 typedef struct t_num
 {
-	int	num;
-	int	indx;
+	int	nbr;
+	int up;
+	int	down;
+	int pair;
 }	s_num;
 
 typedef	struct t_stk
 {
 	int	targ;
 	int	*stk;
+	s_num *num;
 	char **spt;
 } 	s_stk;
 
@@ -29,8 +32,8 @@ long	ft_atoli(const char *nptr);
 int		ft_isalldigit(char* wrd);
 int		*simp(s_stk stack);
 void	threenums(s_stk *stack);
-void	movemid(s_stk stack_b, s_stk stack_a);
-void	primorder(s_stk stack_b, s_stk stack);
+void	movemid(s_stk *stack_b, s_stk *stack_a);
+void	primorder(s_stk *stack_b, s_stk *stack);
 
 char	**ft_free(char **str);
 int		savenums(int argc, char **argv, s_stk *stack);
