@@ -6,7 +6,7 @@
 #    By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/21 19:56:02 by gpaez-ga          #+#    #+#              #
-#    Updated: 2023/11/21 19:56:03 by gpaez-ga         ###   ########.fr        #
+#    Updated: 2023/12/06 04:48:01 by gpaez-ga         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CC = gcc
 CCFLAGS = -Wall -Wextra -Werror
 
 NAME = push_swap
-SRC = valid.c moves.c tools.c main.c
+SRC = valid.c moves.c tools.c basic.c main.c
 
 OBJ = $(SRC:.c=.o)
 

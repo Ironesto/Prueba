@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:42:16 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/05 18:57:36 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/06 04:14:52 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	swap(s_stk *stack)
 {
 	int	aux;
 
-	aux = stack->stk[0];
-	stack->stk[0] = stack->stk[1];
-	stack->stk[1] = aux;
+	aux = stack->num[0].nbr;
+	stack->num[0].nbr = stack->num[1].nbr;
+	stack->num[1].nbr = aux;
 }
 /*
 ra rotate a: Desplaza hacia arriba todos los elementos del stack a una posición,
@@ -44,14 +44,15 @@ void	rotate(s_stk *stack)
 	int	k;
 
 	aux = 0;
-	i = stack->stk[0];
+	i = stack->num[0].nbr;
 	while (aux < stack->targ)
 	{
-		stack->stk[aux] = stack->stk[aux + 1];
+		stack->num[aux].nbr = stack->num[aux + 1].nbr;
 		aux++;
 	}
-	stack->stk[aux - 1] = i;
+	stack->num[aux - 1].nbr = i;
 }
+
 /*
 rra reverse rotate a: Desplaza hacia abajo todos los elementos del stack a una
 posición, de forma que el último elemento se convierte en el primero.
@@ -68,14 +69,16 @@ void	rotinv(s_stk *stack)
 	int	k;
 
 	aux = 0;
-	i = stack->stk[stack->targ - 1];
+	if (stack->num[0].nbr == 0 && stack->num[1].nbr == 0)
+		return ;
+	i = stack->num[stack->targ - 1].nbr;
 	aux = stack->targ - 1;
 	while (aux > 0)
 	{
-		stack->stk[aux] = stack->stk[aux - 1];
+		stack->num[aux].nbr = stack->num[aux - 1].nbr;
 		aux--;
 	}
-	stack->stk[0] = i;
+	stack->num[0].nbr = i;
 }
 
 /*
@@ -92,16 +95,16 @@ void	push(s_stk *ent, s_stk *out)
 	int	i;
 	int	k;
 
-	if (out->stk[0] == 0 && out->stk[1] == 0)
+	if (out->num[0].nbr == 0 && out->num[1].nbr == 0)
 		return ;
 	aux = 0;
 	rotinv(ent);
-	i = ent->stk[0];
-	while (ent->stk[aux])
+	i = ent->num[0].nbr;
+	while (ent->num[aux].nbr)
 		aux++;
-	ent->stk[aux] = i;
-	ent->stk[0] = out->stk[0];
-	out->stk[0] = 0;
+	ent->num[aux].nbr = i;
+	ent->num[0].nbr = out->num[0].nbr;
+	out->num[0].nbr = 0;
 	rotate(out);
 	out->targ -= 1;
 	ent->targ += 1;
