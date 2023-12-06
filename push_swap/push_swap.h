@@ -22,19 +22,24 @@ typedef	struct t_stk
 	char **spt;
 } 	s_stk;
 
-
+		//moves.c
 void	swap(s_stk *stack);
 void	rotate(s_stk *stack);
 void	rotinv(s_stk *stack);
 void	push(s_stk *ent, s_stk *out);
 
+		//tools.c
 long	ft_atoli(const char *nptr);
 int		ft_isalldigit(char* wrd);
 s_stk	simp(s_stk *stack);
+
+		//basic.c
 void	threenums(s_stk *stack);
 void	movemid(s_stk *stack_b, s_stk *stack_a);
 void	primorder(s_stk *stack_b, s_stk *stack);
+void	findpair(s_stk *stk_a, s_stk *stk_b);
 
+		//valid.c
 char	**ft_free(char **str);
 int		savenums(int argc, char **argv, s_stk *stack);
 void	compnums(int argc, char **argv, s_stk *stack);

@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:39:58 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/06 04:49:27 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/06 20:00:06 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,15 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 
-
 	primorder(&stack_b, &stack_a);
-
+	findpair(&stack_a, &stack_b);
+	push(&stack_a, &stack_b);
+	findpair(&stack_a, &stack_b);
 	
 	ft_printf("stack A\n");
 	while (aux < stack_a.targ)
 	{
-		printf("%d\n", stack_a.num[aux].nbr);
+		printf("%d pareja %d\n", stack_a.num[aux].nbr, stack_a.num[aux].pair);
 		aux++;
 	}
 	aux = 0;
@@ -49,7 +50,7 @@ int	main(int argc, char **argv)
 	ft_printf("stack B\n");
 	while (aux < stack_b.targ)
 	{
-		printf("%d\n", stack_b.num[aux].nbr);
+		printf("%d pareja %d\n", stack_b.num[aux].nbr, stack_b.num[aux].pair);
 		aux++;
 	}
 	ft_printf("t es %d en b\n", stack_b.targ);
