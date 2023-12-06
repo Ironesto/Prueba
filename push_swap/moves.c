@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:42:16 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/06 04:14:52 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/06 19:59:23 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,17 +92,13 @@ b. No hace nada si a está vacío.
 void	push(s_stk *ent, s_stk *out)
 {
 	int	aux;
-	int	i;
 	int	k;
 
 	if (out->num[0].nbr == 0 && out->num[1].nbr == 0)
 		return ;
 	aux = 0;
 	rotinv(ent);
-	i = ent->num[0].nbr;
-	while (ent->num[aux].nbr)
-		aux++;
-	ent->num[aux].nbr = i;
+	ent->num[ent->targ].nbr = ent->num[0].nbr;
 	ent->num[0].nbr = out->num[0].nbr;
 	out->num[0].nbr = 0;
 	rotate(out);
