@@ -9,6 +9,7 @@
 typedef struct t_num
 {
 	int	nbr;
+	int	pos;
 	int up;
 	int	down;
 	int pair;
@@ -17,7 +18,6 @@ typedef struct t_num
 typedef	struct t_stk
 {
 	int	targ;
-
 	s_num *num;
 	char **spt;
 } 	s_stk;
@@ -32,13 +32,7 @@ void	push(s_stk *ent, s_stk *out);
 long	ft_atoli(const char *nptr);
 int		ft_isalldigit(char* wrd);
 s_stk	simp(s_stk *stack);
-
-		//basic.c
-void	threenums(s_stk *stack);
-void	movemid(s_stk *stack_b, s_stk *stack_a);
-void	primorder(s_stk *stack_b, s_stk *stack);
-//void	findpair(s_stk *stk_a, s_stk *stk_b);
-void	findpair(s_stk *stk_a, s_stk *stk_b, int b, int p);
+void	position(s_stk *stack);
 
 		//valid.c
 char	**ft_free(char **str);
@@ -46,4 +40,11 @@ int		savenums(int argc, char **argv, s_stk *stack);
 void	compnums(int argc, char **argv, s_stk *stack);
 int 	comprep(s_stk stack, int tot);
 
+		//basic.c
+void	threenums(s_stk *stack);
+void	movemid(s_stk *stack_b, s_stk *stack_a);
+void	primorder(s_stk *stack_b, s_stk *stack);
+void	findpair(s_stk *stk_a, s_stk *stk_b);
+
+		//advance.c
 #endif

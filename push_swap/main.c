@@ -37,13 +37,15 @@ int	main(int argc, char **argv)
 	primorder(&stack_b, &stack_a);
 	//findpair(&stack_a, &stack_b);
 	push(&stack_a, &stack_b);
-	findpair(&stack_a, &stack_b, 0 , 1);
-	findpair(&stack_b, &stack_a, 0 , 1);
+	findpair(&stack_a, &stack_b);
+	findpair(&stack_b, &stack_a);
+	position(&stack_a);
+	position(&stack_b);
 	
 	ft_printf("stack A\n");
 	while (aux < stack_a.targ)
 	{
-		printf("%d pareja %d\n", stack_a.num[aux].nbr, stack_a.num[aux].pair);
+		printf("%d pos %d up %d down %d par %d\n", stack_a.num[aux].nbr, stack_a.num[aux].pos,stack_a.num[aux].up, stack_a.num[aux].down, stack_a.num[aux].pair);
 		aux++;
 	}
 	aux = 0;
@@ -51,7 +53,7 @@ int	main(int argc, char **argv)
 	ft_printf("stack B\n");
 	while (aux < stack_b.targ)
 	{
-		printf("%d pareja %d\n", stack_b.num[aux].nbr, stack_b.num[aux].pair);
+		printf("%d pos %d up %d down %d par %d\n", stack_b.num[aux].nbr, stack_b.num[aux].pos,stack_b.num[aux].up, stack_b.num[aux].down, stack_b.num[aux].pair);
 		aux++;
 	}
 	ft_printf("t es %d en b\n", stack_b.targ);

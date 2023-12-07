@@ -16,7 +16,7 @@ CC = gcc
 CCFLAGS = -Wall -Wextra -Werror
 
 NAME = push_swap
-SRC = valid.c moves.c tools.c basic.c main.c
+SRC = valid.c moves.c tools.c basic.c advance.c main.c
 
 OBJ = $(SRC:.c=.o)
 

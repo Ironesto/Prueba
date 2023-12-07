@@ -72,52 +72,26 @@ void	primorder(s_stk *stack_b, s_stk *stack)
 	return ;
 }
 
-/* void	findpair(s_stk *stk_a, s_stk *stk_b)
+void	findpair(s_stk *stk_a, s_stk *stk_b)
 {
 	int	i;
 	int	j;
-	int	k;
+	int	tot;
 
 	j = 0;
+	tot =stk_a->targ + stk_b->targ;
 	while (j < stk_b->targ)
 	{
-		stk_b->num[j].pair = 0;
+		stk_b->num[j].pair = tot;
 		i = 0;
 		while (i < stk_a->targ)
 		{
-			k = 0;
-			while (stk_a->num[i].nbr == stk_b->num[j].nbr + k)
-			{
+			if (stk_a->num[i].nbr > stk_b->num[j].nbr && stk_a->num[i].nbr < stk_b->num[j].pair)
 				stk_b->num[j].pair = stk_a->num[i].nbr;
-				i = stk_a->targ;
-			}
-			//else
-			//	stk_b->num[j].pair = stk_a->num[i].nbr;
 			i++;
 		}
+		if (stk_b->num[j].pair == tot)
+			stk_b->num[j].pair = 0;
 		j++;
-	}
-} */
-
-
-void	findpair(s_stk *stk_a, s_stk *stk_b, int b, int p)
-{
-	int	a;
-	int	tot;
-
-	a = 0;
-	tot = 0;
-	while (p < stk_a->targ + stk_b->targ)
-	{
-		while (a < stk_a->targ)
-		{
-			if (stk_a->num[a].nbr == stk_b->num[b].nbr + p)
-			{
-				stk_b->num[b].pair = stk_a->num[a].nbr;
-				return ;
-			}
-			a++;
-		}
-		p++;
 	}
 }

@@ -80,3 +80,17 @@ s_stk	simp(s_stk *stack)
 	}
 	return(indx);
 }
+
+void	position(s_stk *stack)
+{
+	int	i;
+	
+	i = stack->targ - 1;
+	while(i + 1 > 0)
+	{
+		stack->num[i].pos = i;
+		stack->num[i].up = i;
+		stack->num[i].down = stack->targ - i - 1;
+		i--;
+	}
+}
