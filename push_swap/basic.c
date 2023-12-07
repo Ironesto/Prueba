@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 18:41:53 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/06 19:55:34 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/07 04:10:26 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,11 @@ void	primorder(s_stk *stack_b, s_stk *stack)
 	return ;
 }
 
-void	findpair(s_stk *stk_a, s_stk *stk_b)
+/* void	findpair(s_stk *stk_a, s_stk *stk_b)
 {
 	int	i;
 	int	j;
+	int	k;
 
 	j = 0;
 	while (j < stk_b->targ)
@@ -84,13 +85,39 @@ void	findpair(s_stk *stk_a, s_stk *stk_b)
 		i = 0;
 		while (i < stk_a->targ)
 		{
-			if (stk_a->num[i].nbr > stk_b->num[j].nbr)
+			k = 0;
+			while (stk_a->num[i].nbr == stk_b->num[j].nbr + k)
 			{
 				stk_b->num[j].pair = stk_a->num[i].nbr;
 				i = stk_a->targ;
 			}
+			//else
+			//	stk_b->num[j].pair = stk_a->num[i].nbr;
 			i++;
 		}
 		j++;
+	}
+} */
+
+
+void	findpair(s_stk *stk_a, s_stk *stk_b, int b, int p)
+{
+	int	a;
+	int	tot;
+
+	a = 0;
+	tot = 0;
+	while (p < stk_a->targ + stk_b->targ)
+	{
+		while (a < stk_a->targ)
+		{
+			if (stk_a->num[a].nbr == stk_b->num[b].nbr + p)
+			{
+				stk_b->num[b].pair = stk_a->num[a].nbr;
+				return ;
+			}
+			a++;
+		}
+		p++;
 	}
 }

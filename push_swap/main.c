@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:39:58 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/06 20:00:06 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/07 03:56:36 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,10 @@ int	main(int argc, char **argv)
 	}
 
 	primorder(&stack_b, &stack_a);
-	findpair(&stack_a, &stack_b);
+	//findpair(&stack_a, &stack_b);
 	push(&stack_a, &stack_b);
-	findpair(&stack_a, &stack_b);
+	findpair(&stack_a, &stack_b, 0 , 1);
+	findpair(&stack_b, &stack_a, 0 , 1);
 	
 	ft_printf("stack A\n");
 	while (aux < stack_a.targ)

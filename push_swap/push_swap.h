@@ -37,7 +37,8 @@ s_stk	simp(s_stk *stack);
 void	threenums(s_stk *stack);
 void	movemid(s_stk *stack_b, s_stk *stack_a);
 void	primorder(s_stk *stack_b, s_stk *stack);
-void	findpair(s_stk *stk_a, s_stk *stk_b);
+//void	findpair(s_stk *stk_a, s_stk *stk_b);
+void	findpair(s_stk *stk_a, s_stk *stk_b, int b, int p);
 
 		//valid.c
 char	**ft_free(char **str);
