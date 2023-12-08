@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:40:47 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/06 04:48:36 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/08 05:24:33 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	position(s_stk *stack)
 	{
 		stack->num[i].pos = i;
 		stack->num[i].up = i;
-		stack->num[i].down = stack->targ - i - 1;
+		stack->num[i].down = stack->targ - i;
 		i--;
 	}
 }
