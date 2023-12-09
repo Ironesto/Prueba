@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:39:58 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/08 05:29:29 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/09 05:49:55 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,18 +34,24 @@ int	main(int argc, char **argv)
 		ft_printf("ERROR números repetidos\n");
 		return (1);
 	}
-
 	primorder(&stack_b, &stack_a);
-	//findpair(&stack_a, &stack_b);
- 	push(&stack_a, &stack_b);
- 	push(&stack_a, &stack_b);
-/*	push(&stack_a, &stack_b);
-	push(&stack_a, &stack_b); */
-	position(&stack_b);
+	push_swap(&stack_a, &stack_b);	
 	position(&stack_a);
-	findpair(&stack_a, &stack_b);
-	findpair(&stack_b, &stack_a);
-	
+	while (stack_a.num[aux].nbr != 0)
+		aux++;
+	if (stack_a.num[aux].up > stack_a.num[aux].down)
+		while (stack_a.num[aux].up > 0)
+		{
+			rotate(&stack_a);
+			stack_a.num[aux].up--;
+		}
+	else		//infinito al meter position
+		while (stack_a.num[aux].down > 0)
+		{
+			rotinv(&stack_a);
+			stack_a.num[aux].down--;
+		}
+	aux = 0;
 	ft_printf("stack A\n");
 	while (aux < stack_a.targ)
 	{
@@ -61,7 +67,7 @@ int	main(int argc, char **argv)
 		aux++;
 	}
 	ft_printf("t es %d en b\n", stack_b.targ);
-	ft_printf("",choice(&stack_a, &stack_b));
+	ft_printf("a mover pos %d\n",choice(&stack_a, &stack_b));
 	//proteger mallocs
 	return (0);
 }

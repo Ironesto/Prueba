@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 18:41:53 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/08 03:42:19 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/09 05:12:53 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ void	findpair(s_stk *stk_a, s_stk *stk_b)
 				}
 		temp = stk_a->targ + stk_b->targ;
 		if (stk_b->num[j].pair == temp + 1)
-			while (i-- >= 0)
+			while (i-- > 0)
 				if (stk_a->num[i].nbr < temp)
 				{
 					stk_b->num[j].pair = stk_a->num[i].pos;

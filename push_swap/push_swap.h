@@ -48,5 +48,6 @@ void	findpair(s_stk *stk_a, s_stk *stk_b);
 
 		//advance.c
 int		summov(s_stk *stack_a, s_stk *stack_b, int i);
-int	choice(s_stk *stack_a, s_stk *stack_b);
+int		choice(s_stk *stack_a, s_stk *stack_b);
+void	push_swap(s_stk *stack_a, s_stk *stack_b);
 #endif
