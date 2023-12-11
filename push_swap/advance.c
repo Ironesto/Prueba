@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 02:30:19 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/09 05:38:02 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/11 18:22:46 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,7 @@ void	push_swap(s_stk *stack_a, s_stk *stack_b)
 		else
 			mova = stack_a->num[stack_b->num[i].pair].up;
 		if (movb == 0 && mova == 0)
-			{
-				push(stack_a, stack_b);}
+			push(stack_a, stack_b);
 		else if	(movb > 0 && mova > 0)
 		{
 			rotinv(stack_a);
@@ -81,9 +80,7 @@ void	push_swap(s_stk *stack_a, s_stk *stack_b)
 		else if (movb > 0 && mova == 0)
 			rotate(stack_b);
 		else if (movb < 0 && mova == 0)
-			{
-				rotinv(stack_b);
-				}
+			rotinv(stack_b);
 		else if (mova > 0 && movb == 0)
 			rotate(stack_a);
 		else if (mova < 0 && movb == 0)
