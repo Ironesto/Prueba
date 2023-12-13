@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:40:47 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/08 05:24:33 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/13 20:10:26 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,13 @@ int	ft_isalldigit(char *wrd)
 	return (0);
 }
 
-s_stk	simp(s_stk *stack)
+t_stk	simp(t_stk *stack)
 {
-	int	i;
-	int	k;
-	s_stk	indx;
+	int		i;
+	int		k;
+	t_stk	indx;
 
-	indx.num = malloc(sizeof(s_num) * stack->targ);
+	indx.num = malloc(sizeof(t_num) * stack->targ);
 	indx.targ = stack->targ;
 	i = 0;
 	while (i < stack->targ)
@@ -78,15 +78,15 @@ s_stk	simp(s_stk *stack)
 		}
 		i++;
 	}
-	return(indx);
+	return (indx);
 }
 
-void	position(s_stk *stack)
+void	position(t_stk *stack)
 {
 	int	i;
-	
+
 	i = stack->targ - 1;
-	while(i + 1 > 0)
+	while (i + 1 > 0)
 	{
 		stack->num[i].pos = i;
 		stack->num[i].up = i;

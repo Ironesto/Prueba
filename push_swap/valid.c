@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:41:58 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/06 04:07:01 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/13 20:10:21 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	**ft_free(char **str)
 	return (NULL);
 }
 
-int	savenums(int argc, char **argv, s_stk *stack)
+int	savenums(int argc, char **argv, t_stk *stack)
 {
 	int	i;
 	int	k;
@@ -43,7 +43,8 @@ int	savenums(int argc, char **argv, s_stk *stack)
 		while (stack->spt[k])
 		{
 			stack->num[t].nbr = ft_atoli(stack->spt[k]);
-			if (stack->num[t].nbr > 2147483647 || stack->num[t].nbr < -2147483648)
+			if (stack->num[t].nbr > 2147483647
+				|| stack->num[t].nbr < -2147483648)
 				return (1);
 			k++;
 			t++;
@@ -54,7 +55,7 @@ int	savenums(int argc, char **argv, s_stk *stack)
 	return (0);
 }
 
-void	compnums(int argc, char **argv, s_stk *stack)
+void	compnums(int argc, char **argv, t_stk *stack)
 {
 	int		i;
 	int		k;
@@ -77,11 +78,11 @@ void	compnums(int argc, char **argv, s_stk *stack)
 		i++;
 	}
 	stack->targ = t;
-	stack->num = malloc(sizeof(s_num) * t);
+	stack->num = malloc(sizeof(t_num) * t);
 	savenums(argc, argv, stack);
 }
 
-int	comprep(s_stk stack, int tot)
+int	comprep(t_stk stack, int tot)
 {
 	int	i;
 	int	k;
