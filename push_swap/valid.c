@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:41:58 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/13 20:10:21 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/19 19:56:57 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,10 @@ int	savenums(int argc, char **argv, t_stk *stack)
 			stack->num[t].nbr = ft_atoli(stack->spt[k]);
 			if (stack->num[t].nbr > 2147483647
 				|| stack->num[t].nbr < -2147483648)
-				return (1);
+				{
+					write(2, "Error\n", 6);
+					exit (1);
+				}
 			k++;
 			t++;
 		}
@@ -55,7 +58,7 @@ int	savenums(int argc, char **argv, t_stk *stack)
 	return (0);
 }
 
-void	compnums(int argc, char **argv, t_stk *stack)
+int	compnums(int argc, char **argv, t_stk *stack)
 {
 	int		i;
 	int		k;
@@ -70,7 +73,7 @@ void	compnums(int argc, char **argv, t_stk *stack)
 		while (stack->spt[k])
 		{
 			if (ft_isalldigit(stack->spt[k]) == 1)
-				return ;
+				return (1);
 			k++;
 			t++;
 		}
@@ -80,6 +83,7 @@ void	compnums(int argc, char **argv, t_stk *stack)
 	stack->targ = t;
 	stack->num = malloc(sizeof(t_num) * t);
 	savenums(argc, argv, stack);
+	return (0);
 }
 
 int	comprep(t_stk stack, int tot)

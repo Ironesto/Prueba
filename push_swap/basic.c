@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 18:41:53 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/13 20:09:03 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/19 19:07:34 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,22 +73,20 @@ void	primorder(t_stk *stack_b, t_stk *stack)
 {
 	int	i;
 
-	if (stack->targ <= 3)
+	i = 0;
+	while (i < stack->targ && stack->num[i].nbr == i)
+		i++;
+	if (stack->targ == 2 && i != stack->targ)
 	{
-		i = 0;
-		while (i < stack->targ && stack->num[i].nbr == i)
-			i++;
-		if (stack->targ == 2 && i != stack->targ)
-		{
-			ft_printf("sa\n");
-			swap(stack);
-		}
-		if (i == stack->targ)
-			return ;
-		else
-			threenums(stack);
+		ft_printf("sa\n");
+		swap(stack);
+		return ;
 	}
-	else
+	if (i == stack->targ)
+		return ;
+	if (stack->targ == 3 && i != stack->targ)
+		threenums(stack);
+	if (stack->targ > 3)
 		movemid(stack_b, stack);
 	return ;
 }

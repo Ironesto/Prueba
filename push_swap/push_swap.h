@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/13 20:03:53 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/13 20:09:37 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/19 19:28:22 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	position(t_stk *stack);
 		//valid.c
 char	**ft_free(char **str);
 int		savenums(int argc, char **argv, t_stk *stack);
-void	compnums(int argc, char **argv, t_stk *stack);
+int		compnums(int argc, char **argv, t_stk *stack);
 int		comprep(t_stk stack, int tot);
 
 		//basic.c
@@ -62,4 +62,6 @@ void	findpair(t_stk *stk_a, t_stk *stk_b);
 int		summov(t_stk *stack_a, t_stk *stack_b, int i);
 int		choice(t_stk *stack_a, t_stk *stack_b);
 void	push_swap(t_stk *stack_a, t_stk *stack_b);
+
+void	ft_see(t_stk stack_a, t_stk stack_b);
 #endif

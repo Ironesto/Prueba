@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 02:30:19 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/13 20:08:56 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/19 20:06:56 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	push_swap(t_stk *stack_a, t_stk *stack_b)
 	int	mova;
 	int	movb;
 
-	if (stack_b->targ != 0)
+	if (stack_b->targ > 0)
 	{
 		position(stack_b);
 		position(stack_a);
@@ -92,4 +92,5 @@ void	push_swap(t_stk *stack_a, t_stk *stack_b)
 		if (stack_b->targ > 0)
 			push_swap(stack_a, stack_b);
 	}
+	return ;
 }
