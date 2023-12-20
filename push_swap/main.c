@@ -6,17 +6,23 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:39:58 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/20 06:05:11 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/20 20:16:27 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	ft_leaks(void)
+{
+	system("leaks -q 'push_swap'");
+}
 
 void	ft_see(t_stk stack_a, t_stk stack_b)
 {
 	int	aux;
 
 	aux = 0;
+	position(&stack_a);
 	ft_printf(" _______________________________________________________________________________\n");
 	ft_printf("|\tstack A\t\t\t  |\t\tstack B\t\t\t\t|\n");
 	ft_printf("|-------------------------------------------------------------------------------|\n");
@@ -41,8 +47,9 @@ int	main(int argc, char **argv)
 	t_stk	stack_b;
 	int		aux;
 
+	//atexit(ft_leaks);
 	aux = 0;
-	if (compnums(argc, argv, &stack_a) == 1)
+	if (compnums(argc, argv, &stack_a) == 1)		//solucionar leaks en errores
 	{
 		write(2, "Error\n", 6);
 		exit (1);
@@ -73,13 +80,13 @@ int	main(int argc, char **argv)
 	else if (stack_a.num[aux].up > stack_a.num[aux].down)
 		while (stack_a.num[aux].down > 0)
 		{
-			//position(&stack_a);
 			ft_printf("rra\n");
 			rotinv(&stack_a);
 			stack_a.num[aux].down--;
-			//aux--;
 		}
+	//ft_see(stack_a, stack_b);
 	aux = 0;
-	ft_see(stack_a, stack_b);
+	free(stack_a.num);
+	free(stack_b.num);
 	return (0);
 }

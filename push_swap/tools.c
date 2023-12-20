@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:40:47 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/19 19:30:48 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/20 20:11:03 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,15 @@ t_stk	simp(t_stk *stack)
 		while (k < stack->targ)
 		{
 			if (stack->num[i].nbr > stack->num[k].nbr)
+			{
 				indx.num[i].nbr = indx.num[i].nbr + 1;
+			}
 			k++;
 		}
+		//ft_printf("num %d y indx %d\n",stack->num[i].nbr, indx.num[i].nbr);
 		i++;
 	}
+	free(stack->num);
 	return (indx);
 }
 
