@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:42:16 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/13 20:09:15 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/20 03:39:42 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,4 +104,5 @@ void	push(t_stk *ent, t_stk *out)
 	rotate(out);
 	out->targ -= 1;
 	ent->targ += 1;
+	//ft_see(*ent, *out);
 }
