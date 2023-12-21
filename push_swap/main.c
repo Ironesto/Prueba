@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:39:58 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/20 20:16:27 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/21 05:11:26 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ void	ft_see(t_stk stack_a, t_stk stack_b)
 	ft_printf("|_______________________________________________________________________________|\n");
 	aux = 0;
 	ft_printf("t es %d en a\t\t\t\tt es %d en b\n", stack_a.targ, stack_b.targ);
-	//ft_printf("a mover pos %d\n", choice(&stack_a, &stack_b));
 }
 
 int	main(int argc, char **argv)
@@ -52,6 +51,9 @@ int	main(int argc, char **argv)
 	if (compnums(argc, argv, &stack_a) == 1)		//solucionar leaks en errores
 	{
 		write(2, "Error\n", 6);
+		ft_free(stack_a.spt);
+		free(stack_a.num);
+		free(stack_b.num);
 		exit (1);
 	}
 	stack_b.targ = 0;
@@ -60,6 +62,8 @@ int	main(int argc, char **argv)
 	if (comprep(stack_a, stack_a.targ) == 1)
 	{
 		write(2, "Error\n", 6);
+		free(stack_a.num);
+		free(stack_b.num);
 		exit (1);
 	}
 	primorder(&stack_b, &stack_a);

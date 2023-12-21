@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 02:30:19 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/20 06:04:12 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/21 04:29:19 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ void	ft_if(int mova, int movb, t_stk *stack_a, t_stk *stack_b)
 	if (movb == 0 && mova == 0)
 		return (ft_printf("pa\n"), push(stack_a, stack_b));
 	if (movb > 0 && mova > 0)
-		return (ft_printf("rrr\n"), rotate(stack_a), rotate(stack_b), ft_if(mova - 1,movb - 1,stack_a,stack_b));
+		return (ft_printf("rr\n"), rotate(stack_a), rotate(stack_b), ft_if(mova - 1,movb - 1,stack_a,stack_b));
 	if (movb < 0 && mova < 0)
-		return (ft_printf("rr\n"), rotinv(stack_a), rotinv(stack_b), ft_if(mova + 1,movb + 1,stack_a,stack_b));
+		return (ft_printf("rrr\n"), rotinv(stack_a), rotinv(stack_b), ft_if(mova + 1,movb + 1,stack_a,stack_b));
 	if (movb > 0)
 		return (ft_printf("rb\n"), rotate(stack_b), ft_if(mova,movb - 1,stack_a,stack_b));
 	if (movb < 0)

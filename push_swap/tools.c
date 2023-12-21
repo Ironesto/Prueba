@@ -6,13 +6,13 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:40:47 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/20 20:11:03 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/21 05:10:39 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	ft_putnbr_atoi(const char *str, int i)
+static long	ft_putnbr_atoi(const char *str, int i)
 {
 	long	num;
 
@@ -78,7 +78,6 @@ t_stk	simp(t_stk *stack)
 			}
 			k++;
 		}
-		//ft_printf("num %d y indx %d\n",stack->num[i].nbr, indx.num[i].nbr);
 		i++;
 	}
 	free(stack->num);

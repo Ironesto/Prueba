@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:41:58 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/20 19:00:13 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/21 05:05:32 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,10 @@ int	savenums(int argc, char **argv, t_stk *stack)
 		stack->spt = ft_split(argv[i], ' ');
 		while (stack->spt[k])
 		{
+			if (ft_atoli(stack->spt[k]) > 2147483647
+				|| ft_atoli(stack->spt[k]) < -2147483648)
+				return(1);
 			stack->num[t].nbr = ft_atoli(stack->spt[k]);
-			if (stack->num[t].nbr > 2147483647
-				|| stack->num[t].nbr < -2147483648)
-				{
-					write(2, "Error\n", 6);
-					exit (1);
-				}
 			k++;
 			t++;
 		}
@@ -82,7 +79,8 @@ int	compnums(int argc, char **argv, t_stk *stack)
 	}
 	stack->targ = t;
 	stack->num = malloc(sizeof(t_num) * t);
-	savenums(argc, argv, stack);
+	if (savenums(argc, argv, stack) == 1)
+		return(1);
 	return (0);
 }
 
