@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:40:47 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/21 05:10:39 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/21 18:53:01 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,14 @@ int	ft_isalldigit(char *wrd)
 {
 	int	i;
 
-	i = 0;
+	i = 1;
+	if (!ft_strchr("+-0123456789", wrd[0]))
+		return (1);
+	if ((wrd[0] == '+' || wrd[0] == '-') && wrd[1] == '\0')
+		return (1);
 	while (wrd[i])
 	{
-		if (!ft_strchr("+-0123456789", wrd[i]))
+		if (!ft_strchr("0123456789", wrd[i]))
 			return (1);
 		i++;
 	}

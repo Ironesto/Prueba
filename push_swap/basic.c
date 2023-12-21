@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 18:41:53 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/20 03:41:51 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/21 20:28:48 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,31 +91,47 @@ void	primorder(t_stk *stack_b, t_stk *stack)
 	return ;
 }
 
+static void	findpair2(t_stk *stk_a, t_stk *stk_b, int i, int j)
+{
+	int temp;
+
+	temp = stk_a->targ + stk_b->targ;
+	stk_b->num[j].pair = temp + 1;
+	while (i < stk_a->targ)
+	{
+		if (stk_a->num[i].nbr < temp && stk_a->num[i].nbr > stk_b->num[j].nbr)
+		{
+			stk_b->num[j].pair = stk_a->num[i].pos;
+			temp = stk_a->num[i].nbr;
+		}
+		i++;
+	}
+	temp = stk_a->targ + stk_b->targ;
+	if (stk_b->num[j].pair == temp + 1)
+	{
+		while (i-- > 0)
+		{
+			if (stk_a->num[i].nbr < temp)
+			{
+				stk_b->num[j].pair = stk_a->num[i].pos;
+				temp = stk_a->num[i].nbr;
+			}
+		}
+	}
+}
+
+
 void	findpair(t_stk *stk_a, t_stk *stk_b)
 {
 	int	i;
 	int	j;
 	int	temp;
 
-	j = -1;
-	while (j++ < stk_b->targ)
+	j = 0;
+	while (j < stk_b->targ)
 	{
-		temp = stk_a->targ + stk_b->targ;
-		stk_b->num[j].pair = temp + 1;
-		i = -1;
-		while (i++ < stk_a->targ - 1)
-			if (stk_a->num[i].nbr < temp && stk_a->num[i].nbr > stk_b->num[j].nbr)
-			{
-				stk_b->num[j].pair = stk_a->num[i].pos;
-				temp = stk_a->num[i].nbr;
-			}
-		temp = stk_a->targ + stk_b->targ;
-		if (stk_b->num[j].pair == temp + 1)
-			while (i-- > 0)
-				if (stk_a->num[i].nbr < temp)
-				{
-					stk_b->num[j].pair = stk_a->num[i].pos;
-					temp = stk_a->num[i].nbr;
-				}
+		i = 0;
+		findpair2(stk_a, stk_b, i, j);
+		j++;
 	}
 }
