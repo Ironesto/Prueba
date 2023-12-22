@@ -67,12 +67,8 @@ static void	lastorder(t_stk stack_a)
 	}
 }
 
-int	main(int argc, char **argv)
+static int	firstcomp(int argc, char **argv, t_stk *stack_a, t_stk *stack_b)
 {
-	t_stk	stack_a;
-	t_stk	stack_b;
-
-	//atexit(ft_leaks);
 	if (argc == 1)
 		return (0);
 	if (argv[1][0] == '\0')
@@ -80,14 +76,26 @@ int	main(int argc, char **argv)
 		write(2, "Error\n", 6);
 		return (1);
 	}
-	if (compnums(argc, argv, &stack_a) == 1)
+	if (compnums(argc, argv, stack_a) == 1)
 	{
 		write(2, "Error\n", 6);
-		ft_free(stack_a.spt);
-		free(stack_a.num);
-		free(stack_b.num);
+		ft_free(stack_a->spt);
+		free(stack_a->num);
+		free(stack_b->num);
 		return (1);
 	}
+	return (0);
+}
+
+
+int	main(int argc, char **argv)
+{
+	t_stk	stack_a;
+	t_stk	stack_b;
+
+	//atexit(ft_leaks);
+	if (firstcomp(argc, argv, &stack_a, &stack_b) == 1)
+		return (1);
 	stack_b.targ = 0;
 	stack_b.num = malloc (sizeof(t_num) * stack_a.targ);
 	stack_a = simp(&stack_a);
@@ -104,7 +112,6 @@ int	main(int argc, char **argv)
 	position(&stack_a);
 	findpair(&stack_a, &stack_b);
 	lastorder(stack_a);
-	//ft_see(stack_a, stack_b);
 	free(stack_a.num);
 	free(stack_b.num);
 	return (0);
