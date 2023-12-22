@@ -82,24 +82,19 @@ int	comp_line(t_data *data)
 
 static int save_point(t_data *data, int aux, int k)
 {
-	int	p;
-	int e;
-
-	p = 0;
-	e = 0;
 	if (data->map[aux][k] == 'P')
 	{
-		p++;
+		data->pp.comp++;
 		data->pp.x = k;
 		data->pp.y = aux;
 	}
 	else if (data->map[aux][k] == 'E')
 	{	
-		e++;
+		data->ep.comp++;
 		data->ep.x = k;
 		data->ep.y = aux;
 	}
-	if (p > 1 || e > 1)
+	if (data->pp.comp > 1 || data->ep.comp > 1)
 		return (1);
 	return (0);
 }
@@ -110,6 +105,8 @@ int	comp_item(t_data *data)
 	int	aux;
 
 	aux = data->h - 1;
+	data->pp.comp = 0;
+	data->ep.comp = 0;
 	while (aux > 0)
 	{
 		k = 1;
@@ -121,7 +118,9 @@ int	comp_item(t_data *data)
 		}
 		aux--;
 	}
-return (0);
+	if (data->pp.comp == 0 || data->ep.comp == 0)
+		return (1);
+	return (0);
 }
 
 

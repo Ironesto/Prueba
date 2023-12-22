@@ -7,6 +7,7 @@
 
 typedef	struct	s_point
 {
+	int	comp;
 	int y;
 	int	x;
 }	t_point;

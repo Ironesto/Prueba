@@ -90,7 +90,8 @@ int	main(int argc, char **argv)
 		ft_printf("ERROR\n");
 		return (1);
 	}
-	ft_printf("%d\n", ft_checker(argv[1], &data));
+	if (ft_checker(argv[1], &data) == 1)
+		return(1);
 	data.mlx = mlx_init(data.w * 64, data.h * 64, argv[1], true);
 	mlx_loop(data.mlx);
 	mlx_terminate(data.mlx);
