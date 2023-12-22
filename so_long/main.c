@@ -80,10 +80,10 @@ int	ft_checker(char *argv, t_data *data)
 	ft_printf("salida en: y: %d x: %d\n", data->ep.y, data->ep.x);
 	return (0);
 }
-/* void	haverelics(int reliquia)
+void	haverelics(int reliquia)
 {
-
-} */
+	
+}
 
 int	main(int argc, char **argv)
 {
