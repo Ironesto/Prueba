@@ -1,5 +1,5 @@
 NAME = 	so_long
-SRC  =  main.c  so_long.c\
+SRC  =  main.c  so_long.c create.c\
 
 
 OBJS        = $(SRC:.c=.o)
