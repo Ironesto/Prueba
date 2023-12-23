@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: gpaez-ga <gpaez-ga@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 20:53:42 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/11/07 05:20:35 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/23 05:14:38 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	ft_checker(char *argv, t_data *data)
 	x = 0;
 	while (x < data->h)
 	{
-		ft_printf("%s", data->cpy[x]);
+		ft_printf("%s", data->map[x]);
 		x++;
 	}
 	ft_printf("high: %d wight: %d\n", data->h, data->w);
@@ -80,9 +80,21 @@ int	ft_checker(char *argv, t_data *data)
 	ft_printf("salida en: y: %d x: %d\n", data->ep.y, data->ep.x);
 	return (0);
 }
-void	haverelics(int reliquia)
+void	hook(void *param)
 {
-	
+	t_data	*data;
+
+	data = param;
+	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
+		mlx_close_window(data->mlx);
+	if (mlx_is_key_down(data->mlx, MLX_KEY_UP))
+		data->image.fermin->instances[0].y -= 3;
+	if (mlx_is_key_down(data->mlx, MLX_KEY_DOWN))
+		data->image.fermin->instances[0].y += 3;
+	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT))
+		data->image.fermin->instances[0].x -= 3;
+	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT))
+		data->image.fermin->instances[0].x += 3;
 }
 
 int	main(int argc, char **argv)
@@ -103,6 +115,7 @@ int	main(int argc, char **argv)
 	seeimage(&data);
 	createmap(&data, size);
 	createitem(&data, size);
+	mlx_loop_hook(data.mlx, &hook, &data);
 	mlx_loop(data.mlx);
 	mlx_terminate(data.mlx);
 	//ft_printf("Funciona el make\n");

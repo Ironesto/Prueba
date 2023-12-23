@@ -8,17 +8,17 @@ void seeimage(t_data *data)
 	image = mlx_load_png("./assets/wall.png");
 	data->image.wall = mlx_texture_to_image(data->mlx, image);
 	mlx_delete_texture(image);
-	image = mlx_load_png("./assets/floor.png");
+	image = mlx_load_png("./assets/floor2.png");
 	data->image.floor = mlx_texture_to_image(data->mlx, image);
+	mlx_delete_texture(image);
+	image = mlx_load_png("./assets/fermin.png");
+	data->image.fermin = mlx_texture_to_image(data->mlx, image);
 	mlx_delete_texture(image);
 	image = mlx_load_png("./assets/Gabi.png");
 	data->image.Gabi = mlx_texture_to_image(data->mlx, image);
 	mlx_delete_texture(image);
 	image = mlx_load_png("./assets/cartucho.png");
 	data->image.cartucho = mlx_texture_to_image(data->mlx, image);
-	mlx_delete_texture(image);
-	image = mlx_load_png("./assets/fermin.png");
-	data->image.fermin = mlx_texture_to_image(data->mlx, image);
 	mlx_delete_texture(image);
 }
 
@@ -58,12 +58,11 @@ void	createitem(t_data *data, int size)
 		{
 			if(data->map[y][x] == 'C')
 				mlx_image_to_window(data->mlx, data->image.cartucho, x * size, y * size);
-			if(data->map[y][x] == 'P')
-				mlx_image_to_window(data->mlx, data->image.fermin, x * size, y * size);
 			if(data->map[y][x] == 'E')
 				mlx_image_to_window(data->mlx, data->image.Gabi, x * size, y * size);
 			x++;
 		}
 		y++;
 	}
+	mlx_image_to_window(data->mlx, data->image.fermin, data->pp.x * size, data->pp.y * size);
 }
