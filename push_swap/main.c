@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 17:39:58 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/22 01:50:36 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/23 18:24:44 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,6 @@
 void	ft_leaks(void)
 {
 	system("leaks -q 'push_swap'");
-}
-
-void	ft_see(t_stk stack_a, t_stk stack_b)
-{
-	int	aux;
-
-	aux = 0;
-	position(&stack_a);
-	ft_printf(" _______________________________________________________________________________\n");
-	ft_printf("|\tstack A\t\t\t  |\t\tstack B\t\t\t\t|\n");
-	ft_printf("|-------------------------------------------------------------------------------|\n");
-	while (aux < stack_a.targ + stack_b.targ)
-	{
-		printf("|\t%d pos %d up %d down %d\t  |\t%d pos %d up %d down %d parpos %d     \t|\n",
-			stack_a.num[aux].nbr, stack_a.num[aux].pos, stack_a.num[aux].up,
-			stack_a.num[aux].down, stack_b.num[aux].nbr,
-			stack_b.num[aux].pos, stack_b.num[aux].up,
-			stack_b.num[aux].down, stack_b.num[aux].pair);
-		aux++;
-	}
-	ft_printf("|_______________________________________________________________________________|\n");
-	aux = 0;
-	ft_printf("t es %d en a\t\t\t\tt es %d en b\n", stack_a.targ, stack_b.targ);
 }
 
 static void	lastorder(t_stk stack_a)
@@ -87,13 +64,13 @@ static int	firstcomp(int argc, char **argv, t_stk *stack_a, t_stk *stack_b)
 	return (0);
 }
 
+	//atexit(ft_leaks);
 
 int	main(int argc, char **argv)
 {
 	t_stk	stack_a;
 	t_stk	stack_b;
 
-	//atexit(ft_leaks);
 	if (firstcomp(argc, argv, &stack_a, &stack_b) == 1)
 		return (1);
 	stack_b.targ = 0;

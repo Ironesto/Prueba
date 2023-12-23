@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/06 18:41:53 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/22 01:21:24 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/23 18:22:45 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	primorder(t_stk *stack_b, t_stk *stack)
 
 static void	findpair2(t_stk *stk_a, t_stk *stk_b, int i, int j)
 {
-	int temp;
+	int	temp;
 
 	temp = stk_a->targ + stk_b->targ;
 	stk_b->num[j].pair = temp + 1;
@@ -119,7 +119,6 @@ static void	findpair2(t_stk *stk_a, t_stk *stk_b, int i, int j)
 		}
 	}
 }
-
 
 void	findpair(t_stk *stk_a, t_stk *stk_b)
 {
