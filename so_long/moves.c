@@ -3,7 +3,7 @@
 int	compmovx(int pos, int size, t_data *data)
 {
 	int			aux;
-	aux = pos / size;
+	aux = (pos - 32) / size;
 
 	if (aux < data->pp.x)
 	{
@@ -21,7 +21,7 @@ int	compmovx2(int pos, int size, t_data *data)
 {
 	int			aux;
 
-	aux = pos / size;
+	aux = (pos - 32) / size;
 	if (pos < size)
 		aux = 1;
 	if (aux > data->pp.x)
@@ -39,7 +39,7 @@ int	compmovx2(int pos, int size, t_data *data)
 int	compmovy(int pos, int size, t_data *data)
 {
 	int			aux;
-	aux = pos / size;
+	aux = (pos- 32) / size;
 
 	if (aux < data->pp.y)
 	{
@@ -56,7 +56,7 @@ int	compmovy2(int pos, int size, t_data *data)
 {
 	int			aux;
 
-	aux = pos / size;
+	aux = (pos - 32) / size;
 	if (aux > data->pp.y)
 	{
 		if (data->map[data->pp.y + 1][data->pp.x] != '1')

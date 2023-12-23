@@ -64,9 +64,12 @@ int	main(int argc, char **argv)
 	}
 	ft_printf("w %d h %d\n", data.w, data.h);
 	data.mlx = mlx_init((data.w - 1) * size, data.h * size, argv[1], true);
-	seeimage(&data);
+	seeimage(&data);		//proteger imagenes
+	puts("seeimage OK");
 	createmap(&data, size);
+	puts("createmap OK");
 	createitem(&data, size);
+	puts("createitem OK");
 	mlx_loop_hook(data.mlx, &hook, &data);
 	mlx_loop(data.mlx);
 	mlx_terminate(data.mlx);

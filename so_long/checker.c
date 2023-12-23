@@ -44,7 +44,6 @@ int	comp_path(t_data *data, int y, int x)
 int	ft_checker(char *argv, t_data *data)
 {
 	mapper(argv, data);
-		puts("entra");
 	if (comp_rect(data) == 1)
 		return (1);
 	if (comp_close(data) == 1)
