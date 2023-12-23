@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   comps.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ironesto <ironesto@student.42.fr>          +#+  +:+       +#+        */
+/*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 20:46:07 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/11/07 05:05:30 by ironesto         ###   ########.fr       */
+/*   Updated: 2023/12/23 20:32:15 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ int	comp_rect(t_data *data)
 	int	aux;
 
 	data->h = 0;
-	data->w = ft_strlen(data->map[0]);
+	data->w = ft_strlen(data->map[data->h]);
 	aux = data->w;
+	//ft_see(data);
 	while (data->map[data->h])
 	{
 		if (data->map[data->h] != NULL && data->w != aux)
@@ -71,7 +72,8 @@ int	comp_line(t_data *data)
 		while (k > 0)
 		{
 			if (data->map[i][k] != '1' && data->map[i][k] != '0')
-				if (data->map[i][k] != 'C' && data->map[i][k] != 'P' && data->map[i][k] != 'E')
+				if (data->map[i][k] != 'C' &&
+					data->map[i][k] != 'P' && data->map[i][k] != 'E')
 					return (1);
 			k--;
 		}
@@ -80,7 +82,7 @@ int	comp_line(t_data *data)
 	return (0);
 }
 
-static int save_point(t_data *data, int aux, int k)
+static int	save_point(t_data *data, int aux, int k)
 {
 	if (data->map[aux][k] == 'P')
 	{
@@ -89,7 +91,7 @@ static int save_point(t_data *data, int aux, int k)
 		data->pp.y = aux;
 	}
 	else if (data->map[aux][k] == 'E')
-	{	
+	{
 		data->ep.comp++;
 		data->ep.x = k;
 		data->ep.y = aux;
@@ -122,5 +124,3 @@ int	comp_item(t_data *data)
 		return (1);
 	return (0);
 }
-
-

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/23 18:29:12 by gpaez-ga          #+#    #+#             */
+/*   Updated: 2023/12/23 20:34:15 by gpaez-ga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
@@ -5,10 +17,10 @@
 # include "./libft/libft.h"
 # include <stdio.h>
 
-typedef	struct	s_point
+typedef struct s_point
 {
 	int	comp;
-	int y;
+	int	y;
 	int	x;
 }	t_point;
 
@@ -19,14 +31,13 @@ typedef struct s_image
 	mlx_image_t	*ale;
 	mlx_image_t	*cartucho;
 	mlx_image_t	*fermin;
-	mlx_image_t	*Gabi;
+	mlx_image_t	*gabi;
 }	t_image;
 
 typedef struct s_data
 {
 	mlx_t	*mlx;
 	char	**map;
-	char	**cpy;
 	int		h;
 	int		w;
 	t_point	pp;
@@ -41,10 +52,14 @@ int		comp_line(t_data *data);
 int		comp_item(t_data *data);
 int		comp_path(t_data *data, int y, int x);
 int		ft_checker(char *argv, t_data *data);
-
-void 	seeimage(t_data *data);
+void	seeimage(t_data *data);
 void	createmap(t_data *data, int size);
 void	createitem(t_data *data, int size);
 
+int	compmovx(int pos, int size, t_data *data);
+int	compmovx2(int pos, int size, t_data *data);
+int	compmovy(int pos, int size, t_data *data);
+int	compmovy2(int pos, int size, t_data *data);
 
+void	ft_see(t_data *data);
 #endif
