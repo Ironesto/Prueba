@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 18:29:12 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/23 20:34:15 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/24 05:22:15 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ typedef struct s_data
 {
 	mlx_t	*mlx;
 	char	**map;
+	char	**cpy;
 	int		h;
 	int		w;
 	t_point	pp;
