@@ -1,24 +1,5 @@
 #include "so_long.h"
 
-int	compmovx2(int pos, int size, t_data *data)
-{
-	int			aux;
-
-	aux = (pos) / size;
-	if (pos < size)
-		aux = 1;
-	if (aux > data->pp.x)
-	{
-		if (data->map[data->pp.y][data->pp.x + 1] != '1')
-		{
-			data->pp.x++;
-		}
-		else
-			return (1);
-	}
-	return (0);
-}
-
 int	compmovy(int pos, int size, t_data *data)
 {
 	int			aux;
@@ -39,8 +20,10 @@ int	compmovy2(int pos, int size, t_data *data)
 {
 	int			aux;
 
-	aux = (pos + 63) / size;
-	if (aux > data->pp.y)
+	aux = (pos + 55) / size;
+	if (data->map[data->pp.y + 1][data->pp.x] == '1' && (pos + 63) / size > data->pp.y)
+		return (1);
+	if (aux > data->pp.y && (pos + 20) / size > data->pp.y)
 	{
 		if (data->map[data->pp.y + 1][data->pp.x] != '1')
 		{
@@ -51,12 +34,30 @@ int	compmovy2(int pos, int size, t_data *data)
 	}
 	return (0);
 }
+int	compmovx2(int pos, int size, t_data *data)
+{
+	int			aux;
+
+	aux = (pos + 50) / size;
+	if ((pos + 20) / size > data->pp.x && aux > data->pp.x)
+	{
+		if (data->map[data->pp.y][data->pp.x + 1] != '1')
+		{
+			data->pp.x++;
+		}
+		else
+			return (1);
+	}
+	return (0);
+}
 
 int	compmovx(int pos, int size, t_data *data)
 {
 	int	aux;
-	aux = (pos) / size;
-	if (aux < data->pp.x)
+	aux = (pos + 12) / size;
+	if (data->map[data->pp.y][data->pp.x - 1] == '1' && (pos + 12) / size < data->pp.x)
+		return (1);
+	if (aux < data->pp.x && (pos + 50) / size < data->pp.x)
 	{
 		if (data->map[data->pp.y][data->pp.x - 1] != '1')
 		{
