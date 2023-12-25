@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 18:27:07 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/24 05:29:31 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/25 05:59:49 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,10 +62,10 @@ void	createitem(t_data *data, int size)
 	int	y;
 
 	y = 0;
-	while (y < data->h)
+	while (y++ < data->h - 1)
 	{
 		x = 0;
-		while (x < data->w)
+		while (x++ < data->w)
 		{
 			if (data->map[y][x] == 'C')
 				mlx_image_to_window(data->mlx,
@@ -73,9 +73,7 @@ void	createitem(t_data *data, int size)
 			if (data->map[y][x] == 'E')
 				mlx_image_to_window(data->mlx, data->image.gabi,
 					x * size, y * size);
-			x++;
 		}
-		y++;
 	}
 	mlx_image_to_window(data->mlx, data->image.fermin,
 		data->pp.x * size, data->pp.y * size);

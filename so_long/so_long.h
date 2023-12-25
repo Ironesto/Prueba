@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 18:29:12 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/24 05:22:15 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/25 06:40:28 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_data
 	char	**cpy;
 	int		h;
 	int		w;
+	int		totcol;
 	t_point	pp;
 	t_point	ep;
 	t_image	image;
@@ -57,10 +58,10 @@ void	seeimage(t_data *data);
 void	createmap(t_data *data, int size);
 void	createitem(t_data *data, int size);
 
-int	compmovx(int pos, int size, t_data *data);
-int	compmovx2(int pos, int size, t_data *data);
-int	compmovy(int pos, int size, t_data *data);
-int	compmovy2(int pos, int size, t_data *data);
+int	compmovx(int posy, int pos, int size, t_data *data);
+int	compmovx2(int posy, int pos, int size, t_data *data);
+int	compmovy(int posx, int pos, int size, t_data *data);
+int	compmovy2(int posx, int pos, int size, t_data *data);
 
 void	ft_see(t_data *data);
 #endif

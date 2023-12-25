@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 20:46:07 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/24 03:53:51 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/25 06:41:12 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ int	comp_rect(t_data *data)
 	data->h = 0;
 	data->w = ft_strlen(data->map[data->h]);
 	aux = data->w;
-	//ft_see(data);
 	while (data->map[data->h])
 	{
 		if (data->map[data->h] != NULL && data->w != aux)
@@ -71,6 +70,8 @@ int	comp_line(t_data *data)
 		k = data->w - 2;
 		while (k > 0)
 		{
+			if (data->map[i][k] == 'C')
+				data->totcol++;
 			if (data->map[i][k] != '1' && data->map[i][k] != '0')
 				if (data->map[i][k] != 'C' &&
 					data->map[i][k] != 'P' && data->map[i][k] != 'E')

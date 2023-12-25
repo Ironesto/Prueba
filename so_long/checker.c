@@ -28,7 +28,6 @@ void	mapper(char *argv, t_data *data)
 
 int	comp_path(t_data *data, int y, int x)
 {
-	//hacer copia aqui
 	if (ft_strchr("0CE", data->cpy[y][x]))
 		data->cpy[y][x] = '2';
 	if (ft_strchr("0CE", data->map[y - 1][x]) && y - 1 >= 0)
