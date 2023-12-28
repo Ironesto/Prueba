@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 20:46:07 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/25 06:41:12 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/28 20:36:49 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int	comp_close(t_data *data)
 			return (1);
 		k++;
 	}
-	while (data->map[i])
+	while (i < data->h)
 	{
-		if (data->map[i][0] != '1' && data->map[i][data->w - 2] != '1')
+		if (data->map[i][k - 1] != '1' || data->map[i][0] != '1')
 			return (1);
 		i++;
 	}
@@ -63,15 +63,17 @@ int	comp_line(t_data *data)
 {
 	int	i;
 	int	k;
+	int	c;
 
 	i = 0;
+	c = 0;
 	while (data->map[i] != NULL)
 	{
 		k = data->w - 2;
 		while (k > 0)
 		{
 			if (data->map[i][k] == 'C')
-				data->totcol++;
+				c++;
 			if (data->map[i][k] != '1' && data->map[i][k] != '0')
 				if (data->map[i][k] != 'C' &&
 					data->map[i][k] != 'P' && data->map[i][k] != 'E')
@@ -80,10 +82,11 @@ int	comp_line(t_data *data)
 		}
 		i++;
 	}
+	data->cp = malloc(sizeof(t_point) * c);
 	return (0);
 }
 
-static int	save_point(t_data *data, int aux, int k)
+static int	save_point(t_data *data, int aux, int k, int c)
 {
 	if (data->map[aux][k] == 'P')
 	{
@@ -97,6 +100,12 @@ static int	save_point(t_data *data, int aux, int k)
 		data->ep.x = k;
 		data->ep.y = aux;
 	}
+	else if (data->map[aux][k] == 'C')
+	{
+		data->cp[c].comp = c;
+		data->cp[c].x = k;
+		data->cp[c].y = aux;
+	}
 	if (data->pp.comp > 1 || data->ep.comp > 1)
 		return (1);
 	return (0);
@@ -106,20 +115,24 @@ int	comp_item(t_data *data)
 {
 	int	k;
 	int	aux;
+	int	c;
 
-	aux = data->h - 1;
+	c = 0;
+	aux = 0;
 	data->pp.comp = 0;
 	data->ep.comp = 0;
-	while (aux > 0)
+	while (aux < data->h - 1)
 	{
 		k = 1;
 		while (k < data->w - 2)
 		{
-			if (save_point(data, aux, k) == 1)
+			if (save_point(data, aux, k, c) == 1)
 				return (1);
+			if (data->map[aux][k] == 'C')
+				c++;
 			k++;
 		}
-		aux--;
+		aux++;
 	}
 	if (data->pp.comp == 0 || data->ep.comp == 0)
 		return (1);

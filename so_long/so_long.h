@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 18:29:12 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/25 06:40:28 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/28 21:28:12 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@ typedef struct s_image
 {
 	mlx_image_t	*wall;
 	mlx_image_t	*floor;
-	mlx_image_t	*ale;
+	mlx_image_t	*ale;			//borrar?
 	mlx_image_t	*cartucho;
 	mlx_image_t	*fermin;
 	mlx_image_t	*gabi;
+	mlx_image_t	*exit;
 }	t_image;
 
 typedef struct s_data
@@ -44,6 +45,7 @@ typedef struct s_data
 	int		totcol;
 	t_point	pp;
 	t_point	ep;
+	t_point	*cp;
 	t_image	image;
 }	t_data;
 

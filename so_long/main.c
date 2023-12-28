@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 20:53:42 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/25 06:42:19 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/28 21:27:36 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,25 @@ void	ft_see(t_data *data)
 	ft_printf("salida en: y: %d x: %d\n", data->ep.y, data->ep.x);
 }
 
+void erase_coll(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	//ft_printf("pers x %d, y %d\n",data->pp.x, data->pp.y);
+	while (data->pp.y != data->cp[i].y || data->pp.x != data->cp[i].x)
+		i++;
+	if (i > data->totcol)
+	{
+		write(2, "Error encontrando el objeto\n",28);
+		return ;
+	}
+	//ft_printf("ins x %d, y %d\n",data->cp[i].x, data->cp[i].y);
+	data->image.cartucho->instances[i].enabled = false;
+	data->totcol--;
+	//ft_printf("instancia %d\n",i);
+}
+
 void	hook(void *param)
 {
 	t_data	*data;
@@ -42,8 +61,17 @@ void	hook(void *param)
 		data->image.fermin->instances[0].x -= 3;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT) && compmovx2(data->image.fermin->instances[0].y, data->image.fermin->instances[0].x, 64, data) != 1)
 		data->image.fermin->instances[0].x += 3;
-	//ft_see(data);
-	ft_printf("jugador en x %d y %d\n", data->pp.y, data->pp.x);
+	if (data->map[data->pp.y][data->pp.x] == 'C')
+	{
+		erase_coll(data);
+		data->map[data->pp.y][data->pp.x] = '0';
+	}
+	if (data->totcol == 1)
+	{
+		data->image.gabi[0].enabled = false;
+		data->image.exit->instances[0].enabled = true;
+		data->totcol = 0;
+	}
 }
 
 char	**ft_free(char **str)
@@ -68,7 +96,6 @@ int	main(int argc, char **argv)
 	int		size;
 
 	size = 64;
-	data.totcol = 0;
 	if (argc != 2)
 	{
 		write(2, "Error\n", 6);
@@ -89,11 +116,13 @@ int	main(int argc, char **argv)
 	puts("createmap OK");
 	createitem(&data, size);
 	puts("createitem OK");
+	data.totcol = data.image.cartucho->count + 1;
 	mlx_loop_hook(data.mlx, &hook, &data);
 	mlx_loop(data.mlx);
 	mlx_terminate(data.mlx);
 	ft_free(data.map);
 	ft_free(data.cpy);
+	free(data.cp);
 	return (0);
 }
 

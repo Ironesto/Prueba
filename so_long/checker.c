@@ -51,7 +51,7 @@ int	ft_checker(char *argv, t_data *data)
 	if (comp_close(data) == 1)
 		return (1);
 	if (comp_line(data) == 1)
-		return (1);
+		return (free(data->cp), 1);
 	if (comp_item(data) == 1)
 		return (1);
 	if (comp_path(data, data->pp.y, data->pp.x) == 1)
