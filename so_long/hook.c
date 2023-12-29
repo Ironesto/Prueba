@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hook.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/29 20:14:46 by gpaez-ga          #+#    #+#             */
+/*   Updated: 2023/12/29 20:15:54 by gpaez-ga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
-static void erase_coll(t_data *data)
+static void	erase_coll(t_data *data)
 {
 	int	i;
 
@@ -22,6 +34,8 @@ static void	opendoor(t_data *data)
 	data->image.gabi[0].enabled = false;
 	data->image.exit->instances[0].enabled = true;
 	data->totcol = 0;
+	if (data->totcol == 0 && data->map[data->pp.y][data->pp.x] == 'E')
+		mlx_close_window(data->mlx);
 }
 
 void	hook(void *param)
@@ -32,21 +46,23 @@ void	hook(void *param)
 	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(data->mlx);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_UP)
-		&& compmovy(data->image.fermin->instances[0].x, data->image.fermin->instances[0].y, 64, data) != 1)
+		&& compmovy(data->image.fermin->instances[0].x,
+			data->image.fermin->instances[0].y, 64, data) != 1)
 		data->image.fermin->instances[0].y -= 2;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_DOWN)
-		&& compmovy2(data->image.fermin->instances[0].x, data->image.fermin->instances[0].y, 64, data) != 1)
+		&& compmovy2(data->image.fermin->instances[0].x,
+			data->image.fermin->instances[0].y, 64, data) != 1)
 		data->image.fermin->instances[0].y += 2;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT)
-		&& compmovx(data->image.fermin->instances[0].y, data->image.fermin->instances[0].x, 64, data) != 1)
+		&& compmovx(data->image.fermin->instances[0].y,
+			data->image.fermin->instances[0].x, 64, data) != 1)
 		data->image.fermin->instances[0].x -= 2;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT)
-		&& compmovx2(data->image.fermin->instances[0].y, data->image.fermin->instances[0].x, 64, data) != 1)
+		&& compmovx2(data->image.fermin->instances[0].y,
+			data->image.fermin->instances[0].x, 64, data) != 1)
 		data->image.fermin->instances[0].x += 2;
 	if (data->map[data->pp.y][data->pp.x] == 'C')
 		erase_coll(data);
-	if (data->totcol == 1)
+	if (data->totcol == 1 || data->totcol == 0)
 		opendoor(data);
-	if (data->totcol == 0 && data->map[data->pp.y][data->pp.x] == 'E')
-		mlx_close_window(data->mlx);
 }

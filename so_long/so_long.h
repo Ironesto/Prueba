@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 18:29:12 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/28 21:28:12 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/29 20:13:56 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ typedef struct s_image
 {
 	mlx_image_t	*wall;
 	mlx_image_t	*floor;
-	mlx_image_t	*ale;			//borrar?
 	mlx_image_t	*cartucho;
 	mlx_image_t	*fermin;
 	mlx_image_t	*gabi;
@@ -61,10 +60,10 @@ void	createmap(t_data *data, int size);
 void	createitem(t_data *data, int size);
 void	hook(void *param);
 
-int	compmovx(int posy, int pos, int size, t_data *data);
-int	compmovx2(int posy, int pos, int size, t_data *data);
-int	compmovy(int posx, int pos, int size, t_data *data);
-int	compmovy2(int posx, int pos, int size, t_data *data);
+int		compmovx(int posy, int pos, int size, t_data *data);
+int		compmovx2(int posy, int pos, int size, t_data *data);
+int		compmovy(int posx, int pos, int size, t_data *data);
+int		compmovy2(int posx, int pos, int size, t_data *data);
 
 void	ft_see(t_data *data);
 #endif

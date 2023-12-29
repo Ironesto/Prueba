@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 18:27:07 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/28 21:19:19 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2023/12/29 20:04:39 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ void	createitem(t_data *data, int size)
 				mlx_image_to_window(data->mlx,
 					data->image.cartucho, x * size, y * size);
 			if (data->map[y][x] == 'E')
-			{	mlx_image_to_window(data->mlx, data->image.exit,
+			{
+				mlx_image_to_window(data->mlx, data->image.exit,
 					x * size, y * size);
 				data->image.exit->instances[0].enabled = false;
 				mlx_image_to_window(data->mlx, data->image.gabi,

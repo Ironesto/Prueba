@@ -1,20 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/12/29 20:10:04 by gpaez-ga          #+#    #+#             */
+/*   Updated: 2023/12/29 20:12:55 by gpaez-ga         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
-void	mapper(char *argv, t_data *data)
+static void	finishmapper(t_data *data, char *str, int i)
 {
-	int		fd;
-	int		i;
-	int		k;
+	int	fd;
+	int	k;
 
 	k = 0;
-	i = 0;
-	fd = open(argv, O_RDONLY);
-	while (get_next_line(fd))
-		i++;
-	close(fd);
-	data->map = malloc(sizeof(char *) * (i + 1));
-	data->cpy = malloc(sizeof(char *) * (i + 1));
-	fd = open(argv, O_RDONLY);
+	fd = open(str, O_RDONLY);
 	while (k < i)
 	{
 		data->map[k] = get_next_line(fd);
@@ -23,14 +27,38 @@ void	mapper(char *argv, t_data *data)
 	}
 	data->map[k] = NULL;
 	data->cpy[k] = NULL;
+	free(str);
 	close(fd);
+}
+
+void	mapper(char *argv, t_data *data)
+{
+	int		fd;
+	int		i;
+	char	*str;
+	char	*line;
+
+	str = ft_strjoin("./maps/", argv);
+	i = 0;
+	fd = open(str, O_RDONLY);
+	line = get_next_line(fd);
+	while (line != NULL)
+	{
+		free(line);
+		i++;
+		line = get_next_line(fd);
+	}
+	close(fd);
+	data->map = malloc(sizeof(char *) * (i + 1));
+	data->cpy = malloc(sizeof(char *) * (i + 1));
+	finishmapper(data, str, i);
 }
 
 int	comp_path(t_data *data, int y, int x)
 {
 	if (ft_strchr("0CE", data->cpy[y][x]))
 		data->cpy[y][x] = '2';
-	if (ft_strchr("0CE", data->map[y - 1][x]) && y - 1 >= 0)
+	if (ft_strchr("0CE", data->cpy[y - 1][x]) && y - 1 >= 0)
 		comp_path(data, y - 1, x);
 	if (ft_strchr("0CE", data->cpy[y + 1][x]) && y + 1 < data->h - 1)
 		comp_path(data, y + 1, x);
@@ -51,7 +79,7 @@ int	ft_checker(char *argv, t_data *data)
 	if (comp_close(data) == 1)
 		return (1);
 	if (comp_line(data) == 1)
-		return (free(data->cp), 1);
+		return (1);
 	if (comp_item(data) == 1)
 		return (1);
 	if (comp_path(data, data->pp.y, data->pp.x) == 1)
