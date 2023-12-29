@@ -19,7 +19,7 @@ void	seeimage(t_data *data)
 	image = mlx_load_png("./assets/wall.png");
 	data->image.wall = mlx_texture_to_image(data->mlx, image);
 	mlx_delete_texture(image);
-	image = mlx_load_png("./assets/floor2.png");
+	image = mlx_load_png("./assets/floor2P.png");
 	data->image.floor = mlx_texture_to_image(data->mlx, image);
 	mlx_delete_texture(image);
 	image = mlx_load_png("./assets/fermin.png");
@@ -28,7 +28,7 @@ void	seeimage(t_data *data)
 	image = mlx_load_png("./assets/gabi.png");
 	data->image.gabi = mlx_texture_to_image(data->mlx, image);
 	mlx_delete_texture(image);
-	image = mlx_load_png("./assets/floor.png");
+	image = mlx_load_png("./assets/gabi2.png");
 	data->image.exit = mlx_texture_to_image(data->mlx, image);
 	mlx_delete_texture(image);
 	image = mlx_load_png("./assets/cartucho.png");

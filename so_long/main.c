@@ -54,13 +54,13 @@ void	hook(void *param)
 	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(data->mlx);
 	if (mlx_is_key_down(data->mlx, MLX_KEY_UP) && compmovy(data->image.fermin->instances[0].x, data->image.fermin->instances[0].y, 64, data) != 1)
-		data->image.fermin->instances[0].y -= 3;
+		data->image.fermin->instances[0].y -= 2;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_DOWN) && compmovy2(data->image.fermin->instances[0].x, data->image.fermin->instances[0].y, 64, data) != 1)
-		data->image.fermin->instances[0].y += 3;
+		data->image.fermin->instances[0].y += 2;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT) && compmovx(data->image.fermin->instances[0].y, data->image.fermin->instances[0].x, 64, data) != 1)
-		data->image.fermin->instances[0].x -= 3;
+		data->image.fermin->instances[0].x -= 2;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT) && compmovx2(data->image.fermin->instances[0].y, data->image.fermin->instances[0].x, 64, data) != 1)
-		data->image.fermin->instances[0].x += 3;
+		data->image.fermin->instances[0].x += 2;
 	if (data->map[data->pp.y][data->pp.x] == 'C')
 	{
 		erase_coll(data);
