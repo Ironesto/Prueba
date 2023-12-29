@@ -59,6 +59,7 @@ int		ft_checker(char *argv, t_data *data);
 void	seeimage(t_data *data);
 void	createmap(t_data *data, int size);
 void	createitem(t_data *data, int size);
+void	hook(void *param);
 
 int	compmovx(int posy, int pos, int size, t_data *data);
 int	compmovx2(int posy, int pos, int size, t_data *data);

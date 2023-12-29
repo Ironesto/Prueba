@@ -82,6 +82,8 @@ int	comp_line(t_data *data)
 		}
 		i++;
 	}
+	if (c == 0)
+		return (1);
 	data->cp = malloc(sizeof(t_point) * c);
 	return (0);
 }
