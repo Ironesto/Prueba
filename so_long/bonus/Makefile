@@ -1,5 +1,5 @@
 NAME = 	so_long
-SRC  =  main.c comps.c create.c checker.c moves.c hook.c \
+SRC  =  main_bonus.c comps_bonus.c create_bonus.c checker_bonus.c moves_bonus.c hook_bonus.c \
 
 
 
@@ -8,8 +8,8 @@ CC	        = gcc
 CFLAGS      = -Wall -Werror -Wextra
 #GLFW_FLAGS  = -ldl -lglfw -lm
 GLFW_FLAGS = -lglfw -L /Users/$(USER)/.brew/opt/glfw/lib/ -lm
-MLX42_PATH  = ./MLX42
-LIBFT_PATH  = ./libft
+MLX42_PATH  = ./../MLX42
+LIBFT_PATH  = ./../libft
 RM	        = rm -f
 
 .c.o:
@@ -19,9 +19,8 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	make -C $(LIBFT_PATH)
-	make -C $(BONUS_PATH)
 	make -C $(MLX42_PATH)
-	$(CC) $(OBJS) $(LIBFT_PATH)/libft.a $(MLX42_PATH)/libmlx42.a $(BONUS_PATH)/bonus.a \
+	$(CC) $(OBJS) $(LIBFT_PATH)/libft.a $(MLX42_PATH)/libmlx42.a \
 	$(GLFW_FLAGS) -o $(NAME)
 
 clean:
