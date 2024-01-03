@@ -44,6 +44,7 @@ typedef struct s_data
 	char	**cpy;
 	int		h;
 	int		w;
+	int		moves;
 	int		totcol;
 	t_point	pp;
 	t_point	ep;

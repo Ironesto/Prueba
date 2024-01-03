@@ -41,25 +41,21 @@ static void	opendoor(t_data *data)
 void	hook(void *param)
 {
 	t_data	*data;
+	int		x;
+	int		y;
 
 	data = param;
+	x = data->image.fermin->instances[0].x;
+	y = data->image.fermin->instances[0].y;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(data->mlx);
-	if (mlx_is_key_down(data->mlx, MLX_KEY_UP)
-		&& compmovy(data->image.fermin->instances[0].x,
-			data->image.fermin->instances[0].y, 64, data) != 1)
+	if (mlx_is_key_down(data->mlx, MLX_KEY_UP)  && compmovy(x, y, 64, data) != 1)
 		data->image.fermin->instances[0].y -= 2;
-	if (mlx_is_key_down(data->mlx, MLX_KEY_DOWN)
-		&& compmovy2(data->image.fermin->instances[0].x,
-			data->image.fermin->instances[0].y, 64, data) != 1)
+	if (mlx_is_key_down(data->mlx, MLX_KEY_DOWN) && compmovy2(x, y, 64, data) != 1)
 		data->image.fermin->instances[0].y += 2;
-	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT)
-		&& compmovx(data->image.fermin->instances[0].y,
-			data->image.fermin->instances[0].x, 64, data) != 1)
+	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT) && compmovx(y, x, 64, data) != 1)
 		data->image.fermin->instances[0].x -= 2;
-	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT)
-		&& compmovx2(data->image.fermin->instances[0].y,
-			data->image.fermin->instances[0].x, 64, data) != 1)
+	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT) && compmovx2(y, x, 64, data) != 1)
 		data->image.fermin->instances[0].x += 2;
 	if (data->map[data->pp.y][data->pp.x] == 'C')
 		erase_coll(data);

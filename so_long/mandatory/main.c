@@ -62,6 +62,7 @@ int	main(int argc, char **argv)
 	data.map = NULL;
 	data.cpy = NULL;
 	data.cp = NULL;
+	data.moves = 0;
 	if (argc != 2 || !argv[0][0])
 	{
 		write(2, "Error\n", 6);

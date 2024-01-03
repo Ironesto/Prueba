@@ -38,7 +38,7 @@ void	mapper(char *argv, t_data *data)
 	char	*str;
 	char	*line;
 
-	str = ft_strjoin("./maps/", argv);
+	str = ft_strjoin("./../maps/", argv);
 	i = 0;
 	fd = open(str, O_RDONLY);
 	line = get_next_line(fd);

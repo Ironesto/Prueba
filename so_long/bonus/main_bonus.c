@@ -34,6 +34,7 @@ void	so_long(t_data *data, int size)
 	createmap(data, size);
 	createitem(data, size);
 	data->totcol = data->image.cartucho->count + 1;
+	data->image.ale2->count = data->image.ale->count;
 }
 
 void	ft_leaks(void)
@@ -52,16 +53,24 @@ void	ft_error(t_data *data)
 		ft_free(data->cpy);
 }
 
+void	ft_init_bonus(t_data *data)
+{
+	data->map = NULL;
+	data->cpy = NULL;
+	data->cp = NULL;
+	data->moves = 0;
+	data->pp.comp = 0;
+	data->ep.comp = 0;
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	data;
 	int		size;
 
-	atexit(ft_leaks);
+	//atexit(ft_leaks);
 	size = 64;
-	data.map = NULL;
-	data.cpy = NULL;
-	data.cp = NULL;
+	ft_init_bonus(&data);
 	if (argc != 2 || !argv[0][0])
 	{
 		write(2, "Error\n", 6);

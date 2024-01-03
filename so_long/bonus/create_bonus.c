@@ -82,9 +82,9 @@ void	createitem_bonus(t_data *data, int x, int y, int size)
 	{
 		mlx_image_to_window(data->mlx, data->image.ale2,
 			x * size, y * size);
-		data->image.ale2->instances[0].enabled = false;		//modificar el 0 para cada ale
 		mlx_image_to_window(data->mlx, data->image.ale,
 			x * size, y * size);
+		data->image.ale2->instances[--data->image.ale2->count].enabled = false;	
 	}
 }
 
@@ -114,5 +114,7 @@ void	createitem(t_data *data, int size)
 		}
 	}
 	mlx_image_to_window(data->mlx, data->image.fermin,
+		data->pp.x * size, data->pp.y * size);
+	mlx_image_to_window(data->mlx, data->image.fermin2,
 		data->pp.x * size, data->pp.y * size);
 }

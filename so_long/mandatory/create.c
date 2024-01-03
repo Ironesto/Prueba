@@ -16,22 +16,22 @@ void	seeimage(t_data *data)
 {
 	mlx_texture_t	*image;
 
-	image = mlx_load_png("./assets/wall.png");
+	image = mlx_load_png("./../assets/wall.png");
 	data->image.wall = mlx_texture_to_image(data->mlx, image);
 	mlx_delete_texture(image);
-	image = mlx_load_png("./assets/floor2P.png");
+	image = mlx_load_png("./../assets/floor2P.png");
 	data->image.floor = mlx_texture_to_image(data->mlx, image);
 	mlx_delete_texture(image);
-	image = mlx_load_png("./assets/fermin.png");
+	image = mlx_load_png("./../assets/fermin.png");
 	data->image.fermin = mlx_texture_to_image(data->mlx, image);
 	mlx_delete_texture(image);
-	image = mlx_load_png("./assets/gabi.png");
+	image = mlx_load_png("./../assets/gabi.png");
 	data->image.gabi = mlx_texture_to_image(data->mlx, image);
 	mlx_delete_texture(image);
-	image = mlx_load_png("./assets/gabi2.png");
+	image = mlx_load_png("./../assets/gabi2.png");
 	data->image.exit = mlx_texture_to_image(data->mlx, image);
 	mlx_delete_texture(image);
-	image = mlx_load_png("./assets/cartucho.png");
+	image = mlx_load_png("./../assets/cartucho.png");
 	data->image.cartucho = mlx_texture_to_image(data->mlx, image);
 	mlx_delete_texture(image);
 }

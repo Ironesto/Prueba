@@ -13,8 +13,8 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "./MLX42/include/MLX42/MLX42.h"
-# include "./libft/libft.h"
+# include "./../MLX42/include/MLX42/MLX42.h"
+# include "./../libft/libft.h"
 # include <stdio.h>
 
 typedef struct s_point
@@ -41,6 +41,7 @@ typedef struct s_data
 	char	**cpy;
 	int		h;
 	int		w;
+	int		moves;
 	int		totcol;
 	t_point	pp;
 	t_point	ep;

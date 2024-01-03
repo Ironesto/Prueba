@@ -112,15 +112,18 @@ static int	save_point(t_data *data, int aux, int k, int c)
 		data->cp[c].x = k;
 		data->cp[c].y = aux;
 	}
-/* 	else if (data->map[aux][k] == 'A')
-	{
-		data->ap[c].comp = c;
-		data->ap[c].x = k;			no puede entrar c para el enemigo
-		data->ap[c].y = aux;
-	} */
 	if (data->pp.comp > 1 || data->ep.comp > 1)
 		return (1);
 	return (0);
+}
+void	save_enemy_bonus(t_data *data, int aux, int k, int a)
+{
+	if (data->map[aux][k] == 'A')
+	{
+		data->ap[a].comp = a;
+		data->ap[a].x = k;
+		data->ap[a].y = aux;
+	}
 }
 
 int	comp_item(t_data *data)
@@ -133,8 +136,6 @@ int	comp_item(t_data *data)
 	c = 0;
 	a = 0;
 	aux = 0;
-	data->pp.comp = 0;
-	data->ep.comp = 0;
 	while (aux < data->h - 1)
 	{
 		k = 1;
@@ -144,13 +145,12 @@ int	comp_item(t_data *data)
 				return (1);
 			if (data->map[aux][k] == 'C')
 				c++;
+			save_enemy_bonus(data, aux, k , a);
 			if (data->map[aux][k] == 'A')
 				a++;
 			k++;
 		}
 		aux++;
 	}
-	if (data->pp.comp == 0 || data->ep.comp == 0)
-		return (1);
 	return (0);
 }

@@ -82,6 +82,8 @@ int	ft_checker(char *argv, t_data *data)
 		return (1);
 	if (comp_item(data) == 1)
 		return (1);
+	if (data->pp.comp == 0 || data->ep.comp == 0)
+		return (1);
 	if (comp_path(data, data->pp.y, data->pp.x) == 1)
 		return (1);
 	return (0);

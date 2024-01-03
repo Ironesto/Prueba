@@ -30,7 +30,10 @@ int	compmovy(int posx, int pos, int size, t_data *data)
 	if (aux < data->pp.y && (pos + 60) / size < data->pp.y)
 	{
 		if (data->map[data->pp.y - 1][data->pp.x] != '1')
+		{	
 			data->pp.y--;
+			ft_printf("moves: %d\n", ++data->moves);
+		}
 		else
 			return (1);
 	}
@@ -58,6 +61,7 @@ int	compmovy2(int posx, int pos, int size, t_data *data)
 		if (data->map[data->pp.y + 1][data->pp.x] != '1')
 		{
 			data->pp.y++;
+			ft_printf("moves: %d\n", ++data->moves);			
 		}
 		else
 			return (1);
@@ -85,6 +89,7 @@ int	compmovx2(int posy, int pos, int size, t_data *data)
 		if (data->map[data->pp.y][data->pp.x + 1] != '1')
 		{
 			data->pp.x++;
+			ft_printf("moves: %d\n", ++data->moves);
 		}
 		else
 			return (1);
@@ -113,6 +118,7 @@ int	compmovx(int posy, int pos, int size, t_data *data)
 		if (data->map[data->pp.y][data->pp.x - 1] != '1')
 		{
 			data->pp.x--;
+			ft_printf("moves: %d\n", ++data->moves);
 		}
 		else
 			return (1);
