@@ -65,6 +65,51 @@ void	hookmov_bonus(t_data *data, int x, int y)
 	data->image.fermin->instances[0].x += x;
 }
 
+int	compmovxe_bonus(int posy, int pos, int size, t_data *data, int i)
+{
+		int			aux;
+
+	aux = (pos + 50) / size;
+	if (aux > data->image.ale->instances[i].x && data->map[data->image.ale->instances[i].y][data->image.ale->instances[i].x + 1] == '1')
+		return (1);
+	if (aux > data->image.ale->instances[i].x && (posy + 23) / size < data->image.ale->instances[i].y
+		&& data->map[data->image.ale->instances[i].y - 1][data->image.ale->instances[i].x + 1] == '1'
+			&& data->map[data->image.ale->instances[i].y - 1][data->image.ale->instances[i].x] != '1')
+		return (1);
+	if (aux > data->image.ale->instances[i].x && (posy + 61) / size > data->image.ale->instances[i].y
+		&& data->map[data->image.ale->instances[i].y + 1][data->image.ale->instances[i].x] == '1'
+			&& data->map[data->image.ale->instances[i].y + 1][data->image.ale->instances[i].x] != '1')
+		return (1);
+	if ((pos + 20) / size > data->image.ale->instances[i].x && aux > data->image.ale->instances[i].x)
+	{
+		ft_printf("ale: %d\n", i);
+		if (data->map[data->image.ale->instances[i].y][data->image.ale->instances[i].x + 1] != '1')
+		{
+			data->ap[i].x++;
+		}
+		else
+			return (1);
+	}
+	return (0);
+}
+
+void	movene_bonus(t_data *data)
+{
+	int	i;
+	int	x;
+	int	y;
+
+	i = 0;
+	while (i < data->image.ale->count)
+	{
+		x = data->image.ale->instances[i].x;
+		y = data->image.ale->instances[i].y;
+		if (data->image.ale->instances[i].x < data->image.fermin->instances[0].x)
+			compmovxe_bonus(y, x, 64, data, i);
+		i++;
+	}
+}
+
 void	hook(void *param)
 {
 	t_data	*data;
@@ -89,5 +134,6 @@ void	hook(void *param)
 	if (data->totcol == 1 || data->totcol == 0)
 		opendoor(data);
 	movanim_bonus(data, x, y);
+	movene_bonus(data);
 	enemcoll_bonus(data);
 }
