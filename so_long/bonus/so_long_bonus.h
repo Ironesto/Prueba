@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 18:29:12 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2024/01/02 02:39:59 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/01/06 05:09:19 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,12 @@ int		compmovx(int posy, int pos, int size, t_data *data);
 int		compmovx2(int posy, int pos, int size, t_data *data);
 int		compmovy(int posx, int pos, int size, t_data *data);
 int		compmovy2(int posx, int pos, int size, t_data *data);
+
+void	movanimene_bonus(t_data *data, int x, int y, int i);
+int		compmovye_bonus(int pos, int posx, int size, t_data *data, int i);
+int		compmovy2e_bonus(int pos, int posx, int size, t_data *data, int i);
+int		compmovxe_bonus(int posy, int pos, int size, t_data *data, int i);
+int		compmovx2e_bonus(int posy, int pos, int size, t_data *data, int i);
 
 void	ft_see(t_data *data);
 #endif

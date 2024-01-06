@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 20:05:21 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2024/01/02 02:19:57 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/01/06 03:40:44 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	compmovy(int posx, int pos, int size, t_data *data)
 		if (data->map[data->pp.y - 1][data->pp.x] != '1')
 		{	
 			data->pp.y--;
-			ft_printf("moves: %d\n", ++data->moves);
+			++data->moves;
 		}
 		else
 			return (1);
@@ -61,7 +61,7 @@ int	compmovy2(int posx, int pos, int size, t_data *data)
 		if (data->map[data->pp.y + 1][data->pp.x] != '1')
 		{
 			data->pp.y++;
-			ft_printf("moves: %d\n", ++data->moves);			
+			++data->moves;			
 		}
 		else
 			return (1);
@@ -89,7 +89,7 @@ int	compmovx2(int posy, int pos, int size, t_data *data)
 		if (data->map[data->pp.y][data->pp.x + 1] != '1')
 		{
 			data->pp.x++;
-			ft_printf("moves: %d\n", ++data->moves);
+			++data->moves;
 		}
 		else
 			return (1);
@@ -118,7 +118,7 @@ int	compmovx(int posy, int pos, int size, t_data *data)
 		if (data->map[data->pp.y][data->pp.x - 1] != '1')
 		{
 			data->pp.x--;
-			ft_printf("moves: %d\n", ++data->moves);
+			++data->moves;
 		}
 		else
 			return (1);

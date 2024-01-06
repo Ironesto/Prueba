@@ -65,34 +65,6 @@ void	hookmov_bonus(t_data *data, int x, int y)
 	data->image.fermin->instances[0].x += x;
 }
 
-int	compmovxe_bonus(int posy, int pos, int size, t_data *data, int i)
-{
-		int			aux;
-
-	aux = (pos + 50) / size;
-	if (aux > data->image.ale->instances[i].x && data->map[data->image.ale->instances[i].y][data->image.ale->instances[i].x + 1] == '1')
-		return (1);
-	if (aux > data->image.ale->instances[i].x && (posy + 23) / size < data->image.ale->instances[i].y
-		&& data->map[data->image.ale->instances[i].y - 1][data->image.ale->instances[i].x + 1] == '1'
-			&& data->map[data->image.ale->instances[i].y - 1][data->image.ale->instances[i].x] != '1')
-		return (1);
-	if (aux > data->image.ale->instances[i].x && (posy + 61) / size > data->image.ale->instances[i].y
-		&& data->map[data->image.ale->instances[i].y + 1][data->image.ale->instances[i].x] == '1'
-			&& data->map[data->image.ale->instances[i].y + 1][data->image.ale->instances[i].x] != '1')
-		return (1);
-	if ((pos + 20) / size > data->image.ale->instances[i].x && aux > data->image.ale->instances[i].x)
-	{
-		ft_printf("ale: %d\n", i);
-		if (data->map[data->image.ale->instances[i].y][data->image.ale->instances[i].x + 1] != '1')
-		{
-			data->ap[i].x++;
-		}
-		else
-			return (1);
-	}
-	return (0);
-}
-
 void	movene_bonus(t_data *data)
 {
 	int	i;
@@ -102,10 +74,21 @@ void	movene_bonus(t_data *data)
 	i = 0;
 	while (i < data->image.ale->count)
 	{
-		x = data->image.ale->instances[i].x;
-		y = data->image.ale->instances[i].y;
-		if (data->image.ale->instances[i].x < data->image.fermin->instances[0].x)
-			compmovxe_bonus(y, x, 64, data, i);
+		x = data->image.ale2->instances[i].x;
+		y = data->image.ale2->instances[i].y;
+		if (data->image.ale2->instances[i].x < data->image.fermin->instances[0].x)
+			if (compmovx2e_bonus(y, x, 64, data, i) == 0)
+				data->image.ale2->instances[i].x++;
+		if (data->image.ale2->instances[i].x > data->image.fermin->instances[0].x)
+			if (compmovxe_bonus(y, x, 64, data, i) == 0)
+				data->image.ale2->instances[i].x--;
+		if (data->image.ale->instances[i].y < data->image.fermin->instances[0].y)
+			if (compmovy2e_bonus(y, x, 64, data, i) == 0)
+				data->image.ale2->instances[i].y++;
+		if (data->image.ale2->instances[i].y > data->image.fermin->instances[0].y)
+			if (compmovye_bonus(y, x, 64, data, i) == 0)
+				data->image.ale2->instances[i].y--;
+		movanimene_bonus(data, x, y, i);
 		i++;
 	}
 }

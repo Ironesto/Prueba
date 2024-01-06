@@ -1,6 +1,5 @@
 NAME = 	so_long
-SRC  =  main_bonus.c comps_bonus.c create_bonus.c checker_bonus.c moves_bonus.c hook_bonus.c \
-
+SRC  =  main_bonus.c comps_bonus.c create_bonus.c checker_bonus.c moves_bonus.c hook_bonus.c movenem_bonus.c \
 
 
 OBJS        = $(SRC:.c=.o)

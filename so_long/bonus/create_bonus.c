@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 18:27:07 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2024/01/02 04:36:42 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/01/06 05:22:19 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,6 @@ void	createitem_bonus(t_data *data, int x, int y, int size)
 			x * size, y * size);
 		mlx_image_to_window(data->mlx, data->image.ale,
 			x * size, y * size);
-		data->image.ale2->instances[--data->image.ale2->count].enabled = false;	
 	}
 }
 
