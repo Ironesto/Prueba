@@ -17,15 +17,17 @@ static void erase_coll(t_data *data)
 	data->map[data->pp.y][data->pp.x] = '0';
 }
 
-static void enemcoll_bonus(t_data *data)
+static void enemcoll_bonus(t_data *data, int i)
 {
-	int	i;
+	//int	i;
 
-	i = 0;
-	while ((data->pp.y != data->ap[i].y || data->pp.x != data->ap[i].x) && i <= data->image.ale->count)
-		i++;
-	if (data->pp.y == data->ap[i].y && data->pp.x == data->ap[i].x)
-		mlx_close_window(data->mlx);
+	//i = 0;
+	//while ((data->pp.y != data->ap[i].y || data->pp.x != data->ap[i].x) && i <= data->image.ale->count)
+	//{
+		//i++;
+		if (data->pp.y == data->ap[i].y && data->pp.x == data->ap[i].x)
+			mlx_close_window(data->mlx);
+	//}
 }
 
 static void	opendoor(t_data *data)
@@ -82,12 +84,13 @@ void	movene_bonus(t_data *data)
 		if (data->image.ale2->instances[i].x > data->image.fermin->instances[0].x)
 			if (compmovxe_bonus(y, x, 64, data, i) == 0)
 				data->image.ale2->instances[i].x--;
-		if (data->image.ale->instances[i].y < data->image.fermin->instances[0].y)
+		if (data->image.ale2->instances[i].y < data->image.fermin->instances[0].y)
 			if (compmovy2e_bonus(y, x, 64, data, i) == 0)
 				data->image.ale2->instances[i].y++;
 		if (data->image.ale2->instances[i].y > data->image.fermin->instances[0].y)
 			if (compmovye_bonus(y, x, 64, data, i) == 0)
 				data->image.ale2->instances[i].y--;
+		enemcoll_bonus(data, i);
 		movanimene_bonus(data, x, y, i);
 		i++;
 	}
@@ -118,5 +121,4 @@ void	hook(void *param)
 		opendoor(data);
 	movanim_bonus(data, x, y);
 	movene_bonus(data);
-	enemcoll_bonus(data);
 }
