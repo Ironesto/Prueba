@@ -23,6 +23,7 @@ typedef struct s_point
 	int	comp;
 	int	y;
 	int	x;
+	int	vect;
 }	t_point;
 
 typedef struct s_image
