@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 18:29:12 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2024/01/06 05:09:19 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/01/07 05:28:02 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "./../MLX42/include/MLX42/MLX42.h"
 # include "./../libft/libft.h"
+# include <stdlib.h>
 # include <stdio.h>
 
 typedef struct s_point

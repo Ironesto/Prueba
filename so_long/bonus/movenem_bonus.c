@@ -72,8 +72,7 @@ int	compmovy2e_bonus(int pos, int posx, int size, t_data *data, int i)
 		if (!ft_strchr("1A", data->map[data->ap[i].y + 1][data->ap[i].x]))
 		{
 			data->map[data->ap[i].y][data->ap[i].x] = '0';
-			data->ap[i].y++;
-			data->map[data->ap[i].y][data->ap[i].x] = 'A';
+			data->map[++data->ap[i].y][data->ap[i].x] = 'A';
 		}
 		else
 			return (1);
@@ -102,8 +101,7 @@ int	compmovxe_bonus(int posy, int pos, int size, t_data *data, int i)
 		if (!ft_strchr("1A", data->map[data->ap[i].y][data->ap[i].x - 1]))
 		{
 			data->map[data->ap[i].y][data->ap[i].x] = '0';
-			data->ap[i].x--;
-			data->map[data->ap[i].y][data->ap[i].x] = 'A';
+			data->map[data->ap[i].y][--data->ap[i].x] = 'A';
 		}
 		else
 			return (1);
