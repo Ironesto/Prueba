@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 18:29:12 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2024/01/07 05:28:02 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/01/08 00:14:03 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,16 @@ typedef struct s_point
 	int	comp;
 	int	y;
 	int	x;
-	int	vect;
+	int	pos;
 }	t_point;
+
+typedef struct s_ene
+{
+	int	comp;
+	int	y;
+	int	x;
+	int	pos;
+}	t_ene;
 
 typedef struct s_image
 {

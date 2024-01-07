@@ -60,7 +60,7 @@ void	hookmov_bonus(t_data *data, int x, int y)
 	data->image.fermin->instances[0].x += x;
 }
 
-/*  void	movene_bonus(t_data *data)
+ void	movene_bonus(t_data *data)
 {
 	int	i;
 	int	x;
@@ -69,25 +69,25 @@ void	hookmov_bonus(t_data *data, int x, int y)
 	i = 0;
 	while (i < data->image.ale->count)
 	{
-		data->ap[i].vect = 0;
-		x = data->ap[i].x;
-		y = data->ap[i].y;
-		if (compmovx2e_bonus(y, x, 64, data, i) == 0 && x == data->ap[i].x)
-				data->image.ale2->instances[i].x++;
-		if (compmovxe_bonus(y, x, 64, data, i) == 0 && x == data->ap[i].x)
-				data->image.ale2->instances[i].x--;
-		if (compmovy2e_bonus(y, x, 64, data, i) == 0 && y == data->ap[i].y)
+		x = data->image.ale2->instances[i].x;
+		y = data->image.ale2->instances[i].y;
+		if (compmovx2e_bonus(y, x, 64, data, i) == 0 && data->ap[i].pos == 0)
+			data->image.ale2->instances[i].x++;
+ 		else if (compmovxe_bonus(y, x, 64, data, i) == 0 && data->ap[i].pos == 1)
+			data->image.ale2->instances[i].x--;
+		else if (compmovy2e_bonus(y, x, 64, data, i) == 0 && data->ap[i].pos == 2)
 				data->image.ale2->instances[i].y++;
-		if (compmovye_bonus(y, x, 64, data, i) == 0 && y == data->ap[i].y)
+		else if (compmovye_bonus(y, x, 64, data, i) == 0 && data->ap[i].pos == 3)
 				data->image.ale2->instances[i].y--;
+		else
+			data->ap[i].pos = rand() % 100;
 		enemcoll_bonus(data, i);
 		movanimene_bonus(data, x, y, i);
-		ft_printf("ale %d x %d y %d\n", i, data->ap[i].x, data->ap[i].y);
 		i++;
 	}
-} */
+}
 
-void	movene_bonus(t_data *data)
+/* void	movene_bonus(t_data *data)
 {
 	int	i;
 	int	x;
@@ -114,7 +114,7 @@ void	movene_bonus(t_data *data)
 		movanimene_bonus(data, x, y, i);
 		i++;
 	}
-}
+} */
 
 void	hook(void *param)
 {

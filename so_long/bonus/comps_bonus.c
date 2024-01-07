@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 20:46:07 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2024/01/02 03:14:02 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/01/08 00:27:30 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,7 @@ static int	save_point(t_data *data, int aux, int k, int c)
 		data->cp[c].comp = c;
 		data->cp[c].x = k;
 		data->cp[c].y = aux;
+		data->cp[c].pos = 0;
 	}
 	if (data->pp.comp > 1 || data->ep.comp > 1)
 		return (1);
@@ -123,6 +124,7 @@ void	save_enemy_bonus(t_data *data, int aux, int k, int a)
 		data->ap[a].comp = a;
 		data->ap[a].x = k;
 		data->ap[a].y = aux;
+		data->ap[a].pos = rand() % 50;
 	}
 }
 
