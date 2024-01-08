@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 20:53:42 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2024/01/08 05:04:18 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/01/08 20:14:12 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,10 @@ void	so_long(t_data *data, int size)
 	data->image.ale2->count = data->image.ale->count;
 }
 
-void	ft_leaks(void)
+/* void	ft_leaks(void)
 {
 	system("leaks -q so_long");
-}
+} */
 
 void	ft_error(t_data *data)
 {
@@ -62,18 +62,19 @@ void	ft_init_bonus(t_data *data)
 	data->map = NULL;
 	data->cpy = NULL;
 	data->cp = NULL;
+	data->size = 64;
 	data->moves = 0;
 	data->pp.comp = 0;
 	data->ep.comp = 0;
 	data->totcol = 0;
 }
+	//atexit(ft_leaks);
 
 int	main(int argc, char **argv)
 {
 	t_data	data;
 	int		size;
 
-	//atexit(ft_leaks);
 	size = 64;
 	ft_init_bonus(&data);
 	if (argc != 2 || !argv[0][0])

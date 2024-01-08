@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 20:10:04 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2024/01/02 03:09:47 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/01/08 20:01:13 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	mapper(char *argv, t_data *data)
 	char	*str;
 	char	*line;
 
-	str = ft_strjoin("./../maps/", argv);
+	str = ft_strjoin("./maps/", argv);
 	i = 0;
 	fd = open(str, O_RDONLY);
 	line = get_next_line(fd);

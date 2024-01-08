@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 20:05:21 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2024/01/06 03:40:44 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/01/08 18:20:24 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	compmovy(int posx, int pos, int size, t_data *data)
 	if (aux < data->pp.y && (pos + 60) / size < data->pp.y)
 	{
 		if (data->map[data->pp.y - 1][data->pp.x] != '1')
-		{	
+		{
 			data->pp.y--;
 			++data->moves;
 		}
@@ -61,7 +61,7 @@ int	compmovy2(int posx, int pos, int size, t_data *data)
 		if (data->map[data->pp.y + 1][data->pp.x] != '1')
 		{
 			data->pp.y++;
-			++data->moves;			
+			++data->moves;
 		}
 		else
 			return (1);

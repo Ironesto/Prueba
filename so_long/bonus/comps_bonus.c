@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 20:46:07 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2024/01/08 04:59:15 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/01/08 18:25:56 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int	comp_line(t_data *data)
 			if (data->map[i][k] == 'A')
 				a++;
 			if (!ft_strchr("10CAPE", data->map[i][k]))
-					return (1);
+				return (1);
 			k--;
 		}
 	}
@@ -113,16 +113,6 @@ static int	save_point(t_data *data, int aux, int k, int c)
 		return (1);
 	return (0);
 }
-void	save_enemy_bonus(t_data *data, int aux, int k, int a)
-{
-	if (data->map[aux][k] == 'A')
-	{
-		data->ap[a].comp = a;
-		data->ap[a].x = k;
-		data->ap[a].y = aux;
-		data->ap[a].pos = rand() % 50;
-	}
-}
 
 int	comp_item(t_data *data)
 {
@@ -143,7 +133,7 @@ int	comp_item(t_data *data)
 				return (1);
 			if (data->map[aux][k] == 'C')
 				c++;
-			save_enemy_bonus(data, aux, k , a);
+			save_enemy_bonus(data, aux, k, a);
 			if (data->map[aux][k] == 'A')
 				a++;
 			k++;

@@ -6,12 +6,12 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 18:29:12 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2024/01/08 04:20:55 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/01/08 20:35:48 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include "./../MLX42/include/MLX42/MLX42.h"
 # include "./../libft/libft.h"
@@ -49,6 +49,7 @@ typedef struct s_data
 	int		w;
 	int		moves;
 	int		totcol;
+	int		size;
 	t_point	pp;
 	t_point	ep;
 	t_point	*cp;
@@ -74,10 +75,16 @@ int		compmovy(int posx, int pos, int size, t_data *data);
 int		compmovy2(int posx, int pos, int size, t_data *data);
 
 void	movanimene_bonus(t_data *data, int x, int y, int i);
-int		compmovye_bonus(int pos, int posx, int size, t_data *data, int i);
-int		compmovy2e_bonus(int pos, int posx, int size, t_data *data, int i);
-int		compmovxe_bonus(int posy, int pos, int size, t_data *data, int i);
-int		compmovx2e_bonus(int posy, int pos, int size, t_data *data, int i);
+int		compmovye_bonus(int pos, int posx, t_data *data, int i);
+int		compmovy2e_bonus(int pos, int posx, t_data *data, int i);
+int		compmovxe_bonus(int posy, int pos, t_data *data, int i);
+int		compmovx2e_bonus(int posy, int pos, t_data *data, int i);
+
+void	save_enemy_bonus(t_data *data, int aux, int k, int a);
+void	enemcoll_bonus(t_data *data, int i);
+void	print_text_bonus(t_data *data, int x, int y, char *txt);
+void	movanim_bonus(t_data *data, int x, int y);
+void	ft_if_bonus(t_data *data, int i, int y, int x);
 
 void	ft_see(t_data *data);
 #endif

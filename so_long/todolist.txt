@@ -1,0 +1,3 @@
+//makefile bien hecho
+//pasar la norma
+comrpobacion mapa valido en mandatory y bonus
