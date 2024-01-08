@@ -7,7 +7,7 @@ static void erase_coll(t_data *data)
 	i = 0;
 	while (data->pp.y != data->cp[i].y || data->pp.x != data->cp[i].x)
 		i++;
-	if (i > data->totcol)
+	if (i > data->totcol + 1)
 	{
 		write(2, "Error\n", 6);
 		return ;
@@ -115,6 +115,12 @@ void	hookmov_bonus(t_data *data, int x, int y)
 		i++;
 	}
 } */
+void	print_text_bonus(t_data *data, int x, int y, char *txt)
+{
+	mlx_delete_image(data->mlx, data->image.text);
+	data->image.text = mlx_put_string(data->mlx, txt, x, y);
+	free(txt);
+}
 
 void	hook(void *param)
 {
@@ -141,4 +147,5 @@ void	hook(void *param)
 		opendoor(data);
 	movanim_bonus(data, x, y);
 	movene_bonus(data);
+	print_text_bonus(data, data->w * 32 - 34, 16, ft_itoa(data->moves));
 }

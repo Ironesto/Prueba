@@ -1,3 +1,2 @@
-movimientos en pantalla
 makefile bien hecho
 pasar la norma

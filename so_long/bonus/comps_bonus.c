@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 20:46:07 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2024/01/08 00:27:30 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/01/08 04:59:15 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,31 +63,27 @@ int	comp_line(t_data *data)
 {
 	int	i;
 	int	k;
-	int	c;
 	int	a;
 
 	i = 0;
-	c = 0;
-	while (data->map[i] != NULL)
+	a = 0;
+	while (data->map[++i] != NULL)
 	{
 		k = data->w - 2;
 		while (k > 0)
 		{
 			if (data->map[i][k] == 'C')
-				c++;
+				data->totcol++;
 			if (data->map[i][k] == 'A')
 				a++;
-			if (data->map[i][k] != '1' && data->map[i][k] != '0')
-				if (data->map[i][k] != 'C' && data->map[i][k] != 'A'
-					&& data->map[i][k] != 'P' && data->map[i][k] != 'E')
+			if (!ft_strchr("10CAPE", data->map[i][k]))
 					return (1);
 			k--;
 		}
-		i++;
 	}
-	if (c == 0 || a == 0)
+	if (data->totcol == 0 || a == 0)
 		return (1);
-	data->cp = malloc(sizeof(t_point) * c);
+	data->cp = malloc(sizeof(t_point) * data->totcol);
 	data->ap = malloc(sizeof(t_point) * a);
 	return (0);
 }

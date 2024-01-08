@@ -38,7 +38,7 @@ int	compmovye_bonus(int pos, int posx, int size, t_data *data, int i)
 		return (1);
 	if (aux < data->ap[i].y && (pos + 60) / size < data->ap[i].y)
 	{
-		if (!ft_strchr("1AE", data->map[data->ap[i].y - 1][data->ap[i].x]))
+		if (!ft_strchr("1AEC", data->map[data->ap[i].y - 1][data->ap[i].x]))
 		{
 			data->map[data->ap[i].y][data->ap[i].x] = '0';
 			data->ap[i].y--;
@@ -68,7 +68,7 @@ int	compmovy2e_bonus(int pos, int posx, int size, t_data *data, int i)
 		return (1);
 	if (aux > data->ap[i].y && (pos + 20) / size > data->ap[i].y)
 	{
-		if (!ft_strchr("1AE", data->map[data->ap[i].y + 1][data->ap[i].x]))
+		if (!ft_strchr("1AEC", data->map[data->ap[i].y + 1][data->ap[i].x]))
 		{
 			data->map[data->ap[i].y][data->ap[i].x] = '0';
 			data->map[++data->ap[i].y][data->ap[i].x] = 'A';
@@ -97,7 +97,7 @@ int	compmovxe_bonus(int posy, int pos, int size, t_data *data, int i)
 		return (1);
 	if (aux < data->ap[i].x && (pos + 40) / size < data->ap[i].x)
 	{
-		if (!ft_strchr("1AE", data->map[data->ap[i].y][data->ap[i].x - 1]))
+		if (!ft_strchr("1AEC", data->map[data->ap[i].y][data->ap[i].x - 1]))
 		{
 			data->map[data->ap[i].y][data->ap[i].x] = '0';
 			data->map[data->ap[i].y][--data->ap[i].x] = 'A';
@@ -125,7 +125,7 @@ int	compmovx2e_bonus(int posy, int pos, int size, t_data *data, int i)
 		return (1);
 	if ((pos + 20) / size > data->ap[i].x && aux > data->ap[i].x)
 	{
-		if (!ft_strchr("1AE", data->map[data->ap[i].y][data->ap[i].x + 1]))
+		if (!ft_strchr("1AEC", data->map[data->ap[i].y][data->ap[i].x + 1]))
 		{
 			data->map[data->ap[i].y][data->ap[i].x] = '0';
 			data->ap[i].x++;

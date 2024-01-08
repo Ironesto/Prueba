@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 18:29:12 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2024/01/08 00:14:03 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/01/08 04:20:55 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,6 @@ typedef struct s_point
 	int	pos;
 }	t_point;
 
-typedef struct s_ene
-{
-	int	comp;
-	int	y;
-	int	x;
-	int	pos;
-}	t_ene;
-
 typedef struct s_image
 {
 	mlx_image_t	*wall;
@@ -45,6 +37,7 @@ typedef struct s_image
 	mlx_image_t	*ale;
 	mlx_image_t	*ale2;
 	mlx_image_t	*fermin2;
+	mlx_image_t	*text;
 }	t_image;
 
 typedef struct s_data

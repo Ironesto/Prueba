@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 20:53:42 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2024/01/02 03:07:27 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/01/08 05:04:18 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,10 @@ void	so_long(t_data *data, int size)
 	seeimage(data);
 	createmap(data, size);
 	createitem(data, size);
+	mlx_image_to_window(data->mlx, data->image.fermin,
+		data->pp.x * size, data->pp.y * size);
+	mlx_image_to_window(data->mlx, data->image.fermin2,
+		data->pp.x * size, data->pp.y * size);
 	data->totcol = data->image.cartucho->count + 1;
 	data->image.ale2->count = data->image.ale->count;
 }
@@ -61,6 +65,7 @@ void	ft_init_bonus(t_data *data)
 	data->moves = 0;
 	data->pp.comp = 0;
 	data->ep.comp = 0;
+	data->totcol = 0;
 }
 
 int	main(int argc, char **argv)
