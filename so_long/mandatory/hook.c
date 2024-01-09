@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 20:14:46 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2024/01/08 20:39:25 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/01/09 19:33:03 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,13 +49,13 @@ void	hook(void *param)
 	y = data->image.fermin->instances[0].y;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(data->mlx);
-	if (mlx_is_key_down(data->mlx, MLX_KEY_UP) && !compmovy(x, y, 64, data))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_W) && !compmovy(x, y, 64, data))
 		data->image.fermin->instances[0].y -= 2;
-	if (mlx_is_key_down(data->mlx, MLX_KEY_DOWN) && !compmovy2(x, y, 64, data))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_S) && !compmovy2(x, y, 64, data))
 		data->image.fermin->instances[0].y += 2;
-	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT) && !compmovx(y, x, 64, data))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_A) && !compmovx(y, x, 64, data))
 		data->image.fermin->instances[0].x -= 2;
-	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT) && !compmovx2(y, x, 64, data))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_D) && !compmovx2(y, x, 64, data))
 		data->image.fermin->instances[0].x += 2;
 	if (data->map[data->pp.y][data->pp.x] == 'C')
 		erase_coll(data);

@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 20:53:42 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2024/01/08 20:14:12 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/01/09 20:47:28 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,12 @@ int	so_long(t_data *data, int size)
 
 void	ft_error(t_data *data)
 {
-	write(2, "Error\n", 6);
 	if (data->map)
 		ft_free(data->map);
 	if (data->cp)
 		free(data->cp);
+	if (data->ap)
+		free(data->ap);
 	if (data->cpy)
 		ft_free(data->cpy);
 }
@@ -79,9 +80,9 @@ int	main(int argc, char **argv)
 
 	size = 64;
 	ft_init_bonus(&data);
-	if (argc != 2 || !argv[0][0])
+	if (argc != 2)
 	{
-		write(2, "Error\n", 6);
+		write(2, "Error\nNúmero de argumentos erróneos\n", 39);
 		return (1);
 	}
 	if (ft_checker(argv[1], &data) == 1)
@@ -95,5 +96,6 @@ int	main(int argc, char **argv)
 	mlx_terminate(data.mlx);
 	ft_free(data.map);
 	free(data.cp);
+	free(data.ap);
 	return (0);
 }

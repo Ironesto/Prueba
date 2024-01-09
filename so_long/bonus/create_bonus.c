@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 18:27:07 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2024/01/08 20:01:40 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/01/09 20:09:16 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,22 @@ int	seeimage_bonus(t_data *data)
 {
 	mlx_texture_t	*image;
 
-	image = mlx_load_png("./assets/ale.png");
-	if (!image)
-		return (1);
+	if (ft_fd("./assets/ale.png") >= 0)
+		image = mlx_load_png("./assets/ale.png");
+	else
+		return (write(2, "Error\nSprite enemigo parado erróneo\n", 37), 1);
 	data->image.ale = mlx_texture_to_image(data->mlx, image);
 	mlx_delete_texture(image);
-	image = mlx_load_png("./assets/ale2.png");
-	if (!image)
-		return (1);
+	if (ft_fd("./assets/ale2.png") >= 0)
+		image = mlx_load_png("./assets/ale2.png");
+	else
+		return (write(2, "Error\nSprite enemigo moviéndose erróneo\n", 42), 1);
 	data->image.ale2 = mlx_texture_to_image(data->mlx, image);
 	mlx_delete_texture(image);
-	image = mlx_load_png("./assets/fermin2.png");
-	if (!image)
-		return (1);
+	if (ft_fd("./assets/fermin2.png") >= 0)
+		image = mlx_load_png("./assets/fermin2.png");
+	else
+		return (write(2, "Error\nSprite personaje animado erróneo\n", 40), 1);
 	data->image.fermin2 = mlx_texture_to_image(data->mlx, image);
 	mlx_delete_texture(image);
 	return (0);
@@ -38,19 +41,22 @@ static int	seeimage2(t_data *data)
 {
 	mlx_texture_t	*image;
 
-	image = mlx_load_png("./assets/gabi.png");
-	if (!image)
-		return (1);
+	if (ft_fd("./assets/gabi.png") >= 0)
+		image = mlx_load_png("./assets/gabi.png");
+	else
+		return (write(2, "Error\nSprite salida cerrada no errónea\n", 40), 1);
 	data->image.gabi = mlx_texture_to_image(data->mlx, image);
 	mlx_delete_texture(image);
-	image = mlx_load_png("./assets/gabi2.png");
-	if (!image)
-		return (1);
+	if (ft_fd("./assets/gabi2.png") >= 0)
+		image = mlx_load_png("./assets/gabi2.png");
+	else
+		return (write(2, "Error\nSprite salida abierta no errónea\n", 40), 1);
 	data->image.exit = mlx_texture_to_image(data->mlx, image);
 	mlx_delete_texture(image);
-	image = mlx_load_png("./assets/cartucho.png");
-	if (!image)
-		return (1);
+	if (ft_fd("./assets/cartucho.png") >= 0)
+		image = mlx_load_png("./assets/cartucho.png");
+	else
+		return (write(2, "Error\nSprite coleccionable erróneo\n", 36), 1);
 	data->image.cartucho = mlx_texture_to_image(data->mlx, image);
 	mlx_delete_texture(image);
 	return (0);
@@ -60,24 +66,25 @@ int	seeimage(t_data *data)
 {
 	mlx_texture_t	*image;
 
-	image = mlx_load_png("./assets/wall.png");
-	if (!image)
-		return (1);
+	if (ft_fd("./assets/wall.png") >= 0)
+		image = mlx_load_png("./assets/wall.png");
+	else
+		return (write(2, "Error\nSprite pared erróneo\n", 28), 1);
 	data->image.wall = mlx_texture_to_image(data->mlx, image);
 	mlx_delete_texture(image);
-	image = mlx_load_png("./assets/floor2P.png");
-	if (!image)
-		return (1);
+	if (ft_fd("./assets/floor2P.png") >= 0)
+		image = mlx_load_png("./assets/floor2P.png");
+	else
+		return (write(2, "Error\nSprite suelo erróneo\n", 28), 1);
 	data->image.floor = mlx_texture_to_image(data->mlx, image);
 	mlx_delete_texture(image);
-	image = mlx_load_png("./assets/fermin.png");
-	if (!image)
-		return (1);
+	if (ft_fd("./assets/fermin.png") >= 0)
+		image = mlx_load_png("./assets/fermin.png");
+	else
+		return (write(2, "Error\nSprite personaje erróneo\n", 32), 1);
 	data->image.fermin = mlx_texture_to_image(data->mlx, image);
 	mlx_delete_texture(image);
-	if (seeimage2(data)== 1)
-		return (1);
-	if (seeimage_bonus(data) == 1)
+	if (seeimage2(data) == 1 || seeimage_bonus(data) == 1)
 		return (1);
 	return (0);
 }

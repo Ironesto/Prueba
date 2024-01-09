@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 20:46:07 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2024/01/08 18:25:56 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/01/09 19:59:36 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	comp_rect(t_data *data)
 	while (data->map[data->h])
 	{
 		if (data->map[data->h] != NULL && data->w != aux)
-			return (1);
+			return (write(2, "Error\nMapa no rectangular\n", 26), 1);
 		data->h++;
 		if (data->map[data->h] != NULL)
 			data->w = ft_strlen(data->map[data->h]);
@@ -109,8 +109,10 @@ static int	save_point(t_data *data, int aux, int k, int c)
 		data->cp[c].y = aux;
 		data->cp[c].pos = 0;
 	}
-	if (data->pp.comp > 1 || data->ep.comp > 1)
-		return (1);
+	if (data->pp.comp > 1)
+		return (write(2, "Error\nDemasiados jugadores\n", 27), 1);
+	if (data->ep.comp > 1)
+		return (write(2, "Error\nDemasiadas salidas\n", 25), 1);
 	return (0);
 }
 
@@ -123,8 +125,8 @@ int	comp_item(t_data *data)
 
 	c = 0;
 	a = 0;
-	aux = 0;
-	while (aux < data->h - 1)
+	aux = -1;
+	while (++aux < data->h - 1)
 	{
 		k = 1;
 		while (k < data->w - 2)
@@ -138,7 +140,6 @@ int	comp_item(t_data *data)
 				a++;
 			k++;
 		}
-		aux++;
 	}
 	return (0);
 }

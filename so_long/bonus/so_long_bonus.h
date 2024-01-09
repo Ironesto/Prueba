@@ -6,12 +6,13 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 18:29:12 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2024/01/08 20:35:48 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/01/09 20:46:28 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_BONUS_H
 # define SO_LONG_BONUS_H
+# define ERROR "Error\nMapa inválido\n"
 
 # include "./../MLX42/include/MLX42/MLX42.h"
 # include "./../libft/libft.h"
@@ -68,6 +69,7 @@ int		seeimage(t_data *data);
 void	createmap(t_data *data, int size);
 void	createitem(t_data *data, int size);
 void	createitem_bonus(t_data *data, int x, int y, int size);
+int		ft_fd(char *str);
 void	hook(void *param);
 
 int		compmovx(int posy, int pos, int size, t_data *data);
@@ -83,7 +85,7 @@ int		compmovx2e_bonus(int posy, int pos, t_data *data, int i);
 
 void	save_enemy_bonus(t_data *data, int aux, int k, int a);
 void	enemcoll_bonus(t_data *data, int i);
-void	print_text_bonus(t_data *data, int x, int y, char *txt);
+void	print_text_bonus(t_data *data, int x, int y);
 void	movanim_bonus(t_data *data, int x, int y);
 void	ft_if_bonus(t_data *data, int i, int y, int x);
 

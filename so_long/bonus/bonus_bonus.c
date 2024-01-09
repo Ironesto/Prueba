@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 20:16:07 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2024/01/08 20:35:41 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/01/09 20:47:55 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,11 @@ void	enemcoll_bonus(t_data *data, int i)
 		mlx_close_window(data->mlx);
 }
 
-void	print_text_bonus(t_data *data, int x, int y, char *txt)
+void	print_text_bonus(t_data *data, int x, int y)
 {
+	char	*txt;
+
+	txt = ft_itoa(data->moves);
 	mlx_delete_image(data->mlx, data->image.text);
 	data->image.text = mlx_put_string(data->mlx, txt, x, y);
 	free(txt);

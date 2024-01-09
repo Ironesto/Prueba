@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 18:29:12 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2023/12/29 20:13:56 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/01/09 18:47:32 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int		ft_checker(char *argv, t_data *data);
 int		seeimage(t_data *data);
 void	createmap(t_data *data, int size);
 void	createitem(t_data *data, int size);
+void	ft_error(t_data *data);
 void	hook(void *param);
 
 int		compmovx(int posy, int pos, int size, t_data *data);

@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 20:10:04 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2024/01/08 19:49:19 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/01/09 20:01:21 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,10 @@ int	mapper(char *argv, t_data *data)
 	i = 0;
 	fd = open(str, O_RDONLY);
 	if (fd == -1)
-		return (1);
+		return (free(str), write(2, "Error\nMapa no encontrado\n", 26), 1);
 	line = get_next_line(fd);
+	if (!line)
+		return (close(fd), write(2, "Error\nLínea vacía\n", 20), 1);
 	while (line != NULL)
 	{
 		free(line);
@@ -81,12 +83,12 @@ int	ft_checker(char *argv, t_data *data)
 	if (comp_rect(data) == 1)
 		return (1);
 	if (comp_close(data) == 1)
-		return (1);
+		return (write(2, "Error\nMapa no cerrado\n", 22), 1);
 	if (comp_line(data) == 1)
-		return (1);
+		return (write(2, "Error\nElemento erróneo\n", 25), 1);
 	if (comp_item(data) == 1)
 		return (1);
 	if (comp_path(data, data->pp.y, data->pp.x) == 1)
-		return (1);
+		return (write(2, "Error\nSin ruta válida\n", 23), 1);
 	return (0);
 }

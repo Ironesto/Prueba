@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 20:05:21 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2024/01/08 18:20:24 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/01/09 19:16:13 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,5 +123,19 @@ int	compmovx(int posy, int pos, int size, t_data *data)
 		else
 			return (1);
 	}
+	return (0);
+}
+
+int	ft_fd(char *str)
+{
+	int	fd;
+
+	fd = open(str, O_RDONLY);
+	if (fd < 0)
+	{
+		close(fd);
+		return (-1);
+	}
+	close(fd);
 	return (0);
 }

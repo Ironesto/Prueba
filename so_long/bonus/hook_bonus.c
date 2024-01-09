@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/08 18:26:40 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2024/01/08 20:38:24 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/01/09 20:35:25 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,13 @@ void	hook(void *param)
 	y = data->image.fermin->instances[0].y;
 	if (mlx_is_key_down(data->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(data->mlx);
-	if (mlx_is_key_down(data->mlx, MLX_KEY_UP) && !compmovy(x, y, 64, data))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_W) && !compmovy(x, y, 64, data))
 		hookmov_bonus(data, 0, -2);
-	if (mlx_is_key_down(data->mlx, MLX_KEY_DOWN) && !compmovy2(x, y, 64, data))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_S) && !compmovy2(x, y, 64, data))
 		hookmov_bonus(data, 0, 2);
-	if (mlx_is_key_down(data->mlx, MLX_KEY_LEFT) && !compmovx(y, x, 64, data))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_A) && !compmovx(y, x, 64, data))
 		hookmov_bonus(data, -2, 0);
-	if (mlx_is_key_down(data->mlx, MLX_KEY_RIGHT) && !compmovx2(y, x, 64, data))
+	if (mlx_is_key_down(data->mlx, MLX_KEY_D) && !compmovx2(y, x, 64, data))
 		hookmov_bonus(data, 2, 0);
 	if (data->map[data->pp.y][data->pp.x] == 'C')
 		erase_coll(data);
@@ -98,5 +98,5 @@ void	hook(void *param)
 		opendoor(data);
 	movanim_bonus(data, x, y);
 	movene_bonus(data);
-	print_text_bonus(data, data->w * 32 - 34, 16, ft_itoa(data->moves));
+	print_text_bonus(data, data->w * 32 - 34, 16);
 }
