@@ -12,28 +12,50 @@
 
 #include "so_long.h"
 
-void	seeimage(t_data *data)
+static int	seeimage2(t_data *data)
+{
+	mlx_texture_t	*image;
+
+	image = mlx_load_png("./assets/gabi.png");
+	if (!image)
+		return (1);
+	data->image.gabi = mlx_texture_to_image(data->mlx, image);
+	mlx_delete_texture(image);
+	image = mlx_load_png("./assets/gabi2.png");
+	if (!image)
+		return (1);
+	data->image.exit = mlx_texture_to_image(data->mlx, image);
+	mlx_delete_texture(image);
+	image = mlx_load_png("./assets/cartucho.png");
+	if (!image)
+		return (1);
+	data->image.cartucho = mlx_texture_to_image(data->mlx, image);
+	mlx_delete_texture(image);
+	return (0);
+}
+
+int	seeimage(t_data *data)
 {
 	mlx_texture_t	*image;
 
 	image = mlx_load_png("./assets/wall.png");
+	if (!image)
+		return (1);
 	data->image.wall = mlx_texture_to_image(data->mlx, image);
 	mlx_delete_texture(image);
 	image = mlx_load_png("./assets/floor2P.png");
+	if (!image)
+		return (1);
 	data->image.floor = mlx_texture_to_image(data->mlx, image);
 	mlx_delete_texture(image);
 	image = mlx_load_png("./assets/fermin.png");
+	if (!image)
+		return (1);
 	data->image.fermin = mlx_texture_to_image(data->mlx, image);
 	mlx_delete_texture(image);
-	image = mlx_load_png("./assets/gabi.png");
-	data->image.gabi = mlx_texture_to_image(data->mlx, image);
-	mlx_delete_texture(image);
-	image = mlx_load_png("./assets/gabi2.png");
-	data->image.exit = mlx_texture_to_image(data->mlx, image);
-	mlx_delete_texture(image);
-	image = mlx_load_png("./assets/cartucho.png");
-	data->image.cartucho = mlx_texture_to_image(data->mlx, image);
-	mlx_delete_texture(image);
+	if (seeimage2(data)== 1)
+		return (1);
+	return (0);
 }
 
 void	createmap(t_data *data, int size)

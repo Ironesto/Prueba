@@ -31,7 +31,7 @@ static void	finishmapper(t_data *data, char *str, int i)
 	close(fd);
 }
 
-void	mapper(char *argv, t_data *data)
+int	mapper(char *argv, t_data *data)
 {
 	int		fd;
 	int		i;
@@ -42,6 +42,8 @@ void	mapper(char *argv, t_data *data)
 	i = 0;
 	fd = open(str, O_RDONLY);
 	line = get_next_line(fd);
+	if (fd == 0)
+		return (1);
 	while (line != NULL)
 	{
 		free(line);
@@ -52,6 +54,7 @@ void	mapper(char *argv, t_data *data)
 	data->map = malloc(sizeof(char *) * (i + 1));
 	data->cpy = malloc(sizeof(char *) * (i + 1));
 	finishmapper(data, str, i);
+	return (0);
 }
 
 int	comp_path(t_data *data, int y, int x)
@@ -73,7 +76,8 @@ int	comp_path(t_data *data, int y, int x)
 
 int	ft_checker(char *argv, t_data *data)
 {
-	mapper(argv, data);
+	if (mapper(argv, data) == 1)
+		return (1);
 	if (comp_rect(data) == 1)
 		return (1);
 	if (comp_close(data) == 1)
@@ -87,4 +91,15 @@ int	ft_checker(char *argv, t_data *data)
 	if (comp_path(data, data->pp.y, data->pp.x) == 1)
 		return (1);
 	return (0);
+}
+
+void	createitem_bonus(t_data *data, int x, int y, int size)
+{
+	if (data->map[y][x] == 'A')
+	{
+		mlx_image_to_window(data->mlx, data->image.ale2,
+			x * size, y * size);
+		mlx_image_to_window(data->mlx, data->image.ale,
+			x * size, y * size);
+	}
 }

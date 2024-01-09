@@ -31,7 +31,7 @@ static void	finishmapper(t_data *data, char *str, int i)
 	close(fd);
 }
 
-void	mapper(char *argv, t_data *data)
+int	mapper(char *argv, t_data *data)
 {
 	int		fd;
 	int		i;
@@ -41,6 +41,8 @@ void	mapper(char *argv, t_data *data)
 	str = ft_strjoin("./maps/", argv);
 	i = 0;
 	fd = open(str, O_RDONLY);
+	if (fd == -1)
+		return (1);
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
@@ -52,6 +54,7 @@ void	mapper(char *argv, t_data *data)
 	data->map = malloc(sizeof(char *) * (i + 1));
 	data->cpy = malloc(sizeof(char *) * (i + 1));
 	finishmapper(data, str, i);
+	return (0);
 }
 
 int	comp_path(t_data *data, int y, int x)
@@ -73,7 +76,8 @@ int	comp_path(t_data *data, int y, int x)
 
 int	ft_checker(char *argv, t_data *data)
 {
-	mapper(argv, data);
+	if (mapper(argv, data) == 1)
+		return (1);
 	if (comp_rect(data) == 1)
 		return (1);
 	if (comp_close(data) == 1)

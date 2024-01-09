@@ -57,16 +57,17 @@ typedef struct s_data
 	t_image	image;
 }	t_data;
 
-void	mapper(char *argv, t_data *data);
+int		mapper(char *argv, t_data *data);
 int		comp_rect(t_data *data);
 int		comp_close(t_data *data);
 int		comp_line(t_data *data);
 int		comp_item(t_data *data);
 int		comp_path(t_data *data, int y, int x);
 int		ft_checker(char *argv, t_data *data);
-void	seeimage(t_data *data);
+int		seeimage(t_data *data);
 void	createmap(t_data *data, int size);
 void	createitem(t_data *data, int size);
+void	createitem_bonus(t_data *data, int x, int y, int size);
 void	hook(void *param);
 
 int		compmovx(int posy, int pos, int size, t_data *data);

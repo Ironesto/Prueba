@@ -28,9 +28,10 @@ char	**ft_free(char **str)
 	return (NULL);
 }
 
-void	so_long(t_data *data, int size)
+int	so_long(t_data *data, int size)
 {
-	seeimage(data);
+	if (seeimage(data) == 1)
+		return (1);
 	createmap(data, size);
 	createitem(data, size);
 	mlx_image_to_window(data->mlx, data->image.fermin,
@@ -39,6 +40,7 @@ void	so_long(t_data *data, int size)
 		data->pp.x * size, data->pp.y * size);
 	data->totcol = data->image.cartucho->count + 1;
 	data->image.ale2->count = data->image.ale->count;
+	return (0);
 }
 
 /* void	ft_leaks(void)
@@ -86,7 +88,8 @@ int	main(int argc, char **argv)
 		return (ft_error(&data), 1);
 	ft_free(data.cpy);
 	data.mlx = mlx_init((data.w - 1) * size, data.h * size, argv[1], true);
-	so_long(&data, size);
+	if (so_long(&data, size))
+		return (1);
 	mlx_loop_hook(data.mlx, &hook, &data);
 	mlx_loop(data.mlx);
 	mlx_terminate(data.mlx);

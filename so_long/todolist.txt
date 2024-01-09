@@ -1,3 +1,4 @@
 //makefile bien hecho
-//pasar la norma
-comrpobacion mapa valido en mandatory y bonus
+pasar la norma
+comrpobacion mapa valido y srpites en mandatory y bonus
+que lo anterior no tenga leaks

@@ -12,44 +12,74 @@
 
 #include "so_long_bonus.h"
 
-void	seeimage_bonus(t_data *data)
+int	seeimage_bonus(t_data *data)
 {
 	mlx_texture_t	*image;
 
 	image = mlx_load_png("./assets/ale.png");
+	if (!image)
+		return (1);
 	data->image.ale = mlx_texture_to_image(data->mlx, image);
 	mlx_delete_texture(image);
 	image = mlx_load_png("./assets/ale2.png");
+	if (!image)
+		return (1);
 	data->image.ale2 = mlx_texture_to_image(data->mlx, image);
 	mlx_delete_texture(image);
 	image = mlx_load_png("./assets/fermin2.png");
+	if (!image)
+		return (1);
 	data->image.fermin2 = mlx_texture_to_image(data->mlx, image);
 	mlx_delete_texture(image);
+	return (0);
 }
 
-void	seeimage(t_data *data)
+static int	seeimage2(t_data *data)
+{
+	mlx_texture_t	*image;
+
+	image = mlx_load_png("./assets/gabi.png");
+	if (!image)
+		return (1);
+	data->image.gabi = mlx_texture_to_image(data->mlx, image);
+	mlx_delete_texture(image);
+	image = mlx_load_png("./assets/gabi2.png");
+	if (!image)
+		return (1);
+	data->image.exit = mlx_texture_to_image(data->mlx, image);
+	mlx_delete_texture(image);
+	image = mlx_load_png("./assets/cartucho.png");
+	if (!image)
+		return (1);
+	data->image.cartucho = mlx_texture_to_image(data->mlx, image);
+	mlx_delete_texture(image);
+	return (0);
+}
+
+int	seeimage(t_data *data)
 {
 	mlx_texture_t	*image;
 
 	image = mlx_load_png("./assets/wall.png");
+	if (!image)
+		return (1);
 	data->image.wall = mlx_texture_to_image(data->mlx, image);
 	mlx_delete_texture(image);
 	image = mlx_load_png("./assets/floor2P.png");
+	if (!image)
+		return (1);
 	data->image.floor = mlx_texture_to_image(data->mlx, image);
 	mlx_delete_texture(image);
 	image = mlx_load_png("./assets/fermin.png");
+	if (!image)
+		return (1);
 	data->image.fermin = mlx_texture_to_image(data->mlx, image);
 	mlx_delete_texture(image);
-	image = mlx_load_png("./assets/gabi.png");
-	data->image.gabi = mlx_texture_to_image(data->mlx, image);
-	mlx_delete_texture(image);
-	image = mlx_load_png("./assets/gabi2.png");
-	data->image.exit = mlx_texture_to_image(data->mlx, image);
-	mlx_delete_texture(image);
-	image = mlx_load_png("./assets/cartucho.png");
-	data->image.cartucho = mlx_texture_to_image(data->mlx, image);
-	mlx_delete_texture(image);
-	seeimage_bonus(data);
+	if (seeimage2(data)== 1)
+		return (1);
+	if (seeimage_bonus(data) == 1)
+		return (1);
+	return (0);
 }
 
 void	createmap(t_data *data, int size)
@@ -72,17 +102,6 @@ void	createmap(t_data *data, int size)
 			x++;
 		}
 		y++;
-	}
-}
-
-void	createitem_bonus(t_data *data, int x, int y, int size)
-{
-	if (data->map[y][x] == 'A')
-	{
-		mlx_image_to_window(data->mlx, data->image.ale2,
-			x * size, y * size);
-		mlx_image_to_window(data->mlx, data->image.ale,
-			x * size, y * size);
 	}
 }
 

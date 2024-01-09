@@ -63,9 +63,6 @@ int	compmovye_bonus(int pos, int posx, t_data *data, int i)
 
 int	compmovy2e_bonus(int pos, int posx, t_data *data, int i)
 {
-	int			aux;
-
-	aux = (pos + 55) / data->size;
 	if ((pos + 63) / data->size > data->ap[i].y
 		&& data->map[data->ap[i].y + 1][data->ap[i].x] == '1')
 		return (1);
