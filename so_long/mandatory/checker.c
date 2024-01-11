@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/29 20:10:04 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2024/01/09 20:01:21 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/01/11 18:06:05 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,11 @@ int	mapper(char *argv, t_data *data)
 	str = ft_strjoin("./maps/", argv);
 	i = 0;
 	fd = open(str, O_RDONLY);
-	if (fd == -1)
-		return (free(str), write(2, "Error\nMapa no encontrado\n", 26), 1);
+	if (fd == -1 || ft_strncmp(&str[ft_strlen(str) - 4], ".ber", 4))
+		return (close(fd), free(str), write(2, ERROR, ft_strlen(ERROR)), 1);
 	line = get_next_line(fd);
 	if (!line)
-		return (close(fd), write(2, "Error\nLínea vacía\n", 20), 1);
+		return (free (str), close(fd), write(2, "Error\nLínea vacía\n", 20), 1);
 	while (line != NULL)
 	{
 		free(line);

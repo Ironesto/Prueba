@@ -6,7 +6,7 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/05 20:53:42 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2024/01/09 20:38:31 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/01/11 18:03:55 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,12 @@ void	ft_error(t_data *data)
 	if (data->cpy)
 		ft_free(data->cpy);
 }
-	//atexit(ft_leaks);
 
 int	main(int argc, char **argv)
 {
 	t_data	data;
 	int		size;
+	atexit(ft_leaks);
 
 	size = 64;
 	data.map = NULL;

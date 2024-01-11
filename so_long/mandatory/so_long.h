@@ -6,12 +6,13 @@
 /*   By: gpaez-ga <gpaez-ga@student.42malaga.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/23 18:29:12 by gpaez-ga          #+#    #+#             */
-/*   Updated: 2024/01/09 18:47:32 by gpaez-ga         ###   ########.fr       */
+/*   Updated: 2024/01/11 17:56:22 by gpaez-ga         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
+# define ERROR "Error\nMapa inválido\n"
 
 # include "./../MLX42/include/MLX42/MLX42.h"
 # include "./../libft/libft.h"
